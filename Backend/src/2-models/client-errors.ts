@@ -18,7 +18,7 @@ export class RouteNotFoundError extends ClientError {
 
 // Resource not found error:
 export class ResourceNotFoundError extends ClientError {
-  public constructor(id: number) {
+  public constructor(id: any) {
     super(404, `id ${id} not found`);
   }
 }

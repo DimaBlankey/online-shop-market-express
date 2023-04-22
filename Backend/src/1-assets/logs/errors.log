@@ -230,3 +230,48 @@ Stack: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the ma
     at __awaiter (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\products-services.ts:4:12)
     at Object.addProduct (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\products-services.ts:33:12)
 ----------------------------------------------------------------------------------------------------
+Sat, 22 Apr 2023 17:18:47 GMT
+Route /api/products/images/609d23b1-4bc0-481b-8ecf-6b736828a562.jpg not found
+----------------------------------------------------------------------------------------------------
+Sat, 22 Apr 2023 17:18:47 GMT
+Route /favicon.ico not found
+----------------------------------------------------------------------------------------------------
+Sat, 22 Apr 2023 18:57:35 GMT
+Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:19:27
+    at Generator.next (<anonymous>)
+    at C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:4:12)
+    at saveImage (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:23:12)
+    at Object.<anonymous> (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:30:28)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:5:58)
+----------------------------------------------------------------------------------------------------
+Sat, 22 Apr 2023 18:58:10 GMT
+Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:19:27
+    at Generator.next (<anonymous>)
+    at C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:4:12)
+    at saveImage (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:23:12)
+    at Object.<anonymous> (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:30:28)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:5:58)
+----------------------------------------------------------------------------------------------------
+Sat, 22 Apr 2023 19:04:08 GMT
+Cannot read properties of undefined (reading 'name')
+Stack: TypeError: Cannot read properties of undefined (reading 'name')
+    at C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:19:27
+    at Generator.next (<anonymous>)
+    at C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:4:12)
+    at saveImage (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:23:12)
+    at Object.<anonymous> (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:30:28)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\image-handler.ts:5:58)
+----------------------------------------------------------------------------------------------------

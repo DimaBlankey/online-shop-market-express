@@ -4,6 +4,7 @@ import routeNotFound from "./3-middleware/route-not-found";
 import catchAll from "./3-middleware/catch-all";
 import appConfig from "./4-utils/app-config";
 import authRoute from "./6-routes/auth-routes";
+import productsRoute from "./6-routes/products-routes"
 import expressFileUpload from "express-fileupload";
 import preventXss from "./3-middleware/prevent-xss";
 import expressRateLimit from "express-rate-limit";
@@ -26,6 +27,7 @@ server.use(express.json());
 server.use(preventXss);
 server.use(expressFileUpload());
 server.use("/api", authRoute);
+server.use("/api", productsRoute)
 server.use(routeNotFound);
 server.use(catchAll);
 

@@ -5,8 +5,22 @@ import userServices from "../5-services/user-services";
 
 const router = express.Router();
 
+router.get(
+  "/user-info/:id([0-9]+)",
+  async (request: Request, response: Response, next: NextFunction) => {
+    try {
+      const userId = +request.params.id;
+      const user = await userServices.getOneUser(userId);
+      response.json(user);
+    } catch (err: any) {
+      next(err);
+    }
+  }
+);
+
+
 router.put(
-    "/user-update/:id",
+    "/user-update/:id([0-9]+)",
     verifyLoggedIn,
     async (request: Request, response: Response, next: NextFunction) => {
       try {

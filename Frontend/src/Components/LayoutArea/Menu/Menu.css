@@ -1,0 +1,12 @@
+@media (max-width: 800px) {
+    .Menu .HomeLink {
+      font-size: 0;
+      line-height: 0;
+      width: 0;
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      display: none;
+    }
+  }
+  

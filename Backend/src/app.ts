@@ -15,7 +15,7 @@ const server = express();
 server.use(
   expressRateLimit({
     windowMs: 1000,
-    max: 25,
+    max: 100,
   })
 );
 

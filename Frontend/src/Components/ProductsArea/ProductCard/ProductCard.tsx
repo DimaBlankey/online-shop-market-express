@@ -11,7 +11,6 @@ interface ProductCardProps {
 
 function ProductCard({ product }: ProductCardProps): JSX.Element {
   const images = [product.image1Url, product.image2Url].filter(Boolean);
-  console.log(images)
   return (
     <Card className="ProductCard">
       <Carousel

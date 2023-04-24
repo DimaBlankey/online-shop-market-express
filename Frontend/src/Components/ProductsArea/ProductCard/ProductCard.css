@@ -1,0 +1,13 @@
+.ProductCard .carousel{
+  cursor: pointer;
+}
+
+
+.ProductCard:hover .carousel .control-arrow {
+  opacity: 1;
+}
+
+.carousel .control-arrow {
+  opacity: 0;
+  transition: opacity 0.3s;
+}

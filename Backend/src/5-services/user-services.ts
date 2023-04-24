@@ -10,10 +10,9 @@ import cyber from "../4-utils/cyber";
 import dal from "../4-utils/dal";
 import logger from "../4-utils/logger";
 
-
 async function getOneUser(id: number): Promise<UserModel> {
   const sql = `SELECT * FROM users WHERE id = ?`;
-  const user = await dal.execute(sql, [sql, id]);
+  const user = await dal.execute(sql, [id]);
   return user;
 }
 

@@ -5,10 +5,6 @@ import { authStore } from "../../../Redux/AuthState";
 import { NavLink, useNavigate } from "react-router-dom";
 import authService from "../../../Services/AuthService";
 import notifyService from "../../../Services/NotifyService";
-import {
-  VacationsActionType,
-  vacationsStore,
-} from "../../../Redux/VacationsState";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 
@@ -28,10 +24,10 @@ function AuthMenu(): JSX.Element {
     authService.logout();
     notifyService.success("Goodby!");
     navigate("/home");
-    vacationsStore.dispatch({
-      type: VacationsActionType.ClearState,
-      payload: undefined,
-    });
+    // vacationsStore.dispatch({
+    //   type: VacationsActionType.ClearState,
+    //   payload: undefined,
+    // });
   }
 
   return (

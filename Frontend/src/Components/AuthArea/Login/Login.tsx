@@ -31,7 +31,7 @@ function Login(): JSX.Element {
     try {
       await authService.login(credentials);
       notifyService.success("Welcome!");
-      navigate("/vacations");
+      navigate("/home");
     } catch (err: any) {
       notifyService.error(err);
     }

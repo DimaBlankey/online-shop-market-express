@@ -11,8 +11,6 @@ function Menu(): JSX.Element {
       <NavLink to="/home" className={"HomeLink"}>
         Home
       </NavLink>
-      <span> | </span>
-      <NavLink to="/vacations">Vacations</NavLink>
     </div>
   );
 }

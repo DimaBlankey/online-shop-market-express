@@ -8,6 +8,10 @@ class UserModel {
   address: string;
   roleId: number;
   password: string;
+
+  // extended
+
+  cartId: number;
 }
 
 export default UserModel;

@@ -4,6 +4,7 @@ import appConfig from "../4-utils/app-config";
 import dal from "../4-utils/dal";
 import imageHandler from "../4-utils/image-handler";
 import { ResourceNotFoundError } from "../2-models/client-errors";
+import logger from "../4-utils/logger";
 
 async function getAllProducts(): Promise<ProductModel[]> {
   const sql = `SELECT products.*,

@@ -5,6 +5,7 @@ import UserModel from "../2-models/user-model";
 import cyber from "../4-utils/cyber";
 import dal from "../4-utils/dal";
 import logger from "../4-utils/logger";
+import cartServices from "./cart-services";
 
 // Register new user:
 async function register(user: UserModel): Promise<string> {
@@ -47,12 +48,16 @@ async function register(user: UserModel): Promise<string> {
   // Set back auto-increment id:
   user.id = result.insertId;
 
+    // Create Cart
+  user.cartId = await cartServices.createNewCart(user.id)
+ 
   // Create token:
   const token = cyber.createToken(user);
 
   // Log activity:
   logger.logActivity(user.email + " has signed up");
 
+ 
   // Return token:
   return token;
 }
@@ -94,6 +99,9 @@ async function login(credentials: CredentialsModel): Promise<string> {
 
   // If user not exist:
   if (!user) throw new UnauthorizedError("Incorrect email or password");
+
+   // Create Cart
+   user.cartId = await cartServices.getCartIdByUser(user.id)
 
   // Create token:
   const token = cyber.createToken(user);

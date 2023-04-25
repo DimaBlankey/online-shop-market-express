@@ -7,7 +7,8 @@ class UserModel {
   city: string;
   address: string;
   roleId: number;
-  password: string
+  password: string;
+  cartId: number
 
   public constructor(user: UserModel) {
     this.id = user.id;
@@ -19,6 +20,7 @@ class UserModel {
     this.address = user.address;
     this.roleId = user.roleId;
     this.password = user.password
+    this.cartId = user.cartId
   }
 
 //   Do Validation!

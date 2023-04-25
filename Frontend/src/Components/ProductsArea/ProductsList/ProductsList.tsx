@@ -12,6 +12,7 @@ function ProductsList(): JSX.Element {
   const [selectedCategory, setSelectedCategory] = useState<string>("All Products");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
+  
   useEffect(() => {
     productsService
       .getAllProducts()

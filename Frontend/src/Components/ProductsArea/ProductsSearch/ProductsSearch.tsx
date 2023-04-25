@@ -1,4 +1,4 @@
-import { Container, InputAdornment, TextField } from "@mui/material";
+import { Container, IconButton, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
 import "./ProductsSearch.css";
@@ -20,6 +20,11 @@ function ProductsSearch({ onSearch }: ProductsSearchProps): JSX.Element {
     }
   };
 
+  const handleIconClick = () => {
+    onSearch(searchValue);
+  };
+
+
   return (
     <div className="ProductsSearch">
       <Container maxWidth="md" sx={{ mt: 5 }}>
@@ -34,8 +39,10 @@ function ProductsSearch({ onSearch }: ProductsSearchProps): JSX.Element {
           onKeyPress={handleKeyPress}
           InputProps={{
             endAdornment: (
-              <InputAdornment position="end">
-                <SearchIcon />
+              <InputAdornment position="end" >
+                <IconButton onClick={handleIconClick}>
+                  <SearchIcon />
+                </IconButton>
               </InputAdornment>
             ),
           }}

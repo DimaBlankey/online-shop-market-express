@@ -9,6 +9,7 @@ import ProductsSearch from "../ProductsSearch/ProductsSearch";
 
 function ProductsList(): JSX.Element {
   const [products, setProducts] = useState<ProductModel[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All Products");
 
   useEffect(() => {
     productsService
@@ -19,12 +20,20 @@ function ProductsList(): JSX.Element {
       .catch((err) => notifyService.error(err));
   }, []);
 
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+  };
+
   return (
     <div className="ProductsList">
+      <ResponsiveAppBar onCategoryClick={handleCategoryClick} />
+      <ProductsSearch />
       <div className="ProductsList-cards">
-        {products.map((p) => (
-          <ProductCard key={p.id} product={p} />
-        ))}
+        {products
+          .filter((p) => selectedCategory === "All Products" || p.categoryName === selectedCategory)
+          .map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
       </div>
     </div>
   );

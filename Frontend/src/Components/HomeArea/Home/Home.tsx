@@ -20,8 +20,6 @@ function Home(): JSX.Element {
   return (
     <div className="Home">
       <>
-        <ResponsiveAppBar />
-        <ProductsSearch />
         <ProductsList />
       </>
     </div>

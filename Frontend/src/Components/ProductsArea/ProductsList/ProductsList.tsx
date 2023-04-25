@@ -10,6 +10,7 @@ import ProductsSearch from "../ProductsSearch/ProductsSearch";
 function ProductsList(): JSX.Element {
   const [products, setProducts] = useState<ProductModel[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("All Products");
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   useEffect(() => {
     productsService
@@ -22,21 +23,34 @@ function ProductsList(): JSX.Element {
 
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
+    setSearchQuery("");
+  };
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    setSelectedCategory("All Products");
   };
 
   return (
     <div className="ProductsList">
       <ResponsiveAppBar onCategoryClick={handleCategoryClick} />
-      <ProductsSearch />
+      <ProductsSearch onSearch={handleSearch} />
       <div className="ProductsList-cards">
-        {products
-          .filter((p) => selectedCategory === "All Products" || p.categoryName === selectedCategory)
-          .map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
+      {products
+  .filter(
+    (p) =>
+      (selectedCategory === "All Products" || p.categoryName === selectedCategory) &&
+      (searchQuery === "" ||
+        (p.name?.toLowerCase() ?? "").includes(searchQuery.toLowerCase()) ||
+        (p.description?.toLowerCase() ?? "").includes(searchQuery.toLowerCase()))
+  )
+  .map((p) => (
+    <ProductCard key={p.id} product={p} />
+  ))}
       </div>
     </div>
   );
 }
 
 export default ProductsList;
+

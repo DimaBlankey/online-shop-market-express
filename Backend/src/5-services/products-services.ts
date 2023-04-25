@@ -6,10 +6,12 @@ import imageHandler from "../4-utils/image-handler";
 import { ResourceNotFoundError } from "../2-models/client-errors";
 
 async function getAllProducts(): Promise<ProductModel[]> {
-  const sql = `SELECT *,
-   CONCAT('${appConfig.imagesUrl}', image1) AS image1Url,
-   CONCAT('${appConfig.imagesUrl}', image2) AS image2Url
-   FROM products;`;
+  const sql = `SELECT products.*,
+  categories.categoryName,
+  CONCAT('${appConfig.imagesUrl}', products.image1) AS image1Url,
+  CONCAT('${appConfig.imagesUrl}', products.image2) AS image2Url
+  FROM products
+  JOIN categories ON products.categoryId = categories.id;`;
   const products = await dal.execute(sql);
   return products;
 }

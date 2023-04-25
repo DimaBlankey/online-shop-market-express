@@ -12,6 +12,9 @@ class ProductModel {
     saleStartDate: string;
     saleEndDate: string;
     productCode: string;
+
+    // extended:
+    categoryName: string
 }
 
 export default ProductModel

@@ -21,12 +21,6 @@ function ProductsList(): JSX.Element {
 
   return (
     <div className="ProductsList">
-      <div className="ResponsiveAppBar">
-        <ResponsiveAppBar />
-      </div>
-      <div>
-        <ProductsSearch />
-      </div>
       <div className="ProductsList-cards">
         {products.map((p) => (
           <ProductCard key={p.id} product={p} />

@@ -30,6 +30,7 @@ function ProductCard({ product }: ProductCardProps): JSX.Element {
         ))}
       </Carousel>
       <CardContent>
+        <span hidden >{product.categoryId}{product.categoryName}</span>
         <Typography gutterBottom variant="h6" component="div">
           {product.name}
         </Typography>

@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 const pages = ['All Products', 'Fresh Produce', 'Pantry Staples', 'Dairy & Refrigerated', 'Frozen Foods', 'Snacks & Beverages'];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar(): JSX.Element {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -28,6 +28,7 @@ function ResponsiveAppBar() {
 
 
   return (
+    <div className="ResponsiveAppBar">
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -81,6 +82,7 @@ function ResponsiveAppBar() {
         </Toolbar>
       </Container>
     </AppBar>
+    </div>
   );
 }
 export default ResponsiveAppBar;

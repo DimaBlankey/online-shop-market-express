@@ -35,17 +35,17 @@ function ProductCard({ product }: ProductCardProps): JSX.Element {
       quantity: 1,
       totalPrice: product.salePrice || product.price,
     };
-  
+
     if (!user) {
       const storedCartItems = localStorage.getItem("cart");
       let cartItems: CartItemModel[] = storedCartItems
         ? JSON.parse(storedCartItems)
         : [];
-  
+
       const existingItemIndex = cartItems.findIndex(
         (item) => item.productId === cartItem.productId
       );
-  
+
       if (existingItemIndex > -1) {
         cartItems[existingItemIndex].quantity++;
         cartItems[existingItemIndex].totalPrice +=
@@ -54,13 +54,13 @@ function ProductCard({ product }: ProductCardProps): JSX.Element {
       } else {
         cartItems.push(cartItem);
       }
-  
+
       localStorage.setItem("cart", JSON.stringify(cartItems));
     } else {
+      console.log(cartItem)
       cartService.addCartDetails(cartItem);
     }
   };
-  
 
   const images = [product.image1Url, product.image2Url].filter(Boolean);
   return (

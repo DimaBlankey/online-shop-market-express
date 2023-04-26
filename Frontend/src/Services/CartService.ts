@@ -4,7 +4,11 @@ import CartItemModel from "../Models/CartItemModel";
 
 class CartService{
     public async addCartDetails(cartDetails: CartItemModel): Promise<void>{
-        const response = await axios.post<CartItemModel>(appConfig.cartUrl, cartDetails)
+        const response = await axios.post<CartItemModel>(appConfig.cartUrl + "add-item", cartDetails)
+        // add to Store.. CartState
+    }
+    public async removeCartDetails(cartDetails: CartItemModel): Promise<void>{
+        const response = await axios.post<CartItemModel>(appConfig.cartUrl + "remove-item", cartDetails)
         // add to Store.. CartState
     }
 }

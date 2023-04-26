@@ -8,12 +8,26 @@ import cartServices from "../5-services/cart-services";
 const router = express.Router();
 
 router.post(
-    "/cart",
+    "/cart/add-item",
     verifyLoggedIn,
     async (request: Request, response: Response, next: NextFunction) => {
       try {
         const cartDetails = new CartDetailsModel(request.body);
         const addedCartDetails = await cartServices.addItemsToCartDetails(cartDetails);
+        response.status(201).json(addedCartDetails);
+      } catch (err: any) {
+        next(err);
+      }
+    }
+  );
+
+  router.post(
+    "/cart/remove-item",
+    verifyLoggedIn,
+    async (request: Request, response: Response, next: NextFunction) => {
+      try {
+        const cartDetails = new CartDetailsModel(request.body);
+        const addedCartDetails = await cartServices.removeItemsFromCartDetails(cartDetails);
         response.status(201).json(addedCartDetails);
       } catch (err: any) {
         next(err);

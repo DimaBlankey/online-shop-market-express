@@ -100,7 +100,7 @@ async function login(credentials: CredentialsModel): Promise<string> {
   // If user not exist:
   if (!user) throw new UnauthorizedError("Incorrect email or password");
 
-   // Create Cart
+   // Get Cart
    user.cartId = await cartServices.getCartIdByUser(user.id)
 
   // Create token:

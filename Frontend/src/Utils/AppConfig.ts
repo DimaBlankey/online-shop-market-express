@@ -4,7 +4,7 @@ class AppConfig {
   public userUpdateUrl = "http://localhost:4000/api/user-update/";
   public userInfoUrl = "http://localhost:4000/api/user-info/";
   public productsUrl = "http://localhost:4000/api/products/";
-  public cartUrl = "http://localhost:4000/api/cart"
+  public cartUrl = "http://localhost:4000/api/cart/"
 }
 
 const appConfig = new AppConfig();

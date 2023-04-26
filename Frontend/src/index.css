@@ -3,7 +3,7 @@ body,
 #root {
   height: 100%;
   text-align: center;
-  font-size: large;
+  /* font-size: large; */
   background-size: cover;
   background-position: center;
   box-sizing: border-box;

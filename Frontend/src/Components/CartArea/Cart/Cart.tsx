@@ -9,6 +9,8 @@ import { authStore } from "../../../Redux/AuthState";
 import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { cartStore } from "../../../Redux/CartState";
+import RemoveShoppingCart from "@mui/icons-material/RemoveShoppingCart";
+
 
 function Cart(): JSX.Element {
   const [user, setUser] = useState<UserModel>();
@@ -44,26 +46,68 @@ function Cart(): JSX.Element {
   }, [user]);
 
   return (
-    <div className="Cart">
-      <AppBar position="static">
-        <Container maxWidth="xl">
-          <Toolbar>
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              <Typography>My Cart</Typography>
-              <ShoppingCartIcon></ShoppingCartIcon>
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
-      {items.map((i) => (
-        <CartItems key={i.productId} item={i} />
-      ))}
-      <br />
-      <div>
-      <h5>Total: </h5>
-      <Button variant="contained">Order</Button>
-      </div>
-    </div>
+<div className="Cart">
+  <AppBar position="static">
+    <Container maxWidth="xl">
+    <Toolbar>
+  <Box
+    sx={{
+      flexGrow: 1,
+      display: { xs: "none", md: "flex" },
+      flexDirection: "row",
+      justifyContent: "space-between",
+    }}
+  >
+    <Typography>My Cart</Typography>
+    <ShoppingCartIcon />
+  </Box>
+</Toolbar>
+    </Container>
+  </AppBar>
+  <div
+  className="scrollbar"
+    style={{
+      display: "flex",
+      margin: "10px",
+      flexDirection: "column",
+      minHeight: "650px",
+      maxHeight: "650px",
+      overflowY: "auto",
+      overflowX: "hidden"
+    }}
+  >
+     {items.length > 0 ? (
+    items.map((i) => <CartItems key={i.productId} item={i} />)
+  ) : (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        flexGrow: 1,
+        minHeight: "100%",
+      }}
+    >
+      <RemoveShoppingCart fontSize="large" />
+      <Typography>Your cart is empty</Typography>
+    </Box>
+  )}
+  </div>
+  <br />
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      width: "100%",        
+    }}
+  >
+    <h5>Total: ${items.reduce((acc, item) => acc + item.totalPrice, 0).toFixed(2)}</h5>
+    <Button variant="contained">Order</Button>
+  </div>
+</div>
+
   );
 }
 

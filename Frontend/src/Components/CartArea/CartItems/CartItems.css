@@ -1,4 +1,6 @@
 .CartItems {
-  max-width: 400px;
-  min-width: 400px;
+  max-width: 385px;
+  min-width: 385px;
+  min-height: 170px;
+  /* max-height: 170px; */
 }

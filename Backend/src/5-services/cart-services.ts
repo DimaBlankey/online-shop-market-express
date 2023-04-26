@@ -92,9 +92,31 @@ async function removeItemsFromCartDetails(
   }
 }
 
+async function getCartItemsByUser(cartId: number): Promise<CartDetailsModel[]> {
+  const sql = `SELECT 
+    cart_details.productId, 
+    cart_details.quantity, 
+    cart_details.totalPrice, 
+    products.name,
+    products.productCode, 
+    products.price, 
+    products.salePrice, 
+    products.image1,
+    CONCAT('${appConfig.imagesUrl}', products.image1) AS image1Url
+    FROM 
+    cart_details
+    JOIN 
+    products ON cart_details.productId = products.id
+    WHERE 
+    cart_details.cartId = ?;`;
+  const cartDetails = await dal.execute(sql, [cartId]);
+  return cartDetails;
+}
+
 export default {
   createNewCart,
   addItemsToCartDetails,
   getCartIdByUser,
   removeItemsFromCartDetails,
+  getCartItemsByUser,
 };

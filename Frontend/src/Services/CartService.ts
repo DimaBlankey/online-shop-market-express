@@ -11,6 +11,14 @@ class CartService{
         const response = await axios.post<CartItemModel>(appConfig.cartUrl + "remove-item", cartDetails)
         // add to Store.. CartState
     }
+    public async getCartByUser(cartId: number):Promise<CartItemModel[]>{
+        // check if in Store...CartState
+        const response = await axios.get<CartItemModel[]>(appConfig.cartUrl + cartId);
+        const items = response.data;
+        // Store the cartItems...Cart Store
+        return items
+    }
+
 }
 
 const cartService = new CartService();

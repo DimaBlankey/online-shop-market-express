@@ -35,4 +35,18 @@ router.post(
     }
   );
 
+  router.get(
+    "/cart/:cartId([0-9]+)",
+    verifyLoggedIn,
+    async (request: Request, response: Response, next: NextFunction) => {
+      try {
+        const cartId = +request.params.cartId
+        const cartDetails = await cartServices.getCartItemsByUser(cartId);
+        response.json(cartDetails);
+      } catch (err: any) {
+        next(err);
+      }
+    }
+  );
+
 export default router;

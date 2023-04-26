@@ -1,21 +1,29 @@
 import axios from "axios";
 import appConfig from "../Utils/AppConfig";
 import CartItemModel from "../Models/CartItemModel";
+import { CartActionType, cartStore } from "../Redux/CartState";
 
 class CartService{
     public async addCartDetails(cartDetails: CartItemModel): Promise<void>{
         const response = await axios.post<CartItemModel>(appConfig.cartUrl + "add-item", cartDetails)
-        // add to Store.. CartState
+        const addedItem = response.data;
+        cartStore.dispatch({type: CartActionType.AddItems, payload:addedItem })
     }
     public async removeCartDetails(cartDetails: CartItemModel): Promise<void>{
         const response = await axios.post<CartItemModel>(appConfig.cartUrl + "remove-item", cartDetails)
-        // add to Store.. CartState
+        const removedItem = response.data;
+        cartStore.dispatch({type: CartActionType.RemoveItems, payload:removedItem })
     }
     public async getCartByUser(cartId: number):Promise<CartItemModel[]>{
-        // check if in Store...CartState
+        let items = cartStore.getState().items;
+        if(items.length === 0){
         const response = await axios.get<CartItemModel[]>(appConfig.cartUrl + cartId);
-        const items = response.data;
-        // Store the cartItems...Cart Store
+         items = response.data;
+            cartStore.dispatch({
+                type: CartActionType.FetchItems,
+                payload: items
+            })
+        }
         return items
     }
 

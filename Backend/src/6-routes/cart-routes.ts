@@ -27,8 +27,8 @@ router.post(
     async (request: Request, response: Response, next: NextFunction) => {
       try {
         const cartDetails = new CartDetailsModel(request.body);
-        const addedCartDetails = await cartServices.removeItemsFromCartDetails(cartDetails);
-        response.status(201).json(addedCartDetails);
+        const removedCartDetails = await cartServices.removeItemsFromCartDetails(cartDetails);
+        response.status(201).json(removedCartDetails);
       } catch (err: any) {
         next(err);
       }

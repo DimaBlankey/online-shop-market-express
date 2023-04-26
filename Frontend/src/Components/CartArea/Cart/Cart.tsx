@@ -8,6 +8,7 @@ import CartItems from "../CartItems/CartItems";
 import { authStore } from "../../../Redux/AuthState";
 import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { cartStore } from "../../../Redux/CartState";
 
 function Cart(): JSX.Element {
   const [user, setUser] = useState<UserModel>();
@@ -20,6 +21,16 @@ function Cart(): JSX.Element {
   }, []);
 
   const [items, setItems] = useState<CartItemModel[]>([]);
+
+  useEffect(() => {
+    setItems(cartStore.getState().items);
+    const unsubscribe = cartStore.subscribe(() => {
+      const newItems = cartStore.getState().items
+      setItems(newItems);
+    });
+    return () => unsubscribe();
+  }, []);
+
 
   useEffect(() => {
     if (user) {

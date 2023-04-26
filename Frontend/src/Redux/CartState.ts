@@ -23,18 +23,47 @@ export function cartReducer(
 ): CartState {
   const newState = { ...currentState };
   newState.items = [...currentState.items];
+  let targetItem: CartItemModel | undefined;
+  let itemIndex: number;
+
   switch (action.type) {
     case CartActionType.FetchItems:
       newState.items = action.payload;
       break;
     case CartActionType.AddItems:
-      return new CartState();
-    case CartActionType.RemoveItems:
-      const indexToDelete = newState.items.findIndex(
-        (i) => i.productId === action.payload
+      itemIndex = newState.items.findIndex(
+        (i) => i.productId === action.payload.productId
       );
-      if (indexToDelete >= 0) {
-        newState.items.splice(indexToDelete, 1);
+      if (itemIndex > -1) {
+        newState.items[itemIndex].quantity += 1;
+        newState.items[itemIndex].totalPrice = parseFloat(
+          (
+            newState.items[itemIndex].quantity *
+            (newState.items[itemIndex].salePrice ||
+              newState.items[itemIndex].price)
+          ).toFixed(2)
+        );
+      } else {
+        newState.items.push(action.payload);
+      }
+      break;
+    case CartActionType.RemoveItems:
+      itemIndex = newState.items.findIndex(
+        (i) => i.productId === action.payload.productId
+      );
+      if (itemIndex > -1) {
+        if (newState.items[itemIndex].quantity > 1) {
+          newState.items[itemIndex].quantity -= 1;
+          newState.items[itemIndex].totalPrice = parseFloat(
+            (
+              newState.items[itemIndex].quantity *
+              (newState.items[itemIndex].salePrice ||
+                newState.items[itemIndex].price)
+            ).toFixed(2)
+          );
+        } else {
+          newState.items.splice(itemIndex, 1);
+        }
       }
       break;
     case CartActionType.ClearState:
@@ -43,4 +72,4 @@ export function cartReducer(
   return newState;
 }
 
-export const productsStore = createStore(cartReducer);
+export const cartStore = createStore(cartReducer);

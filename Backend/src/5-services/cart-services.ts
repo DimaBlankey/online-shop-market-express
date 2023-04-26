@@ -29,7 +29,7 @@ async function getCartIdByUser(userId: number): Promise<number> {
 
 async function addItemsToCartDetails(
   cartDetails: CartDetailsModel
-): Promise<void> {
+): Promise<CartDetailsModel> {
   // Check if the productId already exists in the cart_details
   const checkSql = `SELECT id, quantity, totalPrice FROM cart_details WHERE productId = ? AND cartId = ?`;
   const checkResult = await dal.execute(checkSql, [
@@ -56,11 +56,12 @@ async function addItemsToCartDetails(
     ]);
     cartDetails.id = result.insertId;
   }
+  return cartDetails
 }
 
 async function removeItemsFromCartDetails(
   cartDetails: CartDetailsModel
-): Promise<void> {
+): Promise<CartDetailsModel> {
   // Check if the productId exists in the cart_details
   const checkSql = `SELECT id, quantity, totalPrice FROM cart_details WHERE productId = ? AND cartId = ?`;
   const checkResult = await dal.execute(checkSql, [
@@ -86,10 +87,13 @@ async function removeItemsFromCartDetails(
       const deleteSql = `DELETE FROM cart_details WHERE id = ?`;
       await dal.execute(deleteSql, [existingItem.id]);
     }
+    // return cartDetails
   } else {
     // If the productId does not exist, do nothing
     console.log("Item not found in cart_details");
+    // return cartDetails
   }
+  return cartDetails
 }
 
 async function getCartItemsByUser(cartId: number): Promise<CartDetailsModel[]> {

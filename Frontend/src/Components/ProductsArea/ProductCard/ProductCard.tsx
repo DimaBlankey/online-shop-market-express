@@ -57,7 +57,6 @@ function ProductCard({ product }: ProductCardProps): JSX.Element {
 
       localStorage.setItem("cart", JSON.stringify(cartItems));
     } else {
-      console.log(cartItem)
       cartService.addCartDetails(cartItem);
     }
   };

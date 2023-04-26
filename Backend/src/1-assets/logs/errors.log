@@ -1102,3 +1102,46 @@ Invalid token
 Wed, 26 Apr 2023 05:52:01 GMT
 Route /api/cart/remove-item not found
 ----------------------------------------------------------------------------------------------------
+Wed, 26 Apr 2023 08:05:51 GMT
+Route /api/cart/undefined not found
+----------------------------------------------------------------------------------------------------
+Wed, 26 Apr 2023 08:05:58 GMT
+Route /api/cart/undefined not found
+----------------------------------------------------------------------------------------------------
+Wed, 26 Apr 2023 08:08:10 GMT
+Route /api/cart/undefined not found
+----------------------------------------------------------------------------------------------------
+Wed, 26 Apr 2023 08:08:21 GMT
+Route /api/cart/undefined not found
+----------------------------------------------------------------------------------------------------
+Wed, 26 Apr 2023 09:14:15 GMT
+ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AS productName
+    products.productCode, 
+    products.price, 
+    products.s...' at line 5
+Stack: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AS productName
+    products.productCode, 
+    products.price, 
+    products.s...' at line 5
+    at Query.Sequence._packetToError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\dal.ts:18:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\4-utils\dal.ts:15:12)
+    at Object.<anonymous> (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\cart-services.ts:112:33)
+    at Generator.next (<anonymous>)
+    at C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\cart-services.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\cart-services.ts:4:12)
+    at Object.getCartItemsByUser (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\cart-services.ts:107:12)
+----------------------------------------------------------------------------------------------------

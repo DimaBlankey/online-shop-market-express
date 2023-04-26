@@ -6,6 +6,7 @@ import { authStore } from "../../../Redux/AuthState";
 import ProductsList from "../../ProductsArea/ProductsList/ProductsList";
 import ResponsiveAppBar from "../../ProductsArea/ProductsNavBar/ProductsNavBar";
 import ProductsSearch from "../../ProductsArea/ProductsSearch/ProductsSearch";
+import Cart from "../../CartArea/Cart/Cart";
 
 function Home(): JSX.Element {
   const [user, setUser] = useState<UserModel>();
@@ -22,6 +23,7 @@ function Home(): JSX.Element {
       <>
         <ProductsList />
       </>
+        <Cart/>
     </div>
   );
 }

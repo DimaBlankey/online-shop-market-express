@@ -97,7 +97,7 @@ async function getCartItemsByUser(cartId: number): Promise<CartDetailsModel[]> {
     cart_details.productId, 
     cart_details.quantity, 
     cart_details.totalPrice, 
-    products.name,
+    products.name AS productName,
     products.productCode, 
     products.price, 
     products.salePrice, 

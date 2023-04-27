@@ -132,6 +132,33 @@ function SignUp(): JSX.Element {
                 )}
               </Box>
 
+               {/* Change it to number!!!! An add Validaion!!! */}
+              <Box mt={2} mb={2}>
+                <TextField
+                  label="ID"
+                  placeholder="ID.."
+                  variant="outlined"
+                  className="form-inputs"
+                  {...register("idCardNumber", {
+                    required: true,
+                    minLength: 2,
+                    maxLength: 50,
+                  })}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <AccountCircleIcon fontSize="small" />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                {errors.lastName && (
+                  <FormHelperText sx={{ fontSize: 12 }} error>
+                    {errors.lastName.type === "required" &&
+                      "ID is required"}
+                  </FormHelperText>
+                )}
+              </Box>
               <Box mt={2} mb={2}>
                 <TextField
                   label="Email"

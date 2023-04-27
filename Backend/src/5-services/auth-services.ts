@@ -59,7 +59,7 @@ async function register(user: UserModel): Promise<string> {
 
  
   // Return token:
-  return token;
+  return token 
 }
 
 async function isUserEmailTakenOrIdTaken(email: string, idCardNumber: number): Promise<boolean> {

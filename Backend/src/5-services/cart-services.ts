@@ -56,7 +56,7 @@ async function addItemsToCartDetails(
     ]);
     cartDetails.id = result.insertId;
   }
-  return cartDetails
+  return cartDetails;
 }
 
 async function removeItemsFromCartDetails(
@@ -93,7 +93,7 @@ async function removeItemsFromCartDetails(
     console.log("Item not found in cart_details");
     // return cartDetails
   }
-  return cartDetails
+  return cartDetails;
 }
 
 async function getCartItemsByUser(cartId: number): Promise<CartDetailsModel[]> {
@@ -117,10 +117,60 @@ async function getCartItemsByUser(cartId: number): Promise<CartDetailsModel[]> {
   return cartDetails;
 }
 
+async function insertCartDetailsFromStorage(
+  cartDetails: any[],
+  userIdCardNumber: number
+): Promise<boolean> {
+  // Find the user ID by searching the idCardNumber
+  const findUserQuery = `
+    SELECT id
+    FROM users
+    WHERE idCardNumber = ?;
+  `;
+
+  const userResult = await dal.execute(findUserQuery, [userIdCardNumber]);
+  if (userResult.length === 0) {
+    throw new Error("User not found");
+  }
+  const userId = userResult[0].id;
+
+  // Find the cart ID by searching the userId
+  const findCartQuery = `
+    SELECT id
+    FROM cart
+    WHERE userId = ?;
+  `;
+
+  const cartResult = await dal.execute(findCartQuery, [userId]);
+  if (cartResult.length === 0) {
+    throw new Error("Cart not found");
+  }
+  const cartId = cartResult[0].id;
+
+  // Insert each cartDetails object into the cart_details table
+  const insertCartDetailsQuery = `
+    INSERT INTO cart_details (productId, quantity, totalPrice, cartId)
+    VALUES (?, ?, ?, ?);
+  `;
+
+  for (const detail of cartDetails) {
+    const { productId, quantity, totalPrice } = detail;
+    await dal.execute(insertCartDetailsQuery, [
+      productId,
+      quantity,
+      totalPrice,
+      cartId,
+    ]);
+  }
+
+  return true;
+}
+
 export default {
   createNewCart,
   addItemsToCartDetails,
   getCartIdByUser,
   removeItemsFromCartDetails,
   getCartItemsByUser,
+  insertCartDetailsFromStorage,
 };

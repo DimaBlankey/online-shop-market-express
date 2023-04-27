@@ -49,4 +49,18 @@ router.post(
     }
   );
 
+  router.post(
+    "/cart/new-cart",
+    verifyLoggedIn,
+    async (request: Request, response: Response, next: NextFunction) => {
+      try {
+        const { cartDetails, userIdCardNumber } = request.body;
+        const result = await cartServices.insertCartDetailsFromStorage(cartDetails, userIdCardNumber);
+        response.json(result);
+      } catch (err: any) {
+        next(err);
+      }
+    }
+  );
+
 export default router;

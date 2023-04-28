@@ -166,6 +166,60 @@ async function insertCartDetailsFromStorage(
   return true;
 }
 
+async function logToCart(
+  cartDetails: any[],
+  userEmail: string
+): Promise<boolean> {
+  if (cartDetails.length === 0) {
+    return false;
+  }
+  const findUserQuery = `
+    SELECT id
+    FROM users
+    WHERE email = ?;
+  `;
+  const userResult = await dal.execute(findUserQuery, [userEmail]);
+  if (userResult.length === 0) {
+    throw new Error("User not found");
+  }
+  const userId = userResult[0].id;
+
+  const findCartQuery = `
+    SELECT id
+    FROM cart
+    WHERE userId = ?;
+  `;
+  const cartResult = await dal.execute(findCartQuery, [userId]);
+  if (cartResult.length === 0) {
+    throw new Error("Cart not found");
+  }
+  const cartId = cartResult[0].id;
+
+  const deleteCartDetailsQuery = `
+    DELETE FROM cart_details
+    WHERE cartId = ?;
+  `;
+  await dal.execute(deleteCartDetailsQuery, [cartId]);
+
+  // Insert each cartDetails object into the cart_details table
+  const insertCartDetailsQuery = `
+    INSERT INTO cart_details (productId, quantity, totalPrice, cartId)
+    VALUES (?, ?, ?, ?);
+  `;
+
+  for (const detail of cartDetails) {
+    const { productId, quantity, totalPrice } = detail;
+    await dal.execute(insertCartDetailsQuery, [
+      productId,
+      quantity,
+      totalPrice,
+      cartId,
+    ]);
+  }
+
+  return true;
+}
+
 export default {
   createNewCart,
   addItemsToCartDetails,
@@ -173,4 +227,5 @@ export default {
   removeItemsFromCartDetails,
   getCartItemsByUser,
   insertCartDetailsFromStorage,
+  logToCart,
 };

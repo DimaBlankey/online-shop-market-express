@@ -3,6 +3,7 @@ import appConfig from "../Utils/AppConfig";
 import CartItemModel from "../Models/CartItemModel";
 import { CartActionType, cartStore } from "../Redux/CartState";
 import UserModel from "../Models/UserModel";
+import CredentialsModel from "../Models/CredentialsModel";
 
 class CartService {
   public async addCartDetails(cartDetails: CartItemModel): Promise<void> {
@@ -13,6 +14,7 @@ class CartService {
     const addedItem = response.data;
     cartStore.dispatch({ type: CartActionType.AddItems, payload: addedItem });
   }
+
   public async removeCartDetails(cartDetails: CartItemModel): Promise<void> {
     const response = await axios.post<CartItemModel>(
       appConfig.cartUrl + "remove-item",
@@ -24,6 +26,7 @@ class CartService {
       payload: removedItem,
     });
   }
+
   public async getCartByUser(cartId: number): Promise<CartItemModel[]> {
     let items = cartStore.getState().items;
     if (items.length === 0) {
@@ -54,6 +57,21 @@ class CartService {
     if (response) {
       localStorage.removeItem("cart");
     }
+    // Add to Store...CartState
+  }
+
+  public async logToCart(credentials: CredentialsModel): Promise<void> {
+    const cartDetails = JSON.parse(localStorage.getItem("cart") || "[]");
+    const userEmail = credentials.email;
+    const requestData = { cartDetails, userEmail };
+    const response = await axios.post<any>(
+      appConfig.cartUrl + "log-to-cart",
+      requestData
+    );
+    if (response) {
+      localStorage.removeItem("cart");
+    }
+    // Add to Store...CartState
   }
 }
 

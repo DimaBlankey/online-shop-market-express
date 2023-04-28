@@ -96,6 +96,23 @@ async function removeItemsFromCartDetails(
   return cartDetails;
 }
 
+async function removeWholeItemFromCart(
+  cartDetails: CartDetailsModel
+): Promise<CartDetailsModel> {
+  // Check if the productId exists in the cart_details
+  const checkSql = `SELECT id, quantity, totalPrice FROM cart_details WHERE productId = ? AND cartId = ?`;
+  const checkResult = await dal.execute(checkSql, [
+    cartDetails.productId,
+    cartDetails.cartId,
+  ]);
+  if (checkResult && checkResult.length > 0) {
+    const existingItem = checkResult[0];
+    const deleteSql = `DELETE FROM cart_details WHERE id = ?`;
+    await dal.execute(deleteSql, [existingItem.id]);
+  }
+  return cartDetails
+}
+
 async function getCartItemsByUser(cartId: number): Promise<CartDetailsModel[]> {
   const sql = `SELECT 
     cart_details.productId, 
@@ -228,4 +245,5 @@ export default {
   getCartItemsByUser,
   insertCartDetailsFromStorage,
   logToCart,
+  removeWholeItemFromCart
 };

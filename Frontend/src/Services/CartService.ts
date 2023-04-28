@@ -27,6 +27,22 @@ class CartService {
     });
   }
 
+  public async removeWholeItemFromCart(cartDetails: CartItemModel): Promise<void> {
+   await axios.delete<CartItemModel>(
+      appConfig.cartUrl + "remove-whole-item",
+      {
+        data: cartDetails,
+      }
+    );
+    cartStore.dispatch({
+      // Add RemoveWholeItemInRedux
+      type: CartActionType.RemoveWholeItem,
+      payload: cartDetails,
+    });
+  }
+  
+
+
   public async getCartByUser(cartId: number): Promise<CartItemModel[]> {
     let items = cartStore.getState().items;
     if (items.length === 0) {
@@ -57,7 +73,6 @@ class CartService {
     if (response) {
       localStorage.removeItem("cart");
     }
-    // Add to Store...CartState
   }
 
   public async logToCart(credentials: CredentialsModel): Promise<void> {
@@ -71,7 +86,6 @@ class CartService {
     if (response) {
       localStorage.removeItem("cart");
     }
-    // Add to Store...CartState
   }
 }
 

@@ -9,6 +9,7 @@ export enum CartActionType {
   FetchItems,
   AddItems,
   RemoveItems,
+  RemoveWholeItem,
   ClearState,
 }
 
@@ -67,6 +68,14 @@ export function cartReducer(
         } else {
           newState.items.splice(itemIndex, 1);
         }
+      }
+      break;
+       case CartActionType.RemoveWholeItem:
+      itemIndex = newState.items.findIndex(
+        (i) => i.productId === action.payload.productId
+      );
+      if (itemIndex > -1) {
+        newState.items.splice(itemIndex, 1);
       }
       break;
     case CartActionType.ClearState:

@@ -39,6 +39,20 @@ router.post(
   }
 );
 
+router.delete(
+  "/cart/remove-whole-item",
+  verifyLoggedIn,
+  async (request: Request, response: Response, next: NextFunction) => {
+    try {
+      const cartDetails = new CartDetailsModel(request.body);
+      await cartServices.removeWholeItemFromCart(cartDetails);
+      response.sendStatus(204); 
+    } catch (err: any) {
+      next(err);
+    }
+  }
+);
+
 router.get(
   "/cart/:cartId([0-9]+)",
   verifyLoggedIn,
@@ -76,17 +90,13 @@ router.post(
   async (request: Request, response: Response, next: NextFunction) => {
     try {
       const { cartDetails, userEmail } = request.body;
-      const result = await cartServices.logToCart(
-        cartDetails,
-        userEmail
-      );
+      const result = await cartServices.logToCart(cartDetails, userEmail);
       response.json(result);
     } catch (err: any) {
       next(err);
     }
   }
 );
-
 
 
 export default router;

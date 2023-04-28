@@ -111,7 +111,7 @@ function Cart(): JSX.Element {
     }}
   >
     <h5>Total: ${items.reduce((acc, item) => acc + item.totalPrice, 0).toFixed(2)}</h5>
-    <Button variant="contained">Order</Button>
+    <Button variant="contained">Checkout</Button>
   </div>
 </div>
 

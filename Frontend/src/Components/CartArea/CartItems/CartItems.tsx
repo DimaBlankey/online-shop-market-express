@@ -8,7 +8,7 @@ import {
   IconButton,
   Grid,
 } from "@mui/material";
-import { Add, Remove } from "@mui/icons-material";
+import { Add, Close, Remove } from "@mui/icons-material";
 import "./CartItems.css";
 import UserModel from "../../../Models/UserModel";
 import { authStore } from "../../../Redux/AuthState";
@@ -124,11 +124,56 @@ function CartItems({ item }: CartItemsProps): JSX.Element {
     }
   };
 
+  const removeWholeItemFromCart = () => {
+    const cartItem: CartItemModel = {
+      productId: item.productId,
+      cartId: user ? user.cartId : Math.floor(Math.random() * 1000000),
+      productCode: "",
+      productName: "",
+      salePrice: 0,
+      price: 0,
+      image1Url: "",
+      quantity: 0,
+      totalPrice: 0,
+    };
+    if (!user) {
+      const storedCartItems = localStorage.getItem("cart");
+      let cartItems: CartItemModel[] = storedCartItems
+        ? JSON.parse(storedCartItems)
+        : [];
+  
+      const existingItemIndex = cartItems.findIndex(
+        (cartItem) => cartItem.productId === item.productId 
+      );
+  
+      if (existingItemIndex > -1) {
+        cartItems.splice(existingItemIndex, 1);
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+        cartStore.dispatch({
+          type: CartActionType.FetchItems,
+          payload: cartItems,
+        });
+      }
+    } else {
+      cartService.removeWholeItemFromCart(cartItem);
+    }
+  };
+  
+
+
+
   return (
     <Card className="CartItems" sx={{ display: "flex", marginBottom: 2 }}>
       <Grid container>
         <Grid item xs={9}>
           <CardContent>
+          <IconButton
+              size="small"
+              onClick={removeWholeItemFromCart}
+              style={{ float: "right" }}
+            >
+              <Close />
+            </IconButton>
             <span hidden>{item.productId}</span>
             <Typography variant="h6" component="div">
               {item.productName}

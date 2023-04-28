@@ -28,7 +28,10 @@ export function cartReducer(
 
   switch (action.type) {
     case CartActionType.FetchItems:
-      newState.items = action.payload;
+      newState.items = action.payload.map((item: CartItemModel) => {
+        item.totalPrice = parseFloat(item.totalPrice.toFixed(2));
+        return item;
+      });
       break;
     case CartActionType.AddItems:
       itemIndex = newState.items.findIndex(

@@ -13,6 +13,7 @@ import "./CartItems.css";
 import UserModel from "../../../Models/UserModel";
 import { authStore } from "../../../Redux/AuthState";
 import cartService from "../../../Services/CartService";
+import { CartActionType, cartStore } from "../../../Redux/CartState";
 
 interface CartItemsProps {
   item: CartItemModel;
@@ -53,14 +54,22 @@ function CartItems({ item }: CartItemsProps): JSX.Element {
 
       if (existingItemIndex > -1) {
         cartItems[existingItemIndex].quantity++;
-        cartItems[existingItemIndex].totalPrice +=
-          cartItems[existingItemIndex].salePrice ||
-          cartItems[existingItemIndex].price;
+        cartItems[existingItemIndex].totalPrice =
+          parseFloat(
+            (
+              cartItems[existingItemIndex].quantity *
+              (cartItems[existingItemIndex].salePrice || cartItems[existingItemIndex].price)
+            ).toFixed(2)
+          );
       } else {
         cartItems.push(item);
       }
 
       localStorage.setItem("cart", JSON.stringify(cartItems));
+      cartStore.dispatch({
+        type: CartActionType.FetchItems,
+        payload: cartItems,
+      });
     } else {
       cartService.addCartDetails(cartItem);
     }
@@ -95,12 +104,20 @@ function CartItems({ item }: CartItemsProps): JSX.Element {
         if (cartItems[existingItemIndex].quantity === 0) {
           cartItems.splice(existingItemIndex, 1);
         } else {
-          cartItems[existingItemIndex].totalPrice -=
-            cartItems[existingItemIndex].salePrice ||
-            cartItems[existingItemIndex].price;
+          cartItems[existingItemIndex].totalPrice =
+          parseFloat(
+            (
+              cartItems[existingItemIndex].quantity *
+              (cartItems[existingItemIndex].salePrice || cartItems[existingItemIndex].price)
+            ).toFixed(2)
+          );
         }
 
         localStorage.setItem("cart", JSON.stringify(cartItems));
+        cartStore.dispatch({
+          type: CartActionType.FetchItems,
+          payload: cartItems,
+        });
       }
     } else {
       cartService.removeCartDetails(cartItem);

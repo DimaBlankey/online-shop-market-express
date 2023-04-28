@@ -42,8 +42,15 @@ function Cart(): JSX.Element {
           setItems(responseItems);
         })
         .catch((err) => notifyService.error(err));
+    } else {
+      const storedCartItems = localStorage.getItem("cart");
+      let cartItems: CartItemModel[] = storedCartItems
+        ? JSON.parse(storedCartItems)
+        : [];
+      setItems(cartItems);
     }
   }, [user]);
+  
 
   return (
 <div className="Cart">

@@ -8,6 +8,7 @@ import UserModel from "../../../Models/UserModel";
 import { authStore } from "../../../Redux/AuthState";
 import CartItemModel from "../../../Models/CartItemModel";
 import cartService from "../../../Services/CartService";
+import { CartActionType, cartStore } from "../../../Redux/CartState";
 
 interface ProductCardProps {
   product: ProductModel;
@@ -47,15 +48,23 @@ function ProductCard({ product }: ProductCardProps): JSX.Element {
       );
 
       if (existingItemIndex > -1) {
-        cartItems[existingItemIndex].quantity++;
-        cartItems[existingItemIndex].totalPrice +=
-          cartItems[existingItemIndex].salePrice ||
-          cartItems[existingItemIndex].price;
+          cartItems[existingItemIndex].quantity++;
+  cartItems[existingItemIndex].totalPrice =
+    parseFloat(
+      (
+        cartItems[existingItemIndex].quantity *
+        (cartItems[existingItemIndex].salePrice || cartItems[existingItemIndex].price)
+      ).toFixed(2)
+    );
       } else {
         cartItems.push(cartItem);
       }
 
       localStorage.setItem("cart", JSON.stringify(cartItems));
+      cartStore.dispatch({
+        type: CartActionType.FetchItems,
+        payload: cartItems,
+      });
     } else {
       cartService.addCartDetails(cartItem);
     }

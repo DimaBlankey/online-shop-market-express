@@ -35,7 +35,6 @@ class CartService {
       }
     );
     cartStore.dispatch({
-      // Add RemoveWholeItemInRedux
       type: CartActionType.RemoveWholeItem,
       payload: cartDetails,
     });

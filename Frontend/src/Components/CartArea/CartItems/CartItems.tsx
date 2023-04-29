@@ -210,7 +210,7 @@ function CartItems({ item }: CartItemsProps): JSX.Element {
             </div>
 
             <div>
-              <IconButton size="small" onClick={removeFromCart}>
+              <IconButton size="small" onClick={removeFromCart} disabled={item.quantity === 1}>
                 <Remove />
               </IconButton>
               <Typography

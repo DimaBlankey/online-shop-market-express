@@ -6,6 +6,8 @@ import Login from "../../AuthArea/Login/Login";
 import { authStore } from "../../../Redux/AuthState";
 import { useEffect, useState } from "react";
 import UserModel from "../../../Models/UserModel";
+import AddressForm from "../../CheckoutArea/AddressForm/AddressForm";
+import Checkout from "../../CheckoutArea/Checkout/Checkout";
 
 function Routing(): JSX.Element {
   const [user, setUser] = useState<UserModel>();
@@ -27,11 +29,13 @@ function Routing(): JSX.Element {
       {role === 1 && (
         <>
           <Route path="/home" element={<Home />} />
+          <Route path="/checkout" element={<Checkout />} />
         </>
       )}
       {role === 2 && (
         <>
           <Route path="/home" element={<Home />} />
+          <Route path="/checkout" element={<Checkout />} />
         </>
       )}
 

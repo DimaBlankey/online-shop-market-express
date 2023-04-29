@@ -12,8 +12,14 @@ import UserModel from "../../../Models/UserModel";
 import { authStore } from "../../../Redux/AuthState";
 import cartService from "../../../Services/CartService";
 import notifyService from "../../../Services/NotifyService";
-  
-function OrderReview(): JSX.Element {
+import { Button } from "@mui/material";
+
+interface OrderReviewProps {
+  handleBack: () => void;
+  handlePlaceOrder: () => void;
+}
+
+function OrderReview({ handleBack, handlePlaceOrder }: OrderReviewProps): JSX.Element {
 
   const [user, setUser] = useState<UserModel>();
   useEffect(() => {
@@ -76,24 +82,17 @@ function OrderReview(): JSX.Element {
           <Typography gutterBottom>{user?.firstName} {user?.lastName}</Typography>
           <Typography gutterBottom>{user?.address} ,{user?.city}</Typography>
         </Grid>
-        <Grid item container direction="column" xs={12} sm={6}>
-          {/* <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-            Payment details
-          </Typography> */}
-          {/* <Grid container>
-            {payments.map((payment) => (
-              <React.Fragment key={payment.name}>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.name}</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
-                </Grid>
-              </React.Fragment>
-            ))}
-          </Grid> */}
-        </Grid>
       </Grid>
+      <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+        Back
+      </Button>
+      <Button
+        variant="contained"
+        onClick={handlePlaceOrder}
+        sx={{ mt: 3, ml: 1 }}
+      >
+        Place Order
+      </Button>
     </React.Fragment>
         </div>
     );

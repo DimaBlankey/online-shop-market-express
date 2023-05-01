@@ -5,6 +5,7 @@ import { ResourceNotFoundError } from "../2-models/client-errors";
 import logger from "../4-utils/logger";
 import OrderModel from "../2-models/order-model";
 
+
 async function addOrder(order: OrderModel): Promise<OrderModel> {
   // Do Validation
 
@@ -30,9 +31,18 @@ async function addOrder(order: OrderModel): Promise<OrderModel> {
   ]);
   order.id = result.insertId;
 
+  clearCartAndCreateNew(order.cartId);
+
   logger.logActivity("User " + order.userId + " has placed an order");
 
   return order;
+}
+
+async function clearCartAndCreateNew(cartId: number): Promise<void> {
+  const sql = `DELETE FROM cart_details WHERE cartId = ?`;
+  await dal.execute(sql, [cartId]);
+  // now delete the cartId from cart table and create a new cart with same userId
+  // use the createNewCart function from cart-services 
 }
 
 async function getOrdersByUser(userId: number): Promise<OrderModel[]> {
@@ -40,8 +50,6 @@ async function getOrdersByUser(userId: number): Promise<OrderModel[]> {
   const orders = await dal.execute(sql, [userId]);
   return orders;
 }
-
-
 
 export default {
   addOrder,

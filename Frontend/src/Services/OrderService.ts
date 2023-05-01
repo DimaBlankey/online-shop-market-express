@@ -1,6 +1,7 @@
 import axios from "axios";
 import appConfig from "../Utils/AppConfig";
 import OrderModel from "../Models/OrderModel";
+import { CartActionType, cartStore } from "../Redux/CartState";
 
 class OrderService {
   public async getOrderByUser(userId: number): Promise<OrderModel[]> {
@@ -13,6 +14,11 @@ class OrderService {
 
   public async addOrder(order: OrderModel): Promise<void> {
     await axios.post<OrderModel>(appConfig.ordersUrl, order);
+    sessionStorage.clear();
+    cartStore.dispatch({
+      type: CartActionType.ClearState,
+      payload: undefined,
+    });
   }
 }
 

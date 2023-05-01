@@ -20,4 +20,22 @@ router.post(
   }
 );
 
+router.get(
+  "/orders/:userId",
+  verifyLoggedIn,
+  async (request: Request, response: Response, next: NextFunction) => {
+    try {
+      const userId = +request.params.userId
+      const orders = await orderServices.getOrdersByUser(userId);
+      response.json(orders);
+    } catch (err: any) {
+      next(err);
+    }
+  }
+);
+
+
+
+
+
 export default router;

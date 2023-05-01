@@ -30,11 +30,20 @@ async function addOrder(order: OrderModel): Promise<OrderModel> {
   ]);
   order.id = result.insertId;
 
-  logger.logActivity("User " + order.userId + "has placed an order")
- 
+  logger.logActivity("User " + order.userId + " has placed an order");
+
   return order;
 }
 
+async function getOrdersByUser(userId: number): Promise<OrderModel[]> {
+  const sql = `SELECT * From orders WHERE userId = ?`;
+  const orders = await dal.execute(sql, [userId]);
+  return orders;
+}
+
+
+
 export default {
   addOrder,
+  getOrdersByUser,
 };

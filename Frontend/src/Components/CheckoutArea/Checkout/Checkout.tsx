@@ -16,13 +16,19 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import OrderReview from "../OrderReview/OrderReview";
 import PaymentForm from "../PaymentForm/PaymentForm";
 import AddressForm from "../AddressForm/AddressForm";
+import { useNavigate } from 'react-router-dom'; 
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
 const theme = createTheme();
 
 function Checkout(): JSX.Element {
+
+  const navigate = useNavigate();
+
+
   const [activeStep, setActiveStep] = React.useState(0);
+
 
   function getStepContent(step: number) {
     switch (step) {
@@ -44,6 +50,7 @@ function Checkout(): JSX.Element {
 
   const handlePlaceOrder = () => {
     setActiveStep(activeStep + 1);
+    navigate("/order-confirmed")
   };
 
   const handleNext = () => {
@@ -75,14 +82,6 @@ function Checkout(): JSX.Element {
             </Stepper>
             {activeStep === steps.length ? (
               <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
-                </Typography>
-                <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
-                </Typography>
               </React.Fragment>
             ) : (
               <React.Fragment>{getStepContent(activeStep)}</React.Fragment>

@@ -8,7 +8,7 @@ class OrderModel{
     dateOfDelivery: string;
     dateOfPurchase: string;
     creditCardNum: number;
-    productsAndQuantity: JSON;
+    productsAndQuantity: string;
 }
 
 export default OrderModel

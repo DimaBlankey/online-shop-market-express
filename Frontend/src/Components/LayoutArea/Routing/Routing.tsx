@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import UserModel from "../../../Models/UserModel";
 import AddressForm from "../../CheckoutArea/AddressForm/AddressForm";
 import Checkout from "../../CheckoutArea/Checkout/Checkout";
+import OrderConfirmed from "../../CheckoutArea/OrderConfirmed/OrderConfirmed";
 
 function Routing(): JSX.Element {
   const [user, setUser] = useState<UserModel>();
@@ -30,12 +31,14 @@ function Routing(): JSX.Element {
         <>
           <Route path="/home" element={<Home />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order-confirmed" element={<OrderConfirmed />} />
         </>
       )}
       {role === 2 && (
         <>
           <Route path="/home" element={<Home />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order-confirmed" element={<OrderConfirmed />} />
         </>
       )}
 

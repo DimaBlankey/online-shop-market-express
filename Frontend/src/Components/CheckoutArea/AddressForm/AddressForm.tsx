@@ -30,7 +30,10 @@ function AddressForm({ handleNext }: AddressFormProps): JSX.Element {
       setUser(authStore.getState().user);
     });
 
-    if (user) {
+    const checkoutDetails = sessionStorage.getItem("checkoutDetails");
+    if (checkoutDetails) {
+      setFormData(JSON.parse(checkoutDetails));
+    } else if (user) {
       setFormData({
         firstName: user.firstName || "",
         lastName: user.lastName || "",
@@ -41,6 +44,12 @@ function AddressForm({ handleNext }: AddressFormProps): JSX.Element {
 
     return () => unsubscribe();
   }, [user]);
+
+  const handleButtonClick = () => {
+    sessionStorage.setItem("checkoutDetails", JSON.stringify(formData));
+    handleNext();
+  };
+
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -108,7 +117,7 @@ function AddressForm({ handleNext }: AddressFormProps): JSX.Element {
 
         <Button
         variant="contained"
-        onClick={handleNext}
+        onClick={handleButtonClick}
         sx={{ mt: 3, ml: 10 }}
         disabled={!isFormCompleted()}
       >

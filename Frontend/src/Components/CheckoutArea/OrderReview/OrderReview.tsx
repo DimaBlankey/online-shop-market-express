@@ -53,6 +53,9 @@ function OrderReview({ handleBack, handlePlaceOrder }: OrderReviewProps): JSX.El
     } 
   }, [user]);
 
+  const checkoutDetails = sessionStorage.getItem("checkoutDetails");
+  const shipment = JSON.parse(checkoutDetails)
+
     
     return (
         <div className="OrderReview">
@@ -79,8 +82,8 @@ function OrderReview({ handleBack, handlePlaceOrder }: OrderReviewProps): JSX.El
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Shipping
           </Typography>
-          <Typography gutterBottom>{user?.firstName} {user?.lastName}</Typography>
-          <Typography gutterBottom>{user?.address} ,{user?.city}</Typography>
+          <Typography gutterBottom>{shipment?.firstName} {shipment?.lastName}</Typography>
+          <Typography gutterBottom>{shipment?.address1} ,{shipment?.city}</Typography>
         </Grid>
       </Grid>
       <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>

@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 
 interface PaymentFormProps {
@@ -21,6 +21,19 @@ function PaymentForm({ handleNext, handleBack }: PaymentFormProps): JSX.Element 
     expiryDate: "",
     cvv: "",
   });
+
+  useEffect(() => {
+    const paymentDetails = sessionStorage.getItem("paymentDetails");
+    if (paymentDetails) {
+      setFormData(JSON.parse(paymentDetails));
+    } 
+  }, []);
+
+   const handleButtonClick = () => {
+    sessionStorage.setItem("paymentDetails", JSON.stringify(formData));
+    handleNext();
+  };
+
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -47,6 +60,7 @@ function PaymentForm({ handleNext, handleBack }: PaymentFormProps): JSX.Element 
               fullWidth
               autoComplete="cc-name"
               variant="standard"
+              value={formData.id}
               onChange={handleChange}
             />
           </Grid>
@@ -58,6 +72,7 @@ function PaymentForm({ handleNext, handleBack }: PaymentFormProps): JSX.Element 
               fullWidth
               autoComplete="cc-number"
               variant="standard"
+              value={formData.cardNumber}
               onChange={handleChange}
             />
           </Grid>
@@ -69,6 +84,7 @@ function PaymentForm({ handleNext, handleBack }: PaymentFormProps): JSX.Element 
               fullWidth
               autoComplete="cc-exp"
               variant="standard"
+              value={formData.expiryDate}
               onChange={handleChange}
             />
           </Grid>
@@ -81,6 +97,7 @@ function PaymentForm({ handleNext, handleBack }: PaymentFormProps): JSX.Element 
               fullWidth
               autoComplete="cc-csc"
               variant="standard"
+              value={formData.cvv}
               onChange={handleChange}
             />
           </Grid>
@@ -89,7 +106,7 @@ function PaymentForm({ handleNext, handleBack }: PaymentFormProps): JSX.Element 
           </Button>
           <Button
             variant="contained"
-            onClick={handleNext}
+            onClick={handleButtonClick}
             sx={{ mt: 3, ml: 1 }}
             disabled={!isFormCompleted()}
           >

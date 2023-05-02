@@ -6,13 +6,51 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import * as React from "react";
 import Typography from "@mui/material/Typography";
 import { Step, StepLabel, Stepper } from "@mui/material";
+import orderService from "../../../Services/OrderService";
+import { useEffect, useState } from "react";
+import UserModel from "../../../Models/UserModel";
+import { authStore } from "../../../Redux/AuthState";
+import OrderModel from "../../../Models/OrderModel";
 
 const theme = createTheme();
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
-
 function OrderConfirmed(): JSX.Element {
+
+  const [user, setUser] = useState<UserModel>();
+
+  useEffect(() => {
+    setUser(authStore.getState().user);
+    const unsubscribe = authStore.subscribe(() => {
+      setUser(authStore.getState().user);
+    });
+    return () => unsubscribe();
+  }, []);
+
+
+  const [orderId, setOrderId] = useState<number | null>(null);
+
+  useEffect(() => {
+    setUser(authStore.getState().user);
+    const unsubscribe = authStore.subscribe(() => {
+      setUser(authStore.getState().user);
+    });
+
+    if (user) {
+      getOrderByUser();
+    }
+
+    return () => unsubscribe();
+  }, [user]);
+
+  async function getOrderByUser(): Promise<void> {
+    const orderByUser = await orderService.getOrderByUser(user.id);
+    const lastOrder = orderByUser[orderByUser.length - 1];
+    const orderId = lastOrder.id;
+    setOrderId(orderId);
+  }
+
     return (
       <div className="OrderConfirmation">
         <ThemeProvider theme={theme}>
@@ -35,8 +73,7 @@ function OrderConfirmed(): JSX.Element {
                 Thank you for your order.
               </Typography>
               <Typography variant="subtitle1">
-                Your order number is #2001539. We have emailed your order
-
+                Your order number is #{orderId}. We have emailed your order
                 confirmation, and will send you an update when your order has
                 shipped.
               </Typography>

@@ -61,8 +61,12 @@ function Cart(): JSX.Element {
   }, [user]);
 
   function checkout() {
-    navigate("/checkout");
+    if (!user) {
+      navigate("/login?checkout");
+    }else{
+     navigate("/checkout");
   }
+}
 
   return (
     <div className="Cart">
@@ -126,7 +130,7 @@ function Cart(): JSX.Element {
           Total: $
           {items.reduce((acc, item) => acc + item.totalPrice, 0).toFixed(2)}
         </h5>
-        <Button variant="contained" onClick={checkout}>
+        <Button variant="contained" onClick={checkout} disabled={items.length === 0}>
           Checkout
         </Button>
       </div>

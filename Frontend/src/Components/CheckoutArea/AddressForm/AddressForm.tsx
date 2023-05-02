@@ -9,6 +9,11 @@ import Checkbox from '@mui/material/Checkbox';
 import UserModel from "../../../Models/UserModel";
 import { authStore } from "../../../Redux/AuthState";
 import { Button } from "@mui/material";
+import { cartStore } from "../../../Redux/CartState";
+import CartItemModel from "../../../Models/CartItemModel";
+import { useNavigate } from "react-router-dom";
+import cartService from "../../../Services/CartService";
+import notifyService from "../../../Services/NotifyService";
 
 interface AddressFormProps {
   handleNext: () => void;
@@ -16,7 +21,10 @@ interface AddressFormProps {
 
 function AddressForm({ handleNext }: AddressFormProps): JSX.Element {
 
+  const navigate = useNavigate();
+
   const [user, setUser] = useState<UserModel>();
+  
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -44,6 +52,7 @@ function AddressForm({ handleNext }: AddressFormProps): JSX.Element {
 
     return () => unsubscribe();
   }, [user]);
+
 
   const handleButtonClick = () => {
     sessionStorage.setItem("checkoutDetails", JSON.stringify(formData));

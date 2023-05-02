@@ -43,6 +43,8 @@ function Routing(): JSX.Element {
       )}
 
       {<></>}
+      <Route path="/checkout" element={<Navigate to="/home" />} />
+      <Route path="/order-confirmed" element={<Navigate to="/home" />} />
       <Route path="/" element={<Navigate to="/home" />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>

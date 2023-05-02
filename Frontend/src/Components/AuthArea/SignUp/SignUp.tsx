@@ -32,7 +32,8 @@ function SignUp(): JSX.Element {
     try {
       await authService.signUp(user);
       notifyService.success("Welcome!");
-      navigate("/vacations");
+      const redirectToCheckout = window.location.href.includes("?checkout");
+      navigate(redirectToCheckout ? "/checkout" : "/home");
     } catch (err: any) {
       notifyService.error(err);
     }
@@ -231,7 +232,11 @@ function SignUp(): JSX.Element {
               <Typography variant="body2">
                 You already have an account?{" "}
                 <NavLink
-                  to="/login"
+                    to={
+                      window.location.href.includes("?checkout")
+                        ? "/login?checkout"
+                        : "/login"
+                    }
                   style={{ fontWeight: "bold", color: "primary.main" }}
                 >
                   Login

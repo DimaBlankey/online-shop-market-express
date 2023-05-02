@@ -30,6 +30,7 @@ async function getCartIdByUser(userId: number): Promise<number> {
 async function addItemsToCartDetails(
   cartDetails: CartDetailsModel
 ): Promise<CartDetailsModel> {
+  
   // Check if the productId already exists in the cart_details
   const checkSql = `SELECT id, quantity, totalPrice FROM cart_details WHERE productId = ? AND cartId = ?`;
   const checkResult = await dal.execute(checkSql, [

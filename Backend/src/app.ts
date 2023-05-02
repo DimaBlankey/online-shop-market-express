@@ -14,12 +14,12 @@ import expressRateLimit from "express-rate-limit";
 
 const server = express();
 
-server.use(
-  expressRateLimit({
-    windowMs: 1000,
-    max: 100,
-  })
-);
+// server.use(
+//   expressRateLimit({
+//     windowMs: 1000,
+//     max: 100,
+//   })
+// );
 
 server.use(
   cors({

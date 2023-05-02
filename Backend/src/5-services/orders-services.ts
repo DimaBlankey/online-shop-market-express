@@ -4,9 +4,9 @@ import dal from "../4-utils/dal";
 import { ResourceNotFoundError } from "../2-models/client-errors";
 import logger from "../4-utils/logger";
 import OrderModel from "../2-models/order-model";
+import cartServices from "./cart-services";
 
-
-async function addOrder(order: OrderModel): Promise<OrderModel> {
+async function addOrder(order: OrderModel): Promise<[OrderModel, number]> {
   // Do Validation
 
   const sqlCheck = `SELECT * FROM orders WHERE cartId = ?`;
@@ -31,18 +31,31 @@ async function addOrder(order: OrderModel): Promise<OrderModel> {
   ]);
   order.id = result.insertId;
 
-  clearCartAndCreateNew(order.cartId);
+  const newCartId = await clearCartAndCreateNew(order.cartId);
 
   logger.logActivity("User " + order.userId + " has placed an order");
 
-  return order;
+  return [order, newCartId];
 }
 
-async function clearCartAndCreateNew(cartId: number): Promise<void> {
+async function clearCartAndCreateNew(cartId: number): Promise<number> {
   const sql = `DELETE FROM cart_details WHERE cartId = ?`;
   await dal.execute(sql, [cartId]);
-  // now delete the cartId from cart table and create a new cart with same userId
-  // use the createNewCart function from cart-services 
+
+  const findUserQuery = `SELECT userId FROM cart WHERE id = ?`;
+
+  const userResult = await dal.execute(findUserQuery, [cartId]);
+  if (userResult.length === 0) {
+    throw new Error("User not found");
+  }
+  const userId = userResult[0].userId;
+
+  const deleteCartQuery = `DELETE FROM cart WHERE id = ?`;
+  await dal.execute(deleteCartQuery, [cartId]);
+
+  const newCartId = await cartServices.createNewCart(userId);
+
+  return newCartId;
 }
 
 async function getOrdersByUser(userId: number): Promise<OrderModel[]> {

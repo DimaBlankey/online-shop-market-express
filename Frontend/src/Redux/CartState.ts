@@ -11,11 +11,12 @@ export enum CartActionType {
   RemoveItems,
   RemoveWholeItem,
   ClearState,
+  UpdateCartId
 }
 
 export interface CartAction {
   type: CartActionType;
-  payload: any;
+  payload?: any;
 }
 
 export function cartReducer(
@@ -78,6 +79,11 @@ export function cartReducer(
         newState.items.splice(itemIndex, 1);
       }
       break;
+      case CartActionType.UpdateCartId:
+        newState.items = newState.items.map((item) => {
+          return { ...item, cartId: action.payload };
+        });
+        break
     case CartActionType.ClearState:
       return new CartState();
   }

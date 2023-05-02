@@ -6,6 +6,7 @@ export class AuthState {
   public token: string = null;
   public user: UserModel = null;
   public role: UserModel = null;
+  public cartId: number = null;
 
   public constructor() {
     this.token = localStorage.getItem("token");
@@ -19,11 +20,13 @@ export enum AuthActionType {
   Signup,
   Login,
   Logout,
+  ClearState,
+  UpdateCartId,
 }
 
 export interface AuthAction {
   type: AuthActionType;
-  payload?: string;
+  payload?: any;
 }
 
 export function authReducer(
@@ -31,7 +34,6 @@ export function authReducer(
   action: AuthAction
 ): AuthState {
   const newState = { ...currentState };
-
   switch (action.type) {
     case AuthActionType.Signup:
     case AuthActionType.Login:
@@ -44,6 +46,13 @@ export function authReducer(
       newState.user = null;
       localStorage.removeItem("token");
       break;
+    case AuthActionType.UpdateCartId:
+      if (newState.user) {
+        newState.user = { ...newState.user, cartId: action.payload };
+      }
+      break;
+    case AuthActionType.ClearState:
+      return new AuthState();
   }
 
   return newState;

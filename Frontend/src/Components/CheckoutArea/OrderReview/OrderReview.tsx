@@ -66,6 +66,8 @@ function OrderReview({
   const paymentDetails = sessionStorage.getItem("paymentDetails");
   const payment = JSON.parse(paymentDetails);
   const creditCardNum = payment.cardNumber.slice(-4);
+  // Get delivery Date
+  const  deliveryDate = sessionStorage.getItem("deliveryDate");
 
   // Handle Saving the order in database and moving forward
   const handlePlaceOrderClick = () => {
@@ -93,7 +95,7 @@ function OrderReview({
         }))
       ),
       id: 0,
-      dateOfDelivery: "",
+      dateOfDelivery: deliveryDate,
       dateOfPurchase: "",
       creditCardNum: creditCardNum,
     };
@@ -134,13 +136,21 @@ function OrderReview({
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-              Shipping
+              Shipping Address
             </Typography>
             <Typography gutterBottom>
               {shipment?.firstName} {shipment?.lastName}
             </Typography>
             <Typography gutterBottom>
               {shipment?.address1} ,{shipment?.city}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+            Delivery Date 
+            </Typography>
+            <Typography gutterBottom>
+              {deliveryDate}
             </Typography>
           </Grid>
         </Grid>

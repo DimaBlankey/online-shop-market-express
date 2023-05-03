@@ -3,6 +3,7 @@ import appConfig from "../Utils/AppConfig";
 import OrderModel from "../Models/OrderModel";
 import { CartActionType, cartStore } from "../Redux/CartState";
 import { AuthActionType, authStore } from "../Redux/AuthState";
+import refreshTokenService from "./TokenService";
 
 class OrderService {
   public async getOrderByUser(userId: number): Promise<OrderModel[]> {
@@ -20,18 +21,24 @@ class OrderService {
     const newCartId = +response.data[1]
 
     sessionStorage.clear();
-    cartStore.dispatch({
-      type: CartActionType.ClearState,
-      payload: undefined,
-    });
        cartStore.dispatch({
       type: CartActionType.UpdateCartId,
       payload: newCartId,
+    });
+    cartStore.dispatch({
+      type: CartActionType.ClearState,
+      payload: undefined,
     });
     authStore.dispatch({
       type: AuthActionType.UpdateCartId,
       payload: newCartId
     })
+    authStore.dispatch({
+      type: AuthActionType.ClearState,
+      payload: undefined
+    })
+
+    refreshTokenService.refreshToken(order.userId)
   }
 }
 

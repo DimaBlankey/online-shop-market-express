@@ -122,7 +122,7 @@ function OrderReview({
           {items?.map((item) => (
             <ListItem key={item.productCode} sx={{ py: 1, px: 0 }}>
               <ListItemText primary={item.productName} />
-              <Typography variant="body2">{item.quantity}X  {item.price}</Typography>
+              <Typography variant="body2">{item.quantity}X  {item?.salePrice || item.price}</Typography>
             </ListItem>
           ))}
           <ListItem sx={{ py: 1, px: 0 }}>

@@ -22,6 +22,7 @@ export enum AuthActionType {
   Logout,
   ClearState,
   UpdateCartId,
+  UpdateToken,
 }
 
 export interface AuthAction {
@@ -34,6 +35,7 @@ export function authReducer(
   action: AuthAction
 ): AuthState {
   const newState = { ...currentState };
+  newState.user = { ...currentState.user };
   switch (action.type) {
     case AuthActionType.Signup:
     case AuthActionType.Login:
@@ -50,6 +52,11 @@ export function authReducer(
       if (newState.user) {
         newState.user = { ...newState.user, cartId: action.payload };
       }
+      break;
+    case AuthActionType.UpdateToken:
+      newState.token = action.payload;
+      newState.user = jwtDecode<{ user: UserModel }>(action.payload).user;
+      localStorage.setItem("token", newState.token);
       break;
     case AuthActionType.ClearState:
       return new AuthState();

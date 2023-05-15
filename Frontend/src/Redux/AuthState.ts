@@ -35,7 +35,7 @@ export function authReducer(
   action: AuthAction
 ): AuthState {
   const newState = { ...currentState };
-  newState.user = { ...currentState.user };
+  // newState.user = { ...currentState.user };
   switch (action.type) {
     case AuthActionType.Signup:
     case AuthActionType.Login:

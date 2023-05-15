@@ -24,10 +24,7 @@ function AuthMenu(): JSX.Element {
     authService.logout();
     notifyService.success("Goodby!");
     navigate("/home");
-    // vacationsStore.dispatch({
-    //   type: VacationsActionType.ClearState,
-    //   payload: undefined,
-    // });
+
   }
 
   return (

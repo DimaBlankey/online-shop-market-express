@@ -9,6 +9,8 @@ import UserModel from "../../../Models/UserModel";
 import AddressForm from "../../CheckoutArea/AddressForm/AddressForm";
 import Checkout from "../../CheckoutArea/Checkout/Checkout";
 import OrderConfirmed from "../../CheckoutArea/OrderConfirmed/OrderConfirmed";
+import ProductPage from "../../ProductsArea/ProductPage/ProductPage";
+import ProductModel from "../../../Models/ProductModel";
 
 function Routing(): JSX.Element {
   const [user, setUser] = useState<UserModel>();
@@ -30,6 +32,7 @@ function Routing(): JSX.Element {
       {role === 1 && (
         <>
           <Route path="/home" element={<Home />} />
+          <Route path="/product/:productCode" element={<ProductPage  />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmed" element={<OrderConfirmed />} />
         </>
@@ -37,12 +40,14 @@ function Routing(): JSX.Element {
       {role === 2 && (
         <>
           <Route path="/home" element={<Home />} />
+          <Route path="/product/:productCode" element={<ProductPage />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmed" element={<OrderConfirmed />} />
         </>
       )}
 
       {<></>}
+      <Route path="/product/:productCode" element={<ProductPage />} />
       <Route path="/checkout" element={<Navigate to="/home" />} />
       <Route path="/order-confirmed" element={<Navigate to="/home" />} />
       <Route path="/" element={<Navigate to="/home" />} />

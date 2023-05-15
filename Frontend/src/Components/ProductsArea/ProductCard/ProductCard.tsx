@@ -9,6 +9,8 @@ import { authStore } from "../../../Redux/AuthState";
 import CartItemModel from "../../../Models/CartItemModel";
 import cartService from "../../../Services/CartService";
 import { CartActionType, cartStore } from "../../../Redux/CartState";
+import { Link } from 'react-router-dom';
+
 
 interface ProductCardProps {
   product: ProductModel;
@@ -72,6 +74,8 @@ function ProductCard({ product }: ProductCardProps): JSX.Element {
 
   const images = [product.image1Url, product.image2Url].filter(Boolean);
   return (
+    <Link to={`/product/${product.productCode}`}>
+
     <Card className="ProductCard">
       <Carousel
         className="carousel"
@@ -119,11 +123,15 @@ function ProductCard({ product }: ProductCardProps): JSX.Element {
             <Typography variant="h6">${product.price}</Typography>
           )}
         </Box>
-        <Button variant="contained" onClick={addToCart}>
+        <Button  variant="contained" onClick={(event) => {
+              event.preventDefault(); 
+              addToCart();
+            }}>
           Add to cart
         </Button>
       </CardContent>
     </Card>
+    </Link>
   );
 }
 

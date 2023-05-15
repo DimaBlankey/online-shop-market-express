@@ -129,17 +129,7 @@ function createRefreshToken(user: UserModel , cartId: number): string {
   return refreshToken;
 }
 
-function verifyRefreshToken(refreshToken: string): Promise<number> {
-  return new Promise((resolve, reject) => {
-    jwt.verify(refreshToken, secretKey, (err, decoded) => {
-      if (err) {
-        reject(new UnauthorizedError("Invalid refresh token", 498));
-        return;
-      }
-      resolve(decoded.userId);
-    });
-  });
-}
+
 
 export default {
   createToken,
@@ -147,6 +137,5 @@ export default {
   verifyAdmin,
   hashPassword,
   createRefreshToken,
-  verifyRefreshToken,
   secretKey,
 };

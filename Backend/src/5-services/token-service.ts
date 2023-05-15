@@ -8,11 +8,8 @@ import logger from "../4-utils/logger";
 import cartServices from "./cart-services";
 
 async function refreshToken(user): Promise<string> {
-  console.log(user.id)
   const cartId = await cartServices.getCartIdByUser(user.id);
-  console.log(cartId)
   const refreshToken = await cyber.createRefreshToken(user, cartId);
-  console.log(refreshToken)
   return refreshToken;
 }
 

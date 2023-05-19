@@ -8,11 +8,12 @@ import CartItemModel from "../../../Models/CartItemModel";
 import { CartActionType, cartStore } from "../../../Redux/CartState";
 import cartService from "../../../Services/CartService";
 import { Box, Button, Typography } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import productsService from "../../../Services/ProductsService";
 import notifyService from "../../../Services/NotifyService";
 import CheckIcon from "@mui/icons-material/Check";
 import { ProductsActionType, productsStore } from "../../../Redux/ProductState";
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 interface ProductCardProps {
   product: ProductModel;
@@ -105,74 +106,76 @@ function ProductPage(): JSX.Element {
 
   return (
     <div className="ProductPage">
-      <div className="product-gallery">
-        <Carousel
-          className="carousel"
-          showThumbs={false}
-          showStatus={false}
-          showIndicators={images.length > 1}
-          showArrows={images.length > 1}
-          infiniteLoop
-          swipeable
-          emulateTouch
-        >
-          {images.map((image, index) => (
-            <div key={index}>
-              <img
-                src={image}
-                alt={`${product.name} - ${index + 1}`}
-                style={{ height: "400px", objectFit: "contain" }}
-              />
-            </div>
-          ))}
-        </Carousel>
+       <Link to={"/home"}>
+      <KeyboardBackspaceIcon></KeyboardBackspaceIcon><span>Back</span></Link>
+        <div className="product-gallery">
+          <Carousel
+            className="carousel"
+            showThumbs={false}
+            showStatus={false}
+            showIndicators={images.length > 1}
+            showArrows={images.length > 1}
+            infiniteLoop
+            swipeable
+            emulateTouch
+          >
+            {images.map((image, index) => (
+              <div key={index}>
+                <img
+                  src={image}
+                  alt={`${product.name} - ${index + 1}`}
+                  style={{ height: "400px", objectFit: "contain" }}
+                />
+              </div>
+            ))}
+          </Carousel>
+        </div>
+        <div className="product-details">
+          <Typography gutterBottom variant="h4" component="div">
+            {product.name}
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Product Code: {product.productCode}
+          </Typography>
+          <Box>
+            {product.salePrice ? (
+              <>
+                <Typography variant="h5" color="error">
+                  ${product.salePrice}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{ textDecoration: "line-through", ml: 1 }}
+                >
+                  ${product.price}
+                </Typography>
+              </>
+            ) : (
+              <Typography variant="h5">${product.price}</Typography>
+            )}
+          </Box>
+          <Box>
+            <Typography variant="subtitle2">Quantity:</Typography>
+          </Box>
+          <Button variant="contained" onClick={addToCart}>
+            Add to cart
+          </Button>
+          <ul className="product-features">
+            <li>
+              <CheckIcon></CheckIcon> Delivery within 48h
+            </li>
+            <li>
+              <CheckIcon></CheckIcon> Free shipping over $50
+            </li>
+            <li>
+              <CheckIcon></CheckIcon> Free returns
+            </li>
+          </ul>
+        </div>
+        <div className="product-description">
+          <Typography variant="body1">{product.description}</Typography>
+        </div>
       </div>
-      <div className="product-details">
-        <Typography gutterBottom variant="h4" component="div">
-          {product.name}
-        </Typography>
-        <Typography variant="subtitle1" color="textSecondary">
-          Product Code: {product.productCode}
-        </Typography>
-        <Box>
-          {product.salePrice ? (
-            <>
-              <Typography variant="h5" color="error">
-                ${product.salePrice}
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{ textDecoration: "line-through", ml: 1 }}
-              >
-                ${product.price}
-              </Typography>
-            </>
-          ) : (
-            <Typography variant="h5">${product.price}</Typography>
-          )}
-        </Box>
-        <Box>
-          <Typography variant="subtitle2">Quantity:</Typography>
-        </Box>
-        <Button variant="contained" onClick={addToCart}>
-          Add to cart
-        </Button>
-        <ul className="product-features">
-          <li>
-            <CheckIcon></CheckIcon> Delivery within 48h
-          </li>
-          <li>
-            <CheckIcon></CheckIcon> Free shipping over $50
-          </li>
-          <li>
-            <CheckIcon></CheckIcon> Free returns
-          </li>
-        </ul>
-      </div>
-      <div className="product-description">
-        <Typography variant="body1">{product.description}</Typography>
-      </div>
-    </div>
   );
 }
 

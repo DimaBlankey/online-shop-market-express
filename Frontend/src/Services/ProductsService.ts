@@ -26,7 +26,7 @@ class ProductsService {
       const response = await axios.get<ProductModel>(
         appConfig.productsUrl + productCode
       );
-      product = response.data;
+    let  product = response.data;
     }
     return product;
   }

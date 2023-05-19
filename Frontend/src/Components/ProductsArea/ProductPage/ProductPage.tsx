@@ -8,10 +8,10 @@ import CartItemModel from "../../../Models/CartItemModel";
 import { CartActionType, cartStore } from "../../../Redux/CartState";
 import cartService from "../../../Services/CartService";
 import { Box, Button, Typography } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import productsService from "../../../Services/ProductsService";
 import notifyService from "../../../Services/NotifyService";
-import CheckIcon from '@mui/icons-material/Check';
+import CheckIcon from "@mui/icons-material/Check";
 import { ProductsActionType, productsStore } from "../../../Redux/ProductState";
 
 interface ProductCardProps {
@@ -21,11 +21,12 @@ interface ProductCardProps {
 function ProductPage(): JSX.Element {
   const { productCode } = useParams<{ productCode: string }>();
   const [product, setProduct] = useState<ProductModel | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedProduct = localStorage.getItem(productCode);
-    
-    if(storedProduct) {
+
+    if (storedProduct) {
       setProduct(JSON.parse(storedProduct));
     } else {
       productsService
@@ -34,11 +35,13 @@ function ProductPage(): JSX.Element {
           setProduct(responseProduct);
           localStorage.setItem(productCode, JSON.stringify(responseProduct));
         })
-        .catch((err) => notifyService.error(err));
+        .catch((err) => {
+          notifyService.error(err);
+          navigate("/home");
+        });
     }
-  }, [productCode]);
-  
-  
+  }, [productCode, navigate]);
+
   const [user, setUser] = useState<UserModel>();
   useEffect(() => {
     setUser(authStore.getState().user);
@@ -155,10 +158,16 @@ function ProductPage(): JSX.Element {
           Add to cart
         </Button>
         <ul className="product-features">
-        <li><CheckIcon></CheckIcon> Delivery within 48h</li>
-        <li><CheckIcon></CheckIcon> Free shipping over $50</li>
-        <li><CheckIcon></CheckIcon> Free returns</li>
-      </ul>
+          <li>
+            <CheckIcon></CheckIcon> Delivery within 48h
+          </li>
+          <li>
+            <CheckIcon></CheckIcon> Free shipping over $50
+          </li>
+          <li>
+            <CheckIcon></CheckIcon> Free returns
+          </li>
+        </ul>
       </div>
       <div className="product-description">
         <Typography variant="body1">{product.description}</Typography>

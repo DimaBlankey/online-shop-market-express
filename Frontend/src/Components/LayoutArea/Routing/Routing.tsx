@@ -11,6 +11,8 @@ import Checkout from "../../CheckoutArea/Checkout/Checkout";
 import OrderConfirmed from "../../CheckoutArea/OrderConfirmed/OrderConfirmed";
 import ProductPage from "../../ProductsArea/ProductPage/ProductPage";
 import ProductModel from "../../../Models/ProductModel";
+import { useParams } from "react-router-dom";
+
 
 function Routing(): JSX.Element {
   const [user, setUser] = useState<UserModel>();
@@ -32,7 +34,7 @@ function Routing(): JSX.Element {
       {role === 1 && (
         <>
           <Route path="/home" element={<Home />} />
-          <Route path="/product/:productCode" element={<ProductPage  />} />
+          <Route path="/product/:productCode" element={<ProductPage />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmed" element={<OrderConfirmed />} />
         </>

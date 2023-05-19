@@ -23,6 +23,7 @@ async function getOneProduct(productCode: string): Promise<ProductModel> {
   CONCAT('${appConfig.imagesUrl}', image2) AS image2Url
   FROM products WHERE productCode = ?`;
   const product = await dal.execute(sql, [productCode]);
+  if (product.length === 0) throw new ResourceNotFoundError(productCode)
   return product;
 }
 

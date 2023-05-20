@@ -15,6 +15,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import { ProductsActionType, productsStore } from "../../../Redux/ProductState";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import Cart from "../../CartArea/Cart/Cart";
+import Spinner from "../../SharedArea/Spinner/Spinner";
 
 interface ProductCardProps {
   product: ProductModel;
@@ -100,7 +101,7 @@ function ProductPage(): JSX.Element {
   };
 
   if (!product) {
-    return <div>Loading...</div>;
+    return <Spinner></Spinner>
   }
 
   const images = [product.image1Url, product.image2Url].filter(Boolean);

@@ -34,6 +34,7 @@ function OrderHistory(): JSX.Element {
 
     return (
         <div className="OrderHistory scrollbar">
+          <Typography variant="h4">Order History</Typography>
       {orders.map((order, index) => {
         const productsAndQuantity = JSON.parse(order.productsAndQuantity);
 

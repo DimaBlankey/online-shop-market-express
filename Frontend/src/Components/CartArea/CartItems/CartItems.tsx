@@ -14,6 +14,7 @@ import UserModel from "../../../Models/UserModel";
 import { authStore } from "../../../Redux/AuthState";
 import cartService from "../../../Services/CartService";
 import { CartActionType, cartStore } from "../../../Redux/CartState";
+import Spinner from "../../SharedArea/Spinner/Spinner";
 
 interface CartItemsProps {
   item: CartItemModel;
@@ -159,8 +160,6 @@ function CartItems({ item }: CartItemsProps): JSX.Element {
     }
   };
   
-
-
 
   return (
     <Card className="CartItems" sx={{ display: "flex", marginBottom: 2 }}>

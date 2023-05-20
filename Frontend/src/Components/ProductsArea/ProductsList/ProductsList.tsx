@@ -7,6 +7,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import ResponsiveAppBar from "../ProductsNavBar/ProductsNavBar";
 import ProductsSearch from "../ProductsSearch/ProductsSearch";
 import { Padding } from "@mui/icons-material";
+import Spinner from "../../SharedArea/Spinner/Spinner";
 
 function ProductsList(): JSX.Element {
   const [products, setProducts] = useState<ProductModel[]>([]);
@@ -32,6 +33,10 @@ function ProductsList(): JSX.Element {
     setSearchQuery(query);
     setSelectedCategory("All Products");
   };
+
+  if(!products){
+    return <Spinner></Spinner>
+  }
 
   return (
     <div className="ProductsList">

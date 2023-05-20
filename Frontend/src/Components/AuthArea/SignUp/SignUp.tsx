@@ -228,9 +228,9 @@ function SignUp(): JSX.Element {
                     ),
                   }}
                 />
-                {errors.lastName && (
+                {errors.idCardNumber  && (
                   <FormHelperText sx={{ fontSize: 12 }} error>
-                    {errors.lastName.type === "required" && "ID is required"}
+                    {errors.idCardNumber.type === "required" && "ID is required"}
                   </FormHelperText>
                 )}
               </Box>

@@ -8,6 +8,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import EditIcon from "@mui/icons-material/Edit";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Spinner from "../../SharedArea/Spinner/Spinner";
+import { Link } from "react-router-dom";
 
 function PersonalInfo(): JSX.Element {
   const [user, setUser] = useState<UserModel>();
@@ -39,9 +40,11 @@ function PersonalInfo(): JSX.Element {
           <Typography variant="body2">City: {user.city}</Typography>
           <Typography variant="body2">Address: {user.address}</Typography>
         </CardContent>
+        <Link to={"/update-my-info"}>
         <Fab color="default" aria-label="edit">
           <EditIcon />
         </Fab>
+        </Link>
       </Card>
     </div>
   );

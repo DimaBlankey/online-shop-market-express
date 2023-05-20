@@ -6,6 +6,7 @@ import notifyService from "../../../Services/NotifyService";
 import ProductCard from "../ProductCard/ProductCard";
 import ResponsiveAppBar from "../ProductsNavBar/ProductsNavBar";
 import ProductsSearch from "../ProductsSearch/ProductsSearch";
+import { Padding } from "@mui/icons-material";
 
 function ProductsList(): JSX.Element {
   const [products, setProducts] = useState<ProductModel[]>([]);
@@ -36,7 +37,9 @@ function ProductsList(): JSX.Element {
     <div className="ProductsList">
       <ResponsiveAppBar onCategoryClick={handleCategoryClick} />
       <ProductsSearch onSearch={handleSearch} />
-      <div className="ProductsList-cards">
+      <div className="ProductsList-cards scrollbar" style={{
+          padding: "10px"
+        }}>
       {products
   .filter(
     (p) =>

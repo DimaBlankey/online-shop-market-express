@@ -9,8 +9,7 @@ import { authStore } from "../../../Redux/AuthState";
 import CartItemModel from "../../../Models/CartItemModel";
 import cartService from "../../../Services/CartService";
 import { CartActionType, cartStore } from "../../../Redux/CartState";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 interface ProductCardProps {
   product: ProductModel;
@@ -50,14 +49,14 @@ function ProductCard({ product }: ProductCardProps): JSX.Element {
       );
 
       if (existingItemIndex > -1) {
-          cartItems[existingItemIndex].quantity++;
-  cartItems[existingItemIndex].totalPrice =
-    parseFloat(
-      (
-        cartItems[existingItemIndex].quantity *
-        (cartItems[existingItemIndex].salePrice || cartItems[existingItemIndex].price)
-      ).toFixed(2)
-    );
+        cartItems[existingItemIndex].quantity++;
+        cartItems[existingItemIndex].totalPrice = parseFloat(
+          (
+            cartItems[existingItemIndex].quantity *
+            (cartItems[existingItemIndex].salePrice ||
+              cartItems[existingItemIndex].price)
+          ).toFixed(2)
+        );
       } else {
         cartItems.push(cartItem);
       }
@@ -75,62 +74,72 @@ function ProductCard({ product }: ProductCardProps): JSX.Element {
   const images = [product.image1Url, product.image2Url].filter(Boolean);
   return (
     <Link to={`/product/${product.productCode}`}>
-
-    <Card className="ProductCard">
-      <Carousel
-        className="carousel"
-        showThumbs={false}
-        showStatus={false}
-        showIndicators={images.length > 1}
-        showArrows={images.length > 1}
-        infiniteLoop
-        swipeable
-        emulateTouch
+      <Card
+        className="ProductCard"
+        style={{
+          borderRadius: "5px",
+          boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.5)",
+        }}
       >
-        {images.map((image, index) => (
-          <div key={index}>
-            <img
-              src={image}
-              alt={`${product.name} - ${index + 1}`}
-              style={{ height: "200px", objectFit: "contain" }}
-            />
-          </div>
-        ))}
-      </Carousel>
-      <CardContent>
-        <span hidden>
-          {product.categoryId}
-          {product.categoryName}
-        </span>
-        <span hidden>{product.description}</span>
-        <Typography gutterBottom variant="h6" component="div">
-          {product.name}
-        </Typography>
-        <Box sx={{ display: "flex", alignItems: "baseline" }}>
-          {product.salePrice ? (
-            <>
-              <Typography variant="h6" color="error">
-                ${product.salePrice}
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ textDecoration: "line-through", ml: 1 }}
-              >
-                ${product.price}
-              </Typography>
-            </>
-          ) : (
-            <Typography variant="h6">${product.price}</Typography>
-          )}
-        </Box>
-        <Button  variant="contained" onClick={(event) => {
-              event.preventDefault(); 
+        <Carousel
+          className="carousel"
+          showThumbs={false}
+          showStatus={false}
+          showIndicators={images.length > 1}
+          showArrows={images.length > 1}
+          infiniteLoop
+          swipeable
+          emulateTouch
+        >
+          {images.map((image, index) => (
+            <div key={index}>
+              <img
+                src={image}
+                alt={`${product.name} - ${index + 1}`}
+                style={{ height: "200px", objectFit: "contain" }}
+              />
+            </div>
+          ))}
+        </Carousel>
+        <CardContent>
+          <span hidden>
+            {product.categoryId}
+            {product.categoryName}
+          </span>
+          <span hidden>{product.description}</span>
+          <Typography gutterBottom variant="h6" component="div"
+          sx={{minHeight:"70px"}}
+          >
+            {product.name}
+          </Typography>
+          <Box sx={{ display: "flex", alignItems: "baseline" }}>
+            {product.salePrice ? (
+              <>
+                <Typography variant="h6" color="error">
+                  ${product.salePrice}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ textDecoration: "line-through", ml: 1 }}
+                >
+                  ${product.price}
+                </Typography>
+              </>
+            ) : (
+              <Typography variant="h6">${product.price}</Typography>
+            )}
+          </Box>
+          <Button
+            variant="contained"
+            onClick={(event) => {
+              event.preventDefault();
               addToCart();
-            }}>
-          Add to cart
-        </Button>
-      </CardContent>
-    </Card>
+            }}
+          >
+            Add to cart
+          </Button>
+        </CardContent>
+      </Card>
     </Link>
   );
 }

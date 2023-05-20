@@ -41,10 +41,12 @@ function AuthMenu(): JSX.Element {
       )}
       {user && (
         <div>
+          <NavLink to="/my-account">
           <span>
             <AccountCircleIcon className="AccountCircleIcon" />
-            Hello, {user.firstName} {user.lastName}{" "}
+            Hello, {user.firstName}{" "}
           </span>
+          </NavLink>
           <NavLink to="/home" onClick={logout} className="LogoutLink">
             | Logout
           </NavLink>

@@ -5,7 +5,7 @@
   flex-direction: row;
   justify-content: space-between;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 250px;
   padding: 20px;
   flex-wrap: wrap;
 }
@@ -40,4 +40,13 @@
 
 .product-features li {
   margin-bottom: 10px;
+}
+
+.cart {
+  position: fixed;
+  right: 110px;
+  top: 60px;
+  width: 440px; /* Adjust this to suit your needs */
+  height: 100%;
+  min-height: 650px;
 }

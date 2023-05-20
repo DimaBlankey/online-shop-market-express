@@ -119,6 +119,7 @@ function Cart(): JSX.Element {
       </div>
       <br />
       <div
+      className="cart-total-checkout"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -126,10 +127,12 @@ function Cart(): JSX.Element {
           width: "100%",
         }}
       >
-        <h5>
+        <Typography variant="h6">
+        
           Total: $
           {items.reduce((acc, item) => acc + item.totalPrice, 0).toFixed(2)}
-        </h5>
+        
+        </Typography>
         <Button variant="contained" onClick={checkout} disabled={items.length === 0}>
           Checkout
         </Button>

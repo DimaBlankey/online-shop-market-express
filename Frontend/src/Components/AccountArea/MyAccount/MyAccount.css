@@ -1,0 +1,29 @@
+/* MyAccount.css */
+
+.MyAccount {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.PersonalInfo,
+.OrderHistory {
+    width: 45%;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    padding: 20px;
+    min-height: 650px;
+    max-height: 650px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+hr {
+    width: 1px;
+    height: 80%;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}

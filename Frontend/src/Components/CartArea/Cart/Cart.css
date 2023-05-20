@@ -1,5 +1,10 @@
 .Cart {
 	min-width: 440px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.08);
+	
+}
 
+.cart-total-checkout {
+	background-color: rgba(179, 175, 173, 0.779);
+	padding: 10px;
 }

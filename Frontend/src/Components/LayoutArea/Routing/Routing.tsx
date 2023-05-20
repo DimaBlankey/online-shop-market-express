@@ -12,6 +12,7 @@ import OrderConfirmed from "../../CheckoutArea/OrderConfirmed/OrderConfirmed";
 import ProductPage from "../../ProductsArea/ProductPage/ProductPage";
 import ProductModel from "../../../Models/ProductModel";
 import { useParams } from "react-router-dom";
+import MyAccount from "../../AccountArea/MyAccount/MyAccount";
 
 
 function Routing(): JSX.Element {
@@ -37,6 +38,7 @@ function Routing(): JSX.Element {
           <Route path="/product/:productCode" element={<ProductPage />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmed" element={<OrderConfirmed />} />
+          <Route path="/my-account" element={<MyAccount />} />
         </>
       )}
       {role === 2 && (
@@ -45,6 +47,7 @@ function Routing(): JSX.Element {
           <Route path="/product/:productCode" element={<ProductPage />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmed" element={<OrderConfirmed />} />
+          <Route path="/my-account" element={<MyAccount />} />
         </>
       )}
 

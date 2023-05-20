@@ -26,10 +26,10 @@ function PersonalInfo(): JSX.Element {
 
   return (
     <div className="PersonalInfo">
+      <AccountCircleOutlinedIcon></AccountCircleOutlinedIcon>
+          <Typography variant="h4">My Info</Typography>
       <Card sx={{ minWidth: 275 , padding: 5}}>
         <CardContent>
-          <AccountCircleOutlinedIcon></AccountCircleOutlinedIcon>
-          <Typography variant="h4">My Info</Typography>
           <Typography variant="h5" component="div">
             {user.firstName} {user.lastName}
           </Typography>

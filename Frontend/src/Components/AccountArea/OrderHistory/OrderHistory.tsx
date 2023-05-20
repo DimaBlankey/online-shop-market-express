@@ -33,46 +33,51 @@ function OrderHistory(): JSX.Element {
       }, [user]);
 
     return (
-        <div className="OrderHistory scrollbar">
-          <Typography variant="h4">Order History</Typography>
-      {orders.map((order, index) => {
-        const productsAndQuantity = JSON.parse(order.productsAndQuantity);
-
-        return (
-          <Card key={index} sx={{ margin: '10px' }}>
-            <CardContent>
-            <Typography variant="h5" component="div">
-                Order #{order.id}
-              </Typography>
-              <Typography variant="h5" component="div">
-                Order Date: {new Date(order.dateOfPurchase).toLocaleDateString()}
-              </Typography>
-              <Typography variant="h5" component="div">
-              Order Total ${order.totalPrice}
-              </Typography>
-              <Typography variant="body2">
-                Delivery Date: {new Date(order.dateOfDelivery).toLocaleDateString()}
-              </Typography>
-              <Typography variant="body2">
-                City: {order.city}
-              </Typography>
-              <Typography variant="body2">
-                Address: {order.address}
-              </Typography>
-              <List>
-                {productsAndQuantity.map((product: any, productIndex: number) => (
-                  <ListItem key={productIndex}>
-                    <Typography variant="body2">
-                      {product.name}, Quantity: {product.quantity}, Price: {product.price} {product.salePrice ? `(Sale Price: ${product.salePrice})` : ""}
-                    </Typography>
-                  </ListItem>
-                ))}
-              </List>
-            </CardContent>
-          </Card>
-        );
-      })}
+      <div className="OrderHistory scrollbar">
+      <Typography variant="h4">Order History</Typography>
+      {orders.length > 0 ? (
+        orders.map((order, index) => {
+          const productsAndQuantity = JSON.parse(order.productsAndQuantity);
+    
+          return (
+            <Card key={index} sx={{ margin: "10px" }}>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  Order #{order.id}
+                </Typography>
+                <Typography variant="h5" component="div">
+                  Order Date: {new Date(order.dateOfPurchase).toLocaleDateString()}
+                </Typography>
+                <Typography variant="h5" component="div">
+                  Order Total ${order.totalPrice}
+                </Typography>
+                <Typography variant="body2">
+                  Delivery Date: {new Date(order.dateOfDelivery).toLocaleDateString()}
+                </Typography>
+                <Typography variant="body2">
+                  City: {order.city}
+                </Typography>
+                <Typography variant="body2">
+                  Address: {order.address}
+                </Typography>
+                <List>
+                  {productsAndQuantity.map((product: any, productIndex: number) => (
+                    <ListItem key={productIndex}>
+                      <Typography variant="body2">
+                        {product.name}, Quantity: {product.quantity}, Price: {product.price} {product.salePrice ? `(Sale Price: ${product.salePrice})` : ""}
+                      </Typography>
+                    </ListItem>
+                  ))}
+                </List>
+              </CardContent>
+            </Card>
+          );
+        })
+      ) : (
+        <div>No orders yet...</div>
+      )}
     </div>
+    
     );
 }
 

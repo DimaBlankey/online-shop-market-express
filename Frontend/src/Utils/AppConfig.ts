@@ -7,6 +7,7 @@ class AppConfig {
   public cartUrl = "http://localhost:4000/api/cart/"
   public ordersUrl = "http://localhost:4000/api/orders/"
   public tokenUrl = "http://localhost:4000/api/refresh-token/"
+  public reviewsUrl = "http://localhost:4000/api/reviews/"
 }
 
 const appConfig = new AppConfig();

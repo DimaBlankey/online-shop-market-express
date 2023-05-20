@@ -47,6 +47,7 @@ export function authReducer(
       newState.token = null;
       newState.user = null;
       localStorage.removeItem("token");
+      sessionStorage.clear();
       break;
     case AuthActionType.UpdateCartId:
       if (newState.user) {

@@ -7,6 +7,7 @@ import {
   Box,
   InputAdornment,
   IconButton,
+  Grid,
 } from "@mui/material";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -19,6 +20,7 @@ import { useState } from "react";
 import authService from "../../../Services/AuthService";
 import { NavLink, useNavigate } from "react-router-dom";
 import notifyService from "../../../Services/NotifyService";
+import HomeIcon from '@mui/icons-material/Home';
 
 function SignUp(): JSX.Element {
   const {
@@ -60,7 +62,7 @@ function SignUp(): JSX.Element {
             backgroundColor: "rgba(255, 255, 255, 0.5)",
             backdropFilter: "blur(20px)",
             width: "100%",
-            maxWidth: "360px",
+            maxWidth: "600px",
             mt: 2,
 
             borderColor: "gray.200",
@@ -71,69 +73,142 @@ function SignUp(): JSX.Element {
           <Typography variant="h5">Sign Up</Typography>
           <form onSubmit={handleSubmit(send)}>
             <FormControl>
-              <Box mt={2} mb={2}>
-                <TextField
-                  label="First Name"
-                  placeholder="First Name..."
-                  variant="outlined"
-                  className="form-inputs"
-                  {...register("firstName", {
-                    required: true,
-                    minLength: 2,
-                    maxLength: 50,
-                  })}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <AccountCircleIcon fontSize="small" />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-                {errors.firstName && (
-                  <FormHelperText sx={{ fontSize: 12 }} error>
-                    {errors.firstName.type === "required" &&
-                      "First name is required"}
-                    {errors.firstName.type === "minLength" &&
-                      "Name must be at least 2 characters"}
-                    {errors.firstName.type === "maxLength" &&
-                      "Name must be at most 50 characters"}
-                  </FormHelperText>
-                )}
-              </Box>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <Box mt={2} mb={2}>
+                    <TextField
+                      label="First Name"
+                      placeholder="First Name..."
+                      variant="outlined"
+                      className="form-inputs"
+                      {...register("firstName", {
+                        required: true,
+                        minLength: 2,
+                        maxLength: 50,
+                      })}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <AccountCircleIcon fontSize="small" />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                    {errors.firstName && (
+                      <FormHelperText sx={{ fontSize: 12 }} error>
+                        {errors.firstName.type === "required" &&
+                          "First name is required"}
+                        {errors.firstName.type === "minLength" &&
+                          "Name must be at least 2 characters"}
+                        {errors.firstName.type === "maxLength" &&
+                          "Name must be at most 50 characters"}
+                      </FormHelperText>
+                    )}
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box mt={2} mb={2}>
+                    <TextField
+                      label="Last Name"
+                      placeholder="Last Name..."
+                      variant="outlined"
+                      className="form-inputs"
+                      {...register("lastName", {
+                        required: true,
+                        minLength: 2,
+                        maxLength: 50,
+                      })}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <AccountCircleIcon fontSize="small" />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                    {errors.lastName && (
+                      <FormHelperText sx={{ fontSize: 12 }} error>
+                        {errors.lastName.type === "required" &&
+                          "Last name is required"}
+                        {errors.lastName.type === "minLength" &&
+                          "Name must be at least 2 characters"}
+                        {errors.lastName.type === "maxLength" &&
+                          "Name must be at most 50 characters"}
+                      </FormHelperText>
+                    )}
+                  </Box>
+                </Grid>
+              </Grid>
 
-              <Box mt={2} mb={2}>
-                <TextField
-                  label="Last Name"
-                  placeholder="Last Name..."
-                  variant="outlined"
-                  className="form-inputs"
-                  {...register("lastName", {
-                    required: true,
-                    minLength: 2,
-                    maxLength: 50,
-                  })}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <AccountCircleIcon fontSize="small" />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-                {errors.lastName && (
-                  <FormHelperText sx={{ fontSize: 12 }} error>
-                    {errors.lastName.type === "required" &&
-                      "Last name is required"}
-                    {errors.lastName.type === "minLength" &&
-                      "Name must be at least 2 characters"}
-                    {errors.lastName.type === "maxLength" &&
-                      "Name must be at most 50 characters"}
-                  </FormHelperText>
-                )}
-              </Box>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <Box mt={2} mb={2}>
+                    <TextField
+                      label="City"
+                      placeholder="City..."
+                      variant="outlined"
+                      className="form-inputs"
+                      {...register("city", {
+                        required: true,
+                        minLength: 2,
+                        maxLength: 50,
+                      })}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <HomeIcon fontSize="small" />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                    {errors.city && (
+                      <FormHelperText sx={{ fontSize: 12 }} error>
+                        {errors.city.type === "required" &&
+                          "City is required"}
+                        {errors.city.type === "minLength" &&
+                          "City must be at least 2 characters"}
+                        {errors.city.type === "maxLength" &&
+                          "City must be at most 50 characters"}
+                      </FormHelperText>
+                    )}
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box mt={2} mb={2}>
+                    <TextField
+                      label="Address"
+                      placeholder="Address..."
+                      variant="outlined"
+                      className="form-inputs"
+                      {...register("address", {
+                        required: true,
+                        minLength: 2,
+                        maxLength: 50,
+                      })}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <HomeIcon fontSize="small" />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                    {errors.address && (
+                      <FormHelperText sx={{ fontSize: 12 }} error>
+                        {errors.address.type === "required" &&
+                          "Address  is required"}
+                        {errors.address.type === "minLength" &&
+                          "Address must be at least 2 characters"}
+                        {errors.address.type === "maxLength" &&
+                          "Address must be at most 50 characters"}
+                      </FormHelperText>
+                    )}
+                  </Box>
+                </Grid>
+              </Grid>
+              
 
-               {/* Change it to number!!!! An add Validaion!!! */}
+              {/* Change it to number!!!! An add Validaion!!! */}
               <Box mt={2} mb={2}>
                 <TextField
                   label="ID"
@@ -155,8 +230,7 @@ function SignUp(): JSX.Element {
                 />
                 {errors.lastName && (
                   <FormHelperText sx={{ fontSize: 12 }} error>
-                    {errors.lastName.type === "required" &&
-                      "ID is required"}
+                    {errors.lastName.type === "required" && "ID is required"}
                   </FormHelperText>
                 )}
               </Box>
@@ -232,11 +306,11 @@ function SignUp(): JSX.Element {
               <Typography variant="body2">
                 You already have an account?{" "}
                 <NavLink
-                    to={
-                      window.location.href.includes("?checkout")
-                        ? "/login?checkout"
-                        : "/login"
-                    }
+                  to={
+                    window.location.href.includes("?checkout")
+                      ? "/login?checkout"
+                      : "/login"
+                  }
                   style={{ fontWeight: "bold", color: "primary.main" }}
                 >
                   Login

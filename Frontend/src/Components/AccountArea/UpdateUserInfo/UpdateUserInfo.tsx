@@ -71,6 +71,10 @@ function UpdateUserInfo(): JSX.Element {
     }
   }
 
+  function navigateBack() {
+    navigate("/my-account");
+  }
+
   return (
     <div className="UpdateUserInfo">
       <Box
@@ -94,7 +98,7 @@ function UpdateUserInfo(): JSX.Element {
             p: 4,
           }}
         >
-          <Typography variant="h5">Sign Up</Typography>
+          <Typography variant="h5">My Info</Typography>
           <form onSubmit={handleSubmit(send)}>
             <FormControl>
               <Grid container spacing={2}>
@@ -280,8 +284,16 @@ function UpdateUserInfo(): JSX.Element {
                 )}
               </Box>
 
-              <Button variant="contained" type="submit" color="primary">
+              <Button variant="contained" type="submit" color="primary"  sx={{ mt: 3, mb: 2 }}>
                 Update
+              </Button>
+              <Button
+                variant="contained"
+                type="reset"
+                color="inherit"
+                onClick={navigateBack}
+              >
+                Cancel
               </Button>
             </FormControl>
           </form>

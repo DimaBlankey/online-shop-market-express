@@ -5,13 +5,8 @@ import refreshTokenService from "./TokenService";
 
 class UserService {
   public async updateUser(user: UserModel): Promise<void> {
-    const response = await axios.put<UserModel>(
-      appConfig.userUpdateUrl + user.id,
-      user
-    );
-    const updatedUser = response.data;
-
-    refreshTokenService.refreshToken(user.id)
+    await axios.put<UserModel>(appConfig.userUpdateUrl + user.id, user);
+    refreshTokenService.refreshToken(user.id);
   }
 }
 

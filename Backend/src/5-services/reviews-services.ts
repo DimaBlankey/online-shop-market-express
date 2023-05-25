@@ -16,6 +16,39 @@ async function getReviewsByUser(userId: number): Promise<ReviewModel[]> {
   return reviews;
 }
 
+async function getReviewsByProduct(productId: number): Promise<ReviewModel[]> {
+  const sql = `SELECT reviews.*,
+  users.firstName
+  FROM reviews
+  JOIN users ON users.id = reviews.userId
+  WHERE productId = ?`;
+
+  const reviews = await dal.execute(sql, [productId]);
+
+  return reviews;
+}
+
+async function addProductReview(review: ReviewModel): Promise<ReviewModel> {
+  // Do Validation
+
+  // Sql check combination cannot be twice
+
+  const sql = `INSERT INTO reviews VALUES(DEFAULT, ?, ?, ?, ?, ?)`;
+
+  const result: OkPacket = await dal.execute(sql, [
+    review.productId,
+    review.rating,
+    review.review,
+    review.userId,
+    review.date,
+  ]);
+  review.id = result.insertId;
+
+  return review;
+}
+
 export default {
   getReviewsByUser,
+  getReviewsByProduct,
+  addProductReview
 };

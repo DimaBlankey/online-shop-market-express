@@ -60,7 +60,7 @@ function ReviewProduct(): JSX.Element {
   }, [product]);
 
   return (
-    <div className="ReviewProduct">
+    <div className="ReviewProduct scrollbar">
       <Typography variant="h5"> Reviews</Typography>
       <TableContainer component={Paper}>
         <Table>

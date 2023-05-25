@@ -13,6 +13,9 @@
 .ProductPage .ReviewProduct{
   width: 100%;
   margin-top: 25px;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .ProductPage .AddReviewProduct {

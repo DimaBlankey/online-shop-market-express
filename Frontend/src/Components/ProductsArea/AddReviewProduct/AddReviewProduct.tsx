@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Container,
+  FormHelperText,
   Rating,
   TextField,
   Typography,
@@ -74,12 +75,13 @@ function AddReviewProduct(): JSX.Element {
       };
       await reviewService.addProductReview(review);
       notifyService.success("Review added successfully!");
-      setValue("rating", null); // reset rating after successful submission
-      setValue("review", ""); // reset review after successful submission
+      setValue("rating", null);
+      setValue("review", "");
     } catch (err: any) {
       notifyService.error(err);
     }
   }
+
   return (
     <div className="AddReviewProduct">
       <Container>
@@ -93,9 +95,13 @@ function AddReviewProduct(): JSX.Element {
             <Typography component="legend">Rank</Typography>
             <Controller
               name="rating"
-              control={control} 
+              control={control}
               defaultValue={rank}
-              rules={{ required: true }}
+              rules={{
+                required: "Rating is required",
+                validate: (value) =>
+                  (value !== null && value > 0) || "Rating is required",
+              }}
               render={({ field }) => (
                 <Rating
                   value={field.value}
@@ -106,17 +112,32 @@ function AddReviewProduct(): JSX.Element {
                 />
               )}
             />
+            {errors.rating && (
+              <FormHelperText error>{errors.rating.message}</FormHelperText>
+            )}
           </Box>
           <Box>
             <Typography component="legend">Review</Typography>
             <TextField
               multiline
-              rows={2}
+              rows={2}             
               placeholder="write review..."
               fullWidth
-              required
-              {...register("review", { required: true })} 
+              {...register("review", {
+                required: true,
+                minLength: {
+                  value: 5,
+                  message: "Review must be at least 5 characters long",
+                },
+                maxLength: {
+                  value: 250,
+                  message: "Review cannot exceed 250 characters",
+                },
+              })}
             />
+            {errors.review && (
+              <FormHelperText error>{errors.review.message}</FormHelperText>
+            )}
           </Box>
           <Button
             variant="contained"

@@ -24,8 +24,11 @@ interface ProductCardProps {
 }
 
 function ProductPage(): JSX.Element {
+
   const { productCode } = useParams<{ productCode: string }>();
+ 
   const [product, setProduct] = useState<ProductModel | null>(null);
+  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -179,7 +182,7 @@ function ProductPage(): JSX.Element {
         <div className="product-description">
           <Typography variant="body1">{product.description}</Typography>
         </div>
-        <AddReviewProduct></AddReviewProduct>
+        {user && <AddReviewProduct />}
         <ReviewProduct></ReviewProduct>
         <div className="cart">
           <Cart></Cart>

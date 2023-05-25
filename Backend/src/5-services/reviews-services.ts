@@ -29,9 +29,12 @@ async function getReviewsByProduct(productId: number): Promise<ReviewModel[]> {
 }
 
 async function addProductReview(review: ReviewModel): Promise<ReviewModel> {
+ 
   // Do Validation
 
   // Sql check combination cannot be twice
+
+ // Sql check if user bought the item for review 
 
   const date = new Date();
 

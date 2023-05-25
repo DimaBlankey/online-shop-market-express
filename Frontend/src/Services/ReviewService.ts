@@ -1,10 +1,10 @@
 import axios from "axios";
 import appConfig from "../Utils/AppConfig";
 import ReviewModel from "../Models/ReviewModel";
+import { ReviewsActionType, reviewStore } from "../Redux/ReviewState";
 
 class ReviewService {
   public async getReviewsByUser(userId: number): Promise<ReviewModel[]> {
-    // add check state
     const response = await axios.get<ReviewModel[]>(
       appConfig.reviewsUrl + userId
     );
@@ -13,12 +13,19 @@ class ReviewService {
   }
 
   public async getReviewsByProduct(productId: number): Promise<ReviewModel[]> {
-    // add check state
-    const response = await axios.get<ReviewModel[]>(
-      appConfig.reviewsByProductUrl + productId
-    );
-    const reviews = response.data;
-    return reviews;
+    let reviewState = reviewStore.getState();
+
+    if (reviewState.productId !== productId) {
+      const response = await axios.get<ReviewModel[]>(
+        appConfig.reviewsByProductUrl + productId
+      );
+      let reviews = response.data;
+      reviewStore.dispatch({
+        type: ReviewsActionType.FetchReviews,
+        payload: { reviews, productId },
+      });
+    }
+    return reviewStore.getState().reviews;
   }
 
   public async addProductReview(review: ReviewModel): Promise<void> {
@@ -27,7 +34,10 @@ class ReviewService {
       review
     );
     const addedReview = response.data;
-    // add dispatch to state
+    reviewStore.dispatch({
+      type: ReviewsActionType.AddReviews,
+      payload: addedReview,
+    });
   }
 }
 

@@ -33,6 +33,8 @@ async function addProductReview(review: ReviewModel): Promise<ReviewModel> {
 
   // Sql check combination cannot be twice
 
+  const date = new Date();
+
   const sql = `INSERT INTO reviews VALUES(DEFAULT, ?, ?, ?, ?, ?)`;
 
   const result: OkPacket = await dal.execute(sql, [
@@ -40,7 +42,7 @@ async function addProductReview(review: ReviewModel): Promise<ReviewModel> {
     review.rating,
     review.review,
     review.userId,
-    review.date,
+    date,
   ]);
   review.id = result.insertId;
 

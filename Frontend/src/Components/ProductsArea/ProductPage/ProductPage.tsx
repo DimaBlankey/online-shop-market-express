@@ -16,6 +16,8 @@ import { ProductsActionType, productsStore } from "../../../Redux/ProductState";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import Cart from "../../CartArea/Cart/Cart";
 import Spinner from "../../SharedArea/Spinner/Spinner";
+import ReviewProduct from "../ReviewProduct/ReviewProduct";
+import AddReviewProduct from "../AddReviewProduct/AddReviewProduct";
 
 interface ProductCardProps {
   product: ProductModel;
@@ -177,6 +179,8 @@ function ProductPage(): JSX.Element {
         <div className="product-description">
           <Typography variant="body1">{product.description}</Typography>
         </div>
+        <AddReviewProduct></AddReviewProduct>
+        <ReviewProduct></ReviewProduct>
         <div className="cart">
           <Cart></Cart>
         </div>

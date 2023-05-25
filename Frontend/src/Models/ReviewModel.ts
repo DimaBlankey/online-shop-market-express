@@ -7,7 +7,8 @@ class ReviewModel {
   date: string;
   // extended
   productCode: string;
-  name: string
+  name: string;
+  firstName: string
 }
 
 export default ReviewModel;

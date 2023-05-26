@@ -3689,3 +3689,9 @@ Stack: Error: ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'where clause'
     at __awaiter (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\reviews-services.ts:4:12)
     at Object.getReviewSummeryByProduct (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\reviews-services.ts:40:12)
 ----------------------------------------------------------------------------------------------------
+Fri, 26 May 2023 17:04:12 GMT
+id FP0045 not found
+----------------------------------------------------------------------------------------------------
+Fri, 26 May 2023 18:33:52 GMT
+Invalid token
+----------------------------------------------------------------------------------------------------

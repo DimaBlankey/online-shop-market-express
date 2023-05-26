@@ -70,7 +70,7 @@ function Cart(): JSX.Element {
 
   return (
     <div className="Cart">
-      <AppBar position="static">
+      <AppBar position="static" className="cartHeader">
         <Container >
           <Toolbar>
             <Box

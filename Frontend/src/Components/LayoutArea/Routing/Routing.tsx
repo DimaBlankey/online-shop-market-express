@@ -14,6 +14,7 @@ import ProductModel from "../../../Models/ProductModel";
 import { useParams } from "react-router-dom";
 import MyAccount from "../../AccountArea/MyAccount/MyAccount";
 import UpdateUserInfo from "../../AccountArea/UpdateUserInfo/UpdateUserInfo";
+import CartPage from "../../CartArea/CartPage/CartPage";
 
 
 function Routing(): JSX.Element {
@@ -37,6 +38,7 @@ function Routing(): JSX.Element {
         <>
           <Route path="/home" element={<Home />} />
           <Route path="/product/:productCode" element={<ProductPage />} />
+          <Route path="/cart/" element={<CartPage/>} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmed" element={<OrderConfirmed />} />
           <Route path="/my-account" element={<MyAccount />} />
@@ -47,6 +49,7 @@ function Routing(): JSX.Element {
         <>
           <Route path="/home" element={<Home />} />
           <Route path="/product/:productCode" element={<ProductPage />} />
+          <Route path="/cart/" element={<CartPage/>} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmed" element={<OrderConfirmed />} />
           <Route path="/my-account" element={<MyAccount />} />
@@ -56,6 +59,7 @@ function Routing(): JSX.Element {
 
       {<></>}
       <Route path="/product/:productCode" element={<ProductPage />} />
+      <Route path="/cart/" element={<CartPage/>} />
       <Route path="/checkout" element={<Navigate to="/home" />} />
       <Route path="/order-confirmed" element={<Navigate to="/home" />} />
       <Route path="/my-account" element={<Navigate to="/login" />} />

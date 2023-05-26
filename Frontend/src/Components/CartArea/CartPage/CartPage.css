@@ -1,0 +1,17 @@
+.CartPage .cartHeader {
+	display: none;
+}
+
+.CartPage .Cart{
+ min-width: 100%;
+}
+
+.CartPage .CartItems{
+	min-width: 100%;
+   }
+   
+   .CartPage .cart-total-checkout{
+    /* position: fixed;
+    bottom: 0;
+    width: 100%; */
+}

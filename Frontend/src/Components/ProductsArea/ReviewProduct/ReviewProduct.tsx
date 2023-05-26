@@ -17,6 +17,7 @@ import StarIcon from "@mui/icons-material/Star";
 import { useNavigate, useParams } from "react-router-dom";
 import ProductModel from "../../../Models/ProductModel";
 import productsService from "../../../Services/ProductsService";
+import { reviewStore } from "../../../Redux/ReviewState";
 
 function ReviewProduct(): JSX.Element {
  
@@ -48,6 +49,18 @@ function ReviewProduct(): JSX.Element {
   }, [productCode, navigate]);
 
 
+  // useEffect(() => {
+  //   if (product) {
+  //     reviewService
+  //       .getReviewsByProduct(product.id)
+  //       .then((responseReviews) => {
+  //         setReviews(responseReviews);
+  //       })
+  //       .catch((err) => notifyService.error(err));
+  //   }
+  // }, [product]);
+
+
   useEffect(() => {
     if (product) {
       reviewService
@@ -57,8 +70,15 @@ function ReviewProduct(): JSX.Element {
         })
         .catch((err) => notifyService.error(err));
     }
+    const unsubscribe = reviewStore.subscribe(() => {
+      const updatedReviews = reviewStore.getState().reviews
+      setReviews(updatedReviews);
+    });
+    return () => unsubscribe();
+
   }, [product]);
 
+  
   return (
     <div className="ReviewProduct scrollbar">
       <Typography variant="h5"> Reviews</Typography>

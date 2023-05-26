@@ -7,6 +7,8 @@ import ProductsList from "../../ProductsArea/ProductsList/ProductsList";
 import ResponsiveAppBar from "../../ProductsArea/ProductsNavBar/ProductsNavBar";
 import ProductsSearch from "../../ProductsArea/ProductsSearch/ProductsSearch";
 import Cart from "../../CartArea/Cart/Cart";
+import { Container } from "@mui/material";
+import { WidthFull } from "@mui/icons-material";
 
 function Home(): JSX.Element {
   const [user, setUser] = useState<UserModel>();
@@ -21,7 +23,9 @@ function Home(): JSX.Element {
   return (
     <div className="Home">
       <>
+      <Container>
         <ProductsList />
+        </Container>
       </>
         <Cart/>
     </div>

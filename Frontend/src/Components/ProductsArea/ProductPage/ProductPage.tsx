@@ -7,7 +7,7 @@ import { authStore } from "../../../Redux/AuthState";
 import CartItemModel from "../../../Models/CartItemModel";
 import { CartActionType, cartStore } from "../../../Redux/CartState";
 import cartService from "../../../Services/CartService";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Rating, Typography } from "@mui/material";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import productsService from "../../../Services/ProductsService";
 import notifyService from "../../../Services/NotifyService";
@@ -144,6 +144,11 @@ function ProductPage(): JSX.Element {
           <Typography variant="subtitle1" color="textSecondary">
             Product Code: {product.productCode}
           </Typography>
+          {/* <Typography> */}
+          <span>
+          <Rating name="half-rating" defaultValue={2.5} precision={0.5} readOnly/>
+          </span>
+          {/* </Typography> */}
           <Box>
             {product.salePrice ? (
               <>

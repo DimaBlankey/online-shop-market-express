@@ -8,6 +8,7 @@ import ResponsiveAppBar from "../ProductsNavBar/ProductsNavBar";
 import ProductsSearch from "../ProductsSearch/ProductsSearch";
 import { Padding } from "@mui/icons-material";
 import Spinner from "../../SharedArea/Spinner/Spinner";
+import { Container } from "@mui/material";
 
 function ProductsList(): JSX.Element {
   const [products, setProducts] = useState<ProductModel[]>([]);
@@ -40,6 +41,7 @@ function ProductsList(): JSX.Element {
 
   return (
     <div className="ProductsList">
+      {/* <Container> */}
       <ResponsiveAppBar onCategoryClick={handleCategoryClick} />
       <ProductsSearch onSearch={handleSearch} />
       <div className="ProductsList-cards scrollbar" style={{
@@ -57,6 +59,7 @@ function ProductsList(): JSX.Element {
     <ProductCard key={p.id} product={p} />
   ))}
       </div>
+      {/* </Container> */}
     </div>
   );
 }

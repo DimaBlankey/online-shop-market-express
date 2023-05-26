@@ -71,7 +71,7 @@ function Cart(): JSX.Element {
   return (
     <div className="Cart">
       <AppBar position="static">
-        <Container maxWidth="xl">
+        <Container >
           <Toolbar>
             <Box
               sx={{

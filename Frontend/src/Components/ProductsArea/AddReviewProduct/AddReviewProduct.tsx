@@ -65,6 +65,8 @@ function AddReviewProduct(): JSX.Element {
     setValue,
   } = useForm<ReviewModel>();
 
+  const now = new Date().toLocaleDateString();
+
   async function send(formReview: ReviewModel) {
     try {
       // Use current user and product info in the review
@@ -72,6 +74,7 @@ function AddReviewProduct(): JSX.Element {
         ...formReview,
         productId: product?.id,
         userId: user?.id,
+        date : now,
       };
       await reviewService.addProductReview(review);
       notifyService.success("Review added successfully!");

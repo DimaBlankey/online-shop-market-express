@@ -32,6 +32,20 @@ router.get(
   }
 );
 
+router.get(
+  "/review-summery-by-product/:productId",
+  async (request: Request, response: Response, next: NextFunction) => {
+    try {
+      const productId = +request.params.productId;
+      const reviews = await reviewsServices.getReviewSummeryByProduct(productId);
+      response.json(reviews);
+    } catch (err: any) {
+      next(err);
+    }
+  }
+);
+
+
 router.post(
   "/reviews",
   verifyLoggedIn,

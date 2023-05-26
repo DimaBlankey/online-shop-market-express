@@ -9,6 +9,7 @@ class AppConfig {
   public tokenUrl = "http://localhost:4000/api/refresh-token/";
   public reviewsUrl = "http://localhost:4000/api/reviews/";
   public reviewsByProductUrl = "http://localhost:4000/api/reviews-by-product/";
+  public reviewSummeryByProductUrl = "http://localhost:4000/api/review-summery-by-product/";
 }
 
 const appConfig = new AppConfig();

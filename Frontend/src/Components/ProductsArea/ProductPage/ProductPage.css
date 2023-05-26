@@ -10,7 +10,7 @@
   flex-wrap: wrap;
 }
 
-.ProductPage .ReviewProduct{
+.ProductPage .ReviewProduct {
   width: 100%;
   margin-top: 25px;
   max-height: 400px;
@@ -22,11 +22,11 @@
   margin-top: 50px;
   width: 100%;
   border: 1px solid #d3d3d3;
-  border-radius: 5px; 
+  border-radius: 5px;
 }
 
-
-.product-gallery, .product-details {
+.product-gallery,
+.product-details {
   width: 45%;
 }
 
@@ -36,6 +36,12 @@
 
 .product-details {
   text-align: center;
+}
+
+.ProductPage .reviewSummery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-description {
@@ -67,9 +73,28 @@
   min-height: 650px;
 }
 
-
-@media (max-width: 1250px) {
+@media (max-width: 1659px) {
   .ProductPage .cart {
-    display: none; 
+    display: none;
   }
+}
+
+@media (max-width: 1040px) {
+  .ProductPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 0;
+}
+.product-gallery,
+.product-details {
+  width: 100%;
+}
+.buttonAddToCart{
+  width: 100%;
+}
+.bradCrumbBack{
+  margin-right: 70%;
+}
 }

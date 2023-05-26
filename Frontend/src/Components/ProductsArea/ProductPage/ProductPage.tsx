@@ -7,28 +7,29 @@ import { authStore } from "../../../Redux/AuthState";
 import CartItemModel from "../../../Models/CartItemModel";
 import { CartActionType, cartStore } from "../../../Redux/CartState";
 import cartService from "../../../Services/CartService";
-import { Box, Button, Rating, Typography } from "@mui/material";
+import { Box, Breadcrumbs, Button, Card, Container, Rating, Typography } from "@mui/material";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import productsService from "../../../Services/ProductsService";
 import notifyService from "../../../Services/NotifyService";
 import CheckIcon from "@mui/icons-material/Check";
 import { ProductsActionType, productsStore } from "../../../Redux/ProductState";
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import Cart from "../../CartArea/Cart/Cart";
 import Spinner from "../../SharedArea/Spinner/Spinner";
 import ReviewProduct from "../ReviewProduct/ReviewProduct";
 import AddReviewProduct from "../AddReviewProduct/AddReviewProduct";
+import ReviewSummeryModel from "../../../Models/ReviewSummeryModel";
+import reviewService from "../../../Services/ReviewService";
 
 interface ProductCardProps {
   product: ProductModel;
 }
 
 function ProductPage(): JSX.Element {
-
   const { productCode } = useParams<{ productCode: string }>();
- 
+
   const [product, setProduct] = useState<ProductModel | null>(null);
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,6 +52,7 @@ function ProductPage(): JSX.Element {
   }, [productCode, navigate]);
 
   const [user, setUser] = useState<UserModel>();
+
   useEffect(() => {
     setUser(authStore.getState().user);
     const unsubscribe = authStore.subscribe(() => {
@@ -58,6 +60,25 @@ function ProductPage(): JSX.Element {
     });
     return () => unsubscribe();
   }, []);
+
+  const [reviewSummery, setReviewSummery] = useState<ReviewSummeryModel>({
+    productId: 0,
+    averageRating: 0,
+    reviewCount: 0,
+  });
+
+  useEffect(() => {
+    if (product) {
+      reviewService
+        .getReviewSummeryByProduct(product.id)
+        .then((responseReview) => {
+          setReviewSummery(responseReview);
+        })
+        .catch((err) => {
+          notifyService.error(err);
+        });
+    }
+  }, [product]);
 
   const addToCart = () => {
     const cartItem: CartItemModel = {
@@ -106,93 +127,107 @@ function ProductPage(): JSX.Element {
   };
 
   if (!product) {
-    return <Spinner></Spinner>
+    return <Spinner></Spinner>;
   }
 
   const images = [product.image1Url, product.image2Url].filter(Boolean);
 
   return (
     <div className="ProductPage">
-       <Link to={"/home"}>
-      <KeyboardBackspaceIcon></KeyboardBackspaceIcon><span>Back</span></Link>
-        <div className="product-gallery">
-          <Carousel
-            className="carousel"
-            showThumbs={false}
-            showStatus={false}
-            showIndicators={images.length > 1}
-            showArrows={images.length > 1}
-            infiniteLoop
-            swipeable
-            emulateTouch
-          >
-            {images.map((image, index) => (
-              <div key={index}>
-                <img
-                  src={image}
-                  alt={`${product.name} - ${index + 1}`}
-                  style={{ height: "400px", objectFit: "contain" }}
-                />
-              </div>
-            ))}
-          </Carousel>
-        </div>
-        <div className="product-details">
-          <Typography gutterBottom variant="h4" component="div">
-            {product.name}
-          </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
-            Product Code: {product.productCode}
-          </Typography>
-          {/* <Typography> */}
-          <span>
-          <Rating name="half-rating" defaultValue={2.5} precision={0.5} readOnly/>
-          </span>
-          {/* </Typography> */}
-          <Box>
-            {product.salePrice ? (
-              <>
-                <Typography variant="h5" color="error">
-                  ${product.salePrice}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{ textDecoration: "line-through", ml: 1 }}
-                >
-                  ${product.price}
-                </Typography>
-              </>
-            ) : (
-              <Typography variant="h5">${product.price}</Typography>
-            )}
-          </Box>
-          <Box>
-            <br />
-          </Box>
-          <Button variant="contained" onClick={addToCart}>
-            Add to cart
-          </Button>
-          <ul className="product-features">
-            <li>
-              <CheckIcon></CheckIcon> Delivery within 48h
-            </li>
-            <li>
-              <CheckIcon></CheckIcon> Free shipping over $50
-            </li>
-            <li>
-              <CheckIcon></CheckIcon> Free returns
-            </li>
-          </ul>
-        </div>
-        <div className="product-description">
-          <Typography variant="body1">{product.description}</Typography>
-        </div>
-        {user && <AddReviewProduct />}
-        <ReviewProduct></ReviewProduct>
-        <div className="cart">
-          <Cart></Cart>
-        </div>
+      {/* <Card className="ProductPageMobileCard"> */}
+      <div className="bradCrumbBack">
+      <Link to={"/home"}>
+        <KeyboardBackspaceIcon></KeyboardBackspaceIcon>
+        <span>Back</span>
+      </Link>
       </div>
+      <div className="product-gallery">
+        <Carousel
+          className="carousel"
+          showThumbs={false}
+          showStatus={false}
+          showIndicators={images.length > 1}
+          showArrows={images.length > 1}
+          infiniteLoop
+          swipeable
+          emulateTouch
+        >
+          {images.map((image, index) => (
+            <div key={index}>
+              <img
+                src={image}
+                alt={`${product.name} - ${index + 1}`}
+                style={{ height: "400px", objectFit: "contain" }}
+              />
+            </div>
+          ))}
+        </Carousel>
+      </div>
+      <div className="product-details">
+        <Typography gutterBottom variant="h4" component="div">
+          {product.name}
+        </Typography>
+        <Typography variant="subtitle1" color="textSecondary">
+          Product Code: {product.productCode}
+        </Typography>
+        <span className="reviewSummery">
+          {reviewSummery.reviewCount > 1 && (
+            <>
+              <Rating
+                name="half-rating"
+                value={reviewSummery.averageRating}
+                precision={0.5}
+                readOnly
+              />
+              <span> ({reviewSummery.reviewCount} reviews )</span>
+            </>
+          )}
+        </span>
+        <Box>
+          {product.salePrice ? (
+            <>
+              <Typography variant="h5" color="error">
+                ${product.salePrice}
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{ textDecoration: "line-through", ml: 1 }}
+              >
+                ${product.price}
+              </Typography>
+            </>
+          ) : (
+            <Typography variant="h5">${product.price}</Typography>
+          )}
+        </Box>
+        <Box>
+          <br />
+        </Box>
+        <Button className="buttonAddToCart" variant="contained" onClick={addToCart}>
+          Add to cart
+        </Button>
+        <ul className="product-features">
+          <li>
+            <CheckIcon></CheckIcon> Delivery within 48h
+          </li>
+          <li>
+            <CheckIcon></CheckIcon> Free shipping over $50
+          </li>
+          <li>
+            <CheckIcon></CheckIcon> Free returns
+          </li>
+        </ul>
+      </div>
+      <div className="product-description">
+        <Typography variant="body1">{product.description}</Typography>
+      </div>
+      {user && <AddReviewProduct />}
+      <ReviewProduct></ReviewProduct>
+      {/* </Card> */}
+      <div className="cart">
+        <Cart></Cart>
+      </div>
+    </div>
   );
 }
 

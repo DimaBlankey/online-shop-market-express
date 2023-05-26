@@ -25,11 +25,12 @@ async function getReviewsByProduct(productId: number): Promise<ReviewModel[]> {
   WHERE productId = ?`;
 
   const reviews = await dal.execute(sql, [productId]);
-
   return reviews;
 }
 
-async function getReviewSummeryByProduct(productId: number): Promise<ReviewSummeryModel> {
+async function getReviewSummeryByProduct(
+  productId: number
+): Promise<ReviewSummeryModel> {
   const sql = `SELECT 
   productId,
   ROUND(AVG(rating)*2)/2 AS averageRating,
@@ -39,7 +40,8 @@ async function getReviewSummeryByProduct(productId: number): Promise<ReviewSumme
   WHERE 
   productId = ?
 `;
-  const reviewSummery = await dal.execute(sql, [productId]);
+  const reviewsSummery = await dal.execute(sql, [productId]);
+  const reviewSummery = reviewsSummery[0];
 
   return reviewSummery;
 }

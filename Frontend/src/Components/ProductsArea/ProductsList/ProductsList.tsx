@@ -9,13 +9,25 @@ import ProductsSearch from "../ProductsSearch/ProductsSearch";
 import { Padding } from "@mui/icons-material";
 import Spinner from "../../SharedArea/Spinner/Spinner";
 import { Container } from "@mui/material";
+import AdminMenu from "../../LayoutArea/AdminMenu/AdminMenu";
+import UserModel from "../../../Models/UserModel";
+import { authStore } from "../../../Redux/AuthState";
 
 function ProductsList(): JSX.Element {
   const [products, setProducts] = useState<ProductModel[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("All Products");
   const [searchQuery, setSearchQuery] = useState<string>("");
-
+  const [user, setUser] = useState<UserModel>();
+  const role = authStore.getState().user?.roleId;
   
+  useEffect(() => {
+    setUser(authStore.getState().user);
+    const unsubscribe = authStore.subscribe(() => {
+      setUser(authStore.getState().user);
+    });
+    return () => unsubscribe();
+  }, []);
+
   useEffect(() => {
     productsService
       .getAllProducts()
@@ -41,7 +53,9 @@ function ProductsList(): JSX.Element {
 
   return (
     <div className="ProductsList">
-      {/* <Container> */}
+      {role === 1 && (
+      <AdminMenu />
+      )}
       <ResponsiveAppBar onCategoryClick={handleCategoryClick} />
       <ProductsSearch onSearch={handleSearch} />
       <div className="ProductsList-cards scrollbar" style={{
@@ -59,7 +73,6 @@ function ProductsList(): JSX.Element {
     <ProductCard key={p.id} product={p} />
   ))}
       </div>
-      {/* </Container> */}
     </div>
   );
 }

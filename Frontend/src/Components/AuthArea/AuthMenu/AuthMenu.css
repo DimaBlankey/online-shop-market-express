@@ -1,17 +1,19 @@
 @media (max-width: 800px) {
+  .AuthMenu .user-name,.login-link , .sign-up-link,
   .AuthMenu .LogoutLink {
-    font-size: 0;
-    line-height: 0;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
     display: none;
   }
 }
 
-@media (max-width: 600px) {
-  .AuthMenu .AccountCircleIcon {
-    display: none;
+@media (min-width: 801px) {
+  .AuthMenu .user-name, 
+  .AuthMenu .LogoutLink {
+    display: inline;
   }
+}
+
+
+.AuthMenu .AccountCircleIcon,
+.AuthMenu .LogoutIcon {
+  margin-right: 10px;
 }

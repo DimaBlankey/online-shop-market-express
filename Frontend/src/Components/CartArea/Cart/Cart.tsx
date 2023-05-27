@@ -18,6 +18,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { cartStore } from "../../../Redux/CartState";
 import RemoveShoppingCart from "@mui/icons-material/RemoveShoppingCart";
 import { useNavigate } from "react-router-dom";
+import CartSummeryIcon from "../CartSummeryIcon/CartSummeryIcon";
 
 function Cart(): JSX.Element {
   const navigate = useNavigate();
@@ -82,7 +83,7 @@ function Cart(): JSX.Element {
               }}
             >
               <Typography>My Cart</Typography>
-              <ShoppingCartIcon />
+              <CartSummeryIcon></CartSummeryIcon>
             </Box>
           </Toolbar>
         </Container>

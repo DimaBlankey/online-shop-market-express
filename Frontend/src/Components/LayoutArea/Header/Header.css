@@ -13,14 +13,30 @@
   color: inherit;
 }
 
-.Header > .Menu {
+.Header  .Menu {
   margin-top: 10px;
   margin-right: auto;
   margin-left: 10%;
 }
 
-.Header > .AuthMenu {
+.Header .CartSummeryIcon {
   margin-top: 10px;
-  margin-left: auto;
+  margin-right: auto;
+  /* margin-left: 300%; */
+}
+
+.Header .AuthMenu {
+  margin-top: 10px;
+  margin-left: 5%;
   margin-right: 10%;
+}
+
+.Header .cart-icon-summery {
+    display: block;
+}
+
+@media (min-width: 1660px) {
+  .Header .cart-icon-summery {
+        display: none;
+    }
 }

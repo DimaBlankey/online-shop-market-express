@@ -24,28 +24,29 @@ function AuthMenu(): JSX.Element {
     authService.logout();
     notifyService.success("Goodby!");
     navigate("/home");
-
   }
 
   return (
     <div className="AuthMenu">
       {!user && (
         <div>
+          <NavLink  to="/login">
           <span>
             <AccountCircleIcon className="AccountCircleIcon" />{" "}
           </span>
-          <NavLink to="/login">Login</NavLink>
-          <span> | </span>
-          <NavLink to="/sign-up">Sign up</NavLink>
+          </NavLink>
+          <NavLink className={"login-link"} to="/login">Login</NavLink>
+          <span className={"login-link"}> | </span>
+          <NavLink className={"sign-up-link"} to="/sign-up">Sign up</NavLink>
         </div>
       )}
       {user && (
         <div>
           <NavLink to="/my-account">
-          <span>
-            <AccountCircleIcon className="AccountCircleIcon" />
-            Hello, {user.firstName}{" "}
-          </span>
+            <span>
+              <AccountCircleIcon className="AccountCircleIcon" />
+              <span className="user-name">Hello, {user.firstName} </span>
+            </span>
           </NavLink>
           <NavLink to="/home" onClick={logout} className="LogoutLink">
             | Logout

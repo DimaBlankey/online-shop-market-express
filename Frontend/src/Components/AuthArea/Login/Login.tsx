@@ -56,7 +56,7 @@ function Login(): JSX.Element {
           className="slide-down"
           sx={{
             backgroundColor: "rgba(255, 255, 255, 0.5)",
-            backdropFilter: "blur(20px)",
+            // backdropFilter: "blur(20px)",
             width: "100%",
             maxWidth: "360px",
             mt: 2,

@@ -11,3 +11,10 @@
   overflow-x: hidden;
 }
 
+
+
+@media (max-width: 920px) {
+  .ProductsList .ProductsList-cards {
+    justify-content: center;
+    }
+}

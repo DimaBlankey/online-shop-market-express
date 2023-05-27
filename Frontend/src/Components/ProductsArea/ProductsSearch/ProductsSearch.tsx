@@ -33,7 +33,7 @@ function ProductsSearch({ onSearch }: ProductsSearchProps): JSX.Element {
           type="search"
           placeholder="Search products..."
           variant="standard"
-          sx={{ width: 400 }}
+          sx={{ maxWidth: 600 }}
           value={searchValue}
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}

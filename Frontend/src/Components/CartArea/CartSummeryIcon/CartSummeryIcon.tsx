@@ -9,11 +9,23 @@ function CartSummeryIcon(): JSX.Element {
   const [items, setItems] = useState<CartItemModel[]>([]);
 
   useEffect(() => {
-    setItems(cartStore.getState().items);
+    // Check for "cart" in local storage.
+    const localStorageCart = localStorage.getItem("cart");
+    if (localStorageCart) {
+      // If it exists, parse it and set the items state.
+      setItems(JSON.parse(localStorageCart));
+    } else {
+      // Otherwise, get the items from the cartStore.
+      setItems(cartStore.getState().items);
+    }
+
     const unsubscribe = cartStore.subscribe(() => {
       const newItems = cartStore.getState().items;
       setItems(newItems);
+      // Update the "cart" in local storage every time the cartStore updates.
+      localStorage.setItem("cart", JSON.stringify(newItems));
     });
+
     return () => unsubscribe();
   }, []);
 

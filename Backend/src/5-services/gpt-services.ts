@@ -16,21 +16,46 @@ async function getProductsForGpt(): Promise<string>{
     return products
 }
 
-async function generatePrompt(searchValue: string): Promise<string>{
+async function generatePromptIngredients(searchValue: string): Promise<string>{
     const products = JSON.stringify(await getProductsForGpt());
     const prompt = `
     I want to cook this:
     ${searchValue}.
-    list the ingredients (ul list).
-    write the instructions to cook it (ul list).
-    then, separately, based in this list of products:
-    ${products}
-    write back JSON of productCode that i need to buy to make that meal.  
+    based on this list of products:
+    ${products}.
+    list the ingredients, by name only (without productCode), needed for it.
     `
     return prompt.trim()
 }
 
 
+async function generatePromptInstructions(searchValue: string): Promise<string>{
+    const prompt = `
+    I want to cook this:
+    ${searchValue}.
+    write the instructions to cook it.
+    `
+    return prompt.trim()
+}
+
+async function generatePromptProducts(searchValue: string): Promise<string>{
+    const products = JSON.stringify(await getProductsForGpt());
+    const ingredients = await generatePromptIngredients(searchValue);
+    const prompt = `
+    based on this ingredients:
+    ${ingredients}.
+    and this products:
+    ${products}.
+    write back a valid JSON file of productsCode.
+    Just the JSON without any comments or headlines.
+    Example:
+    [{"productCode":"z"},{"productCode":"y"},{"productCode":"x"}]
+    `
+    return prompt.trim()
+}
+
 export default {
-    generatePrompt
+    generatePromptInstructions,
+    generatePromptIngredients,
+    generatePromptProducts
 }

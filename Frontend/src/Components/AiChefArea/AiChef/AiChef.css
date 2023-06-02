@@ -29,3 +29,23 @@
     color: #666;
   }
   
+  .AiChef .ProductsList-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto auto;
+    margin-top: 30px;
+    align-items: left;
+    max-height: 800px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  
+  
+  @media (max-width: 920px) {
+    .AiChef .ProductsList-cards {
+      justify-content: center;
+      }
+  }

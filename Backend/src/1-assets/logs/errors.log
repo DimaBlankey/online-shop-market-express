@@ -3766,3 +3766,215 @@ Stack: Error: Request failed with status code 429
     at endReadableNT (node:internal/streams/readable:1359:12)
     at processTicksAndRejections (node:internal/process/task_queues:82:21)
 ----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 09:09:26 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 09:11:58 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 12:46:06 GMT
+Route /api/gpt//salad not found
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 12:55:11 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 13:17:11 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 13:17:58 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 14:02:37 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 14:03:03 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 14:04:33 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 14:04:56 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 14:05:11 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 14:05:44 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 14:06:39 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 14:32:00 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 14:41:52 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 14:44:23 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 14:44:35 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 14:46:43 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 14:57:14 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Fri, 02 Jun 2023 15:06:46 GMT
+Request failed with status code 429
+Stack: Error: Request failed with status code 429
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------

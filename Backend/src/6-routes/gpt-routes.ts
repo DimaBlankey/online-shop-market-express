@@ -18,7 +18,7 @@ router.post(
       // Generate prompts
       const promptIngredients = await gptServices.generatePromptIngredients(searchValue);
       const promptInstructions = await gptServices.generatePromptInstructions(searchValue);
-      const promptProducts = await gptServices.generatePromptProducts(searchValue);
+      const promptProducts = await gptServices.generatePromptProducts(promptIngredients);
 
       // Prepare request body
       const bodyIngredients = {

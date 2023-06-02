@@ -38,9 +38,8 @@ async function generatePromptInstructions(searchValue: string): Promise<string>{
     return prompt.trim()
 }
 
-async function generatePromptProducts(searchValue: string): Promise<string>{
+async function generatePromptProducts( ingredients: string): Promise<string>{
     const products = JSON.stringify(await getProductsForGpt());
-    const ingredients = await generatePromptIngredients(searchValue);
     const prompt = `
     based on this ingredients:
     ${ingredients}.

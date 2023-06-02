@@ -60,14 +60,17 @@ function AiChef(): JSX.Element {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-      <Box
-        component="div"
-        sx={{ maxWidth: "500px" }}
-        m={1}
-        className="completion"
-      >
-        {completion?.instructions}
-      </Box>
+      {completion && completion.instructions && (
+        <Box
+          component="div"
+          sx={{ maxWidth: "500px" }}
+          m={1}
+          className="completion"
+        >
+          {completion.instructions}
+        </Box>
+      )}
+
       <div className="ProductsList-cards scrollbar" style={{ padding: "10px" }}>
         {filteredProducts.map((p) => (
           <ProductCard key={p.id} product={p} />

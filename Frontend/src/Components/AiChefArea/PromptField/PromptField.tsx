@@ -6,11 +6,10 @@ import {
   TextField,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import gptService, { RecipeResponse } from "../../../Services/GptService";
 import CircularProgress from "@mui/material/CircularProgress";
 import Backdrop from "@mui/material/Backdrop";
-
 
 function PromptField({
   onCompletion,
@@ -20,9 +19,22 @@ function PromptField({
   setLoading: (loading: boolean) => void;
 }): JSX.Element {
   const [searchValue, setSearchValue] = useState("");
+  const [recentSearches, setRecentSearches] = useState<string[]>([]);
+
+  useEffect(() => {
+    const keys = Object.keys(localStorage)
+      .filter((key) => key.startsWith("smartChef"))
+      .slice(-5);
+    setRecentSearches(keys.map((key) => key.replace("smartChef", "")));
+  }, []);
+  
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
+  };
+
+  const handleRecentSearchClick = (search: string) => {
+    setSearchValue(search);
   };
 
   const handleKeyPress = async (
@@ -83,6 +95,13 @@ function PromptField({
             ),
           }}
         />
+        <div className="recent-searches">
+          {recentSearches.map((search, index) => (
+            <span key={index} onClick={() => handleRecentSearchClick(search)}>
+              {search}
+            </span>
+          ))}
+        </div>
       </Container>
     </div>
   );

@@ -13,6 +13,7 @@ function AiChef(): JSX.Element {
   const [products, setProducts] = useState<ProductModel[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ProductModel[]>([]);
   const [isLoading, setLoading] = useState(false);
+  const [searchValue, setSearchValue] = useState<string | null>(null);
 
   useEffect(() => {
     productsService
@@ -23,12 +24,20 @@ function AiChef(): JSX.Element {
       .catch((err) => notifyService.error(err));
   }, []);
 
-
   useEffect(() => {
     if (completion) {
-      const productCodes = JSON.parse(completion.products).map(
-        (p: { productCode: string }) => p.productCode
-      );
+      // Check if completion.products is a valid JSON
+      let productCodes: string[] = [];
+      try {
+        productCodes = JSON.parse(completion.products).map(
+          (p: { productCode: string }) => p.productCode
+        );
+      } catch (error) {
+        console.error("Invalid JSON in completion.products");
+        localStorage.removeItem("smartChef" + searchValue);
+        return; // If the JSON is invalid, stop execution of this effect
+      }
+
       const filtered = products.filter((product) =>
         productCodes.includes(product.productCode)
       );
@@ -46,20 +55,11 @@ function AiChef(): JSX.Element {
       <Typography variant={"h5"}>What would you like to eat today? </Typography>
       <PromptField onCompletion={handleCompletion} setLoading={setLoading} />
       <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={isLoading}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-      
-      {/* <Box
-        component="div"
-        sx={{ maxWidth: "500px" }}
-        m={1}
-        className="completion"
-      >
-        {completion?.ingredients}
-      </Box> */}
       <Box
         component="div"
         sx={{ maxWidth: "500px" }}

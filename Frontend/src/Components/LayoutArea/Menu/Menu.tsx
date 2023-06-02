@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
 import "./Menu.css";
 
 function Menu(): JSX.Element {
@@ -10,6 +11,10 @@ function Menu(): JSX.Element {
       </NavLink>
       <NavLink to="/home" className={"HomeLink"}>
         Home
+      </NavLink>
+      <NavLink to={"/ai-powered-personal-chef"}>
+      <SmartToyIcon className="SmartToyIcon"></SmartToyIcon>
+      Smart Chef
       </NavLink>
     </div>
   );

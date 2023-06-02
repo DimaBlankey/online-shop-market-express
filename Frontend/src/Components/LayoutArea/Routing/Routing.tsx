@@ -15,7 +15,7 @@ import { useParams } from "react-router-dom";
 import MyAccount from "../../AccountArea/MyAccount/MyAccount";
 import UpdateUserInfo from "../../AccountArea/UpdateUserInfo/UpdateUserInfo";
 import CartPage from "../../CartArea/CartPage/CartPage";
-
+import AiChef from "../../AiChefArea/AiChef/AiChef";
 
 function Routing(): JSX.Element {
   const [user, setUser] = useState<UserModel>();
@@ -38,7 +38,8 @@ function Routing(): JSX.Element {
         <>
           <Route path="/home" element={<Home />} />
           <Route path="/product/:productCode" element={<ProductPage />} />
-          <Route path="/cart/" element={<CartPage/>} />
+          <Route path="/ai-powered-personal-chef" element={<AiChef />} />
+          <Route path="/cart/" element={<CartPage />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmed" element={<OrderConfirmed />} />
           <Route path="/my-account" element={<MyAccount />} />
@@ -49,7 +50,8 @@ function Routing(): JSX.Element {
         <>
           <Route path="/home" element={<Home />} />
           <Route path="/product/:productCode" element={<ProductPage />} />
-          <Route path="/cart/" element={<CartPage/>} />
+          <Route path="/ai-powered-personal-chef" element={<AiChef />} />
+          <Route path="/cart/" element={<CartPage />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmed" element={<OrderConfirmed />} />
           <Route path="/my-account" element={<MyAccount />} />
@@ -59,7 +61,8 @@ function Routing(): JSX.Element {
 
       {<></>}
       <Route path="/product/:productCode" element={<ProductPage />} />
-      <Route path="/cart/" element={<CartPage/>} />
+      <Route path="/ai-powered-personal-chef" element={<Navigate to="/login" />} />
+      <Route path="/cart/" element={<CartPage />} />
       <Route path="/checkout" element={<Navigate to="/home" />} />
       <Route path="/order-confirmed" element={<Navigate to="/home" />} />
       <Route path="/my-account" element={<Navigate to="/login" />} />

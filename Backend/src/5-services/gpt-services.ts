@@ -46,8 +46,8 @@ async function generatePromptProducts( ingredients: string): Promise<string>{
     and this products:
     ${products}.
     write back a valid JSON file of productsCode.
-    Just the JSON without any comments or headlines!!
-    Example:
+    Just JSON without any comments or headlines or backslashes!!
+    Example response:
     [{"productCode":"z"},{"productCode":"y"},{"productCode":"x"}]
     `
     return prompt.trim()

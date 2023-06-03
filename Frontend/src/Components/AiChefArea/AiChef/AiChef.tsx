@@ -26,10 +26,19 @@ function AiChef(): JSX.Element {
 
   useEffect(() => {
     if (completion) {
-      // Check if completion.products is a valid JSON
+      // Find the start of the JSON string
+      let startOfJson = completion.products.lastIndexOf("[");
+      if (startOfJson === -1) {
+        console.error("Invalid JSON in completion.products");
+        localStorage.removeItem("smartChef" + searchValue);
+        return; // If the JSON is invalid, stop execution of this effect
+      }
+
+      // Extract the JSON string and parse it
       let productCodes: string[] = [];
       try {
-        productCodes = JSON.parse(completion.products).map(
+        let jsonString = completion.products.slice(startOfJson);
+        productCodes = JSON.parse(jsonString).map(
           (p: { productCode: string }) => p.productCode
         );
       } catch (error) {

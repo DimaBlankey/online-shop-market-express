@@ -168,8 +168,13 @@ function ProductPage(): JSX.Element {
     }
   }
 
+function editMe(){
+  navigate(`/product/update-product/${product.productCode}`);
+}
+
+
   const adminActions = [
-    { icon: <EditIcon />, name: "Edit" },
+    { icon: <EditIcon onClick={editMe}/>, name: "Edit" },
     { icon: <DeleteIcon onClick={deleteMe} />, name: "Delete" },
   ];
 

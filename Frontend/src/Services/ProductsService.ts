@@ -52,6 +52,31 @@ class ProductsService {
     });
   }
 
+  public async updateProduct(product: ProductModel): Promise<void> {
+    var bodyFormData = new FormData();
+    Object.entries(product).forEach(([key, value]: [string, any]) => {
+      if (value?.$d) {
+        value = value.$d.toJSON();
+      }
+      bodyFormData.append(key, value);
+    });
+
+    const response = await axios({
+      method: "put",
+      url: appConfig.productsUrl + product.productCode,
+      data: bodyFormData,
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+
+    const updatedProduct = response.data;
+    productsStore.dispatch({
+      type: ProductsActionType.UpdateProducts,
+      payload: updatedProduct,
+    });
+  }
+
+
+
   public async deleteProduct(productCode: string): Promise<void> {
     await axios.delete(appConfig.productsUrl + productCode);
     productsStore.dispatch({

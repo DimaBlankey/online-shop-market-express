@@ -17,6 +17,7 @@ import UpdateUserInfo from "../../AccountArea/UpdateUserInfo/UpdateUserInfo";
 import CartPage from "../../CartArea/CartPage/CartPage";
 import AiChef from "../../AiChefArea/AiChef/AiChef";
 import CreateProduct from "../../ProductsArea/CreateProduct/CreateProduct";
+import UpdateProduct from "../../ProductsArea/UpdateProduct/UpdateProduct";
 
 function Routing(): JSX.Element {
   const [user, setUser] = useState<UserModel>();
@@ -41,6 +42,7 @@ function Routing(): JSX.Element {
           <Route path="/product/:productCode" element={<ProductPage />} />
           <Route path="/ai-powered-personal-chef" element={<AiChef />} />
           <Route path="/product/create-product" element={<CreateProduct />} />
+          <Route path="/product/update-product/:productCode" element={<UpdateProduct />} />
           <Route path="/cart/" element={<CartPage />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmed" element={<OrderConfirmed />} />

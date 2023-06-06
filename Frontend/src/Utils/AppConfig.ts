@@ -4,6 +4,7 @@ class AppConfig {
   public userUpdateUrl = "http://localhost:4000/api/user-update/";
   public userInfoUrl = "http://localhost:4000/api/user-info/";
   public productsUrl = "http://localhost:4000/api/products/";
+  public categoriesUrl = "http://localhost:4000/api/categories/";
   public cartUrl = "http://localhost:4000/api/cart/";
   public ordersUrl = "http://localhost:4000/api/orders/";
   public tokenUrl = "http://localhost:4000/api/refresh-token/";

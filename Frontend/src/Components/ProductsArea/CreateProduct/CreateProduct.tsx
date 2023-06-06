@@ -4,7 +4,7 @@ import "./CreateProduct.css";
 import { useNavigate } from "react-router-dom";
 import productsService from "../../../Services/ProductsService";
 import notifyService from "../../../Services/NotifyService";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -12,12 +12,25 @@ import {
   FormHelperText,
   FormLabel,
   Grid,
+  MenuItem,
   OutlinedInput,
+  Select,
   TextField,
   Typography,
 } from "@mui/material";
+import CategoryModel from "../../../Models/CategoryModel";
+import categoryService from "../../../Services/CategoryService";
 
 function CreateProduct(): JSX.Element {
+  const [categories, setCategories] = useState<CategoryModel[]>([]);
+
+  useEffect(() => {
+    categoryService
+      .getAllCategories()
+      .then((responseCategories) => setCategories(responseCategories))
+      .catch((err) => notifyService.error(err));
+  }, []);
+
   const {
     register,
     control,
@@ -29,7 +42,7 @@ function CreateProduct(): JSX.Element {
   async function send(product: ProductModel) {
     try {
       product.image1 = (product.image1 as unknown as FileList)[0];
-      product.image2 = (product.image2 as unknown as FileList)[1];
+      product.image2 = (product.image2 as unknown as FileList)[0];
       await productsService.addProduct(product);
       notifyService.success("Product has been added!");
       navigate("/home");
@@ -155,6 +168,29 @@ function CreateProduct(): JSX.Element {
                   </FormHelperText>
                 )}
               </Box>
+              <FormControl fullWidth variant="outlined" sx={{ mt: 2, mb: 2 }}>
+                <FormLabel>Category</FormLabel>
+                <Select
+                  defaultValue=""
+                  {...register("categoryId", {required: true,})}
+                  variant="outlined"
+                >
+                  <MenuItem value="" disabled>
+                    Choose...
+                  </MenuItem>
+                  {categories.map((category) => (
+                    <MenuItem key={category.id} value={category.id}>
+                      {category.categoryName}
+                    </MenuItem>
+                  ))}
+                </Select>
+                {errors.categoryId && (
+                  <FormHelperText sx={{ fontSize: 12 }} error>
+                    {errors.categoryId.type === "required" &&
+                      "Category is required"}
+                  </FormHelperText>
+                )}
+              </FormControl>
               <Box mt={2} mb={2}>
                 <FormLabel>Price</FormLabel>
                 <TextField
@@ -232,11 +268,6 @@ function CreateProduct(): JSX.Element {
                     {...register("image2")}
                     onChange={handleImage2Upload}
                   />
-                  {/* {errors.image2 && errors.image2.type === "required" && (
-                    <FormHelperText sx={{ fontSize: 12 }} error>
-                      Image is required
-                    </FormHelperText>
-                  )} */}
                 </FormControl>
                 {image2 && (
                   <Box

@@ -7,7 +7,15 @@ import { authStore } from "../../../Redux/AuthState";
 import CartItemModel from "../../../Models/CartItemModel";
 import { CartActionType, cartStore } from "../../../Redux/CartState";
 import cartService from "../../../Services/CartService";
-import { Box, Breadcrumbs, Button, Card, Container, Rating, Typography } from "@mui/material";
+import {
+  Box,
+  Breadcrumbs,
+  Button,
+  Card,
+  Container,
+  Rating,
+  Typography,
+} from "@mui/material";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import productsService from "../../../Services/ProductsService";
 import notifyService from "../../../Services/NotifyService";
@@ -36,13 +44,21 @@ function ProductPage(): JSX.Element {
     const storedProduct = localStorage.getItem(productCode);
 
     if (storedProduct) {
-      setProduct(JSON.parse(storedProduct));
+      try {
+        setProduct(JSON.parse(storedProduct));
+      } catch (err) {
+        console.error("Could not parse stored product:", err);
+      }
     } else {
       productsService
         .getOneProduct(productCode)
         .then((responseProduct) => {
-          setProduct(responseProduct);
-          localStorage.setItem(productCode, JSON.stringify(responseProduct));
+          if (responseProduct) {
+            setProduct(responseProduct);
+            localStorage.setItem(productCode, JSON.stringify(responseProduct));
+          } else {
+            console.error("Product not found:", productCode);
+          }
         })
         .catch((err) => {
           notifyService.error(err);
@@ -136,10 +152,10 @@ function ProductPage(): JSX.Element {
     <div className="ProductPage">
       {/* <Card className="ProductPageMobileCard"> */}
       <div className="bradCrumbBack">
-      <Link to={"/home"}>
-        <KeyboardBackspaceIcon></KeyboardBackspaceIcon>
-        <span>Back</span>
-      </Link>
+        <Link to={"/home"}>
+          <KeyboardBackspaceIcon></KeyboardBackspaceIcon>
+          <span>Back</span>
+        </Link>
       </div>
       <div className="product-gallery">
         <Carousel
@@ -203,7 +219,11 @@ function ProductPage(): JSX.Element {
         <Box>
           <br />
         </Box>
-        <Button className="buttonAddToCart" variant="contained" onClick={addToCart}>
+        <Button
+          className="buttonAddToCart"
+          variant="contained"
+          onClick={addToCart}
+        >
           Add to cart
         </Button>
         <ul className="product-features">

@@ -1,6 +1,7 @@
 import "./AdminMenu.css";
 import AddIcon from "@mui/icons-material/Add";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import SellIcon from '@mui/icons-material/Sell';
 import { Box, Fab, Tooltip } from "@mui/material";
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import { Link } from "react-router-dom";
@@ -23,7 +24,7 @@ function AdminMenu(): JSX.Element {
         </Tooltip>
         <Tooltip title="Promotions" placement="top">
           <Fab color="success">
-            <MonetizationOnIcon />
+          <SellIcon></SellIcon>
           </Fab>
         </Tooltip>
         

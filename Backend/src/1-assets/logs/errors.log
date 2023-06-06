@@ -4035,3 +4035,131 @@ Stack: Error: ER_BAD_NULL_ERROR: Column 'categoryId' cannot be null
     at fulfilled (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\products-services.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
 ----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:17:59 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:18:01 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:22:39 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:22:43 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:22:47 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:22:54 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:22:56 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:23:18 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:23:26 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:23:27 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:23:28 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:24:02 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:24:22 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\f346dbfa-3628-408f-a015-75a6453aa380.webp'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:45:32 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:45:38 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:45:53 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:46:47 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:46:51 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:48:52 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 08:49:12 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\a356de72-3515-4c5e-8aee-0551ceac2da1.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 09:02:23 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\80c0febb-eb72-4f75-8752-99e01c213711.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\80c0febb-eb72-4f75-8752-99e01c213711.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 09:02:27 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\80c0febb-eb72-4f75-8752-99e01c213711.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\80c0febb-eb72-4f75-8752-99e01c213711.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 09:03:06 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\80c0febb-eb72-4f75-8752-99e01c213711.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\80c0febb-eb72-4f75-8752-99e01c213711.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 09:05:39 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\c652f9d8-f1fe-41b7-8bfa-5fb02bd2301f.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\c652f9d8-f1fe-41b7-8bfa-5fb02bd2301f.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 09:33:42 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\9ebcb599-d052-483c-a47c-781b75610092.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\9ebcb599-d052-483c-a47c-781b75610092.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 09:33:42 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\053729e6-3156-4a66-983f-894349add13b.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\053729e6-3156-4a66-983f-894349add13b.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 09:33:46 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\053729e6-3156-4a66-983f-894349add13b.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\053729e6-3156-4a66-983f-894349add13b.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 09:33:46 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\9ebcb599-d052-483c-a47c-781b75610092.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\9ebcb599-d052-483c-a47c-781b75610092.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 09:33:49 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\053729e6-3156-4a66-983f-894349add13b.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\053729e6-3156-4a66-983f-894349add13b.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 09:33:49 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\9ebcb599-d052-483c-a47c-781b75610092.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\9ebcb599-d052-483c-a47c-781b75610092.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 09:40:38 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\01f02b45-768d-4afb-a209-c01fa77a3635.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\01f02b45-768d-4afb-a209-c01fa77a3635.png'
+----------------------------------------------------------------------------------------------------
+Tue, 06 Jun 2023 09:40:38 GMT
+ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\e9cd9f49-bbfc-47de-85fe-194a54fa0d5a.png'
+Stack: Error: ENOENT: no such file or directory, stat 'C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\1-assets\images\product-images\e9cd9f49-bbfc-47de-85fe-194a54fa0d5a.png'
+----------------------------------------------------------------------------------------------------

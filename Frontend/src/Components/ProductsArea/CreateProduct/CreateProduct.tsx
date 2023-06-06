@@ -110,7 +110,6 @@ function CreateProduct(): JSX.Element {
                 <FormLabel>Product Name</FormLabel>
                 <TextField
                   fullWidth
-                  autoFocus
                   placeholder="Name..."
                   variant="outlined"
                   className="form-inputs"

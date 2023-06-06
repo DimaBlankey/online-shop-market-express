@@ -5,6 +5,7 @@ import catchAll from "./3-middleware/catch-all";
 import appConfig from "./4-utils/app-config";
 import authRoute from "./6-routes/auth-routes";
 import productsRoute from "./6-routes/products-routes";
+import categoriesRoute from "./6-routes/categories-routes"
 import userRoute from "./6-routes/user-routes";
 import cartRoute from "./6-routes/cart-routes";
 import orderRoute from "./6-routes/orders-routes";
@@ -34,6 +35,7 @@ server.use(preventXss);
 server.use(expressFileUpload());
 server.use("/api", authRoute);
 server.use("/api", productsRoute);
+server.use("/api", categoriesRoute);
 server.use("/api", userRoute);
 server.use("/api", cartRoute);
 server.use("/api", orderRoute);

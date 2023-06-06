@@ -4,7 +4,6 @@ import ProductModel from "../Models/ProductModel";
 import { ProductsActionType, productsStore } from "../Redux/ProductState";
 
 class ProductsService {
-  
   public async getAllProducts(): Promise<ProductModel[]> {
     let products = productsStore.getState().products;
     if (products.length === 0) {
@@ -26,9 +25,31 @@ class ProductsService {
       const response = await axios.get<ProductModel>(
         appConfig.productsUrl + productCode
       );
-    let  product = response.data;
+      let product = response.data;
     }
     return product;
+  }
+
+  public async addProduct(product: ProductModel): Promise<void> {
+    var bodyFormData = new FormData();
+    Object.entries(product).forEach(([key, value]: [string, any]) => {
+      if (value?.$d) {
+        value = value.$d.toJSON();
+      }
+      bodyFormData.append(key, value);
+    });
+
+    const response = await axios({
+      method: "post",
+      url: appConfig.productsUrl,
+      data: bodyFormData,
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    const addedProduct = response.data;
+    productsStore.dispatch({
+      type: ProductsActionType.AddProducts,
+      payload: addedProduct,
+    });
   }
 }
 

@@ -51,6 +51,14 @@ class ProductsService {
       payload: addedProduct,
     });
   }
+
+  public async deleteProduct(productCode: string): Promise<void> {
+    await axios.delete(appConfig.productsUrl + productCode);
+    productsStore.dispatch({
+      type: ProductsActionType.DeleteProducts,
+      payload: productCode,
+    });
+  }
 }
 
 const productsService = new ProductsService();

@@ -14,8 +14,14 @@ import {
   Card,
   Container,
   Rating,
+  SpeedDial,
+  SpeedDialAction,
+  SpeedDialIcon,
   Typography,
+  colors,
 } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import productsService from "../../../Services/ProductsService";
 import notifyService from "../../../Services/NotifyService";
@@ -37,6 +43,8 @@ function ProductPage(): JSX.Element {
   const { productCode } = useParams<{ productCode: string }>();
 
   const [product, setProduct] = useState<ProductModel | null>(null);
+
+  const role = authStore.getState().user?.roleId;
 
   const navigate = useNavigate();
 
@@ -148,8 +156,52 @@ function ProductPage(): JSX.Element {
 
   const images = [product.image1Url, product.image2Url].filter(Boolean);
 
+  async function deleteMe() {
+    try {
+      const ok = window.confirm("Are you sure?");
+      if (!ok) return;
+      await productsService.deleteProduct(product.productCode);
+      notifyService.success("Product has been deleted");
+      navigate("/home");
+    } catch (err: any) {
+      notifyService.error(err);
+    }
+  }
+
+  const adminActions = [
+    { icon: <EditIcon />, name: "Edit" },
+    { icon: <DeleteIcon onClick={deleteMe} />, name: "Delete" },
+  ];
+
   return (
     <div className="ProductPage">
+      {role === 1 && (
+        <Box sx={{ flexGrow: 1 }}>
+          <SpeedDial
+            ariaLabel="SpeedDial"
+            sx={{
+              position: "absolute",
+              bottom: 16,
+              left: 16,
+              "& .MuiFab-primary": {
+                backgroundColor: "success.main",
+                "&:hover": {
+                  backgroundColor: "success.dark",
+                },
+              },
+            }}
+            icon={<SpeedDialIcon />}
+          >
+            {adminActions.map((action) => (
+              <SpeedDialAction
+                key={action.name}
+                icon={action.icon}
+                tooltipTitle={action.name}
+              />
+            ))}
+          </SpeedDial>
+        </Box>
+      )}
       {/* <Card className="ProductPageMobileCard"> */}
       <div className="bradCrumbBack">
         <Link to={"/home"}>

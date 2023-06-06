@@ -34,7 +34,7 @@ export function productsReducer(
       return new ProductState();
     case ProductsActionType.DeleteProducts:
       const indexToDelete = newState.products.findIndex(
-        (p) => p.id === action.payload
+        (p) => p.productCode === action.payload
       );
       if (indexToDelete >= 0) {
         newState.products.splice(indexToDelete, 1);

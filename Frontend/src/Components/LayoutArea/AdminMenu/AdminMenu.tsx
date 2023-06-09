@@ -18,9 +18,11 @@ function AdminMenu(): JSX.Element {
           </Link>
         </Tooltip>
         <Tooltip title="See Reports" placement="top">
+          <Link to={"/reports"}>
           <Fab color="success">
             <BarChartIcon />
           </Fab>
+          </Link>
         </Tooltip>
         <Tooltip title="Promotions" placement="top">
           <Fab color="success">

@@ -6,18 +6,16 @@ import Login from "../../AuthArea/Login/Login";
 import { authStore } from "../../../Redux/AuthState";
 import { useEffect, useState } from "react";
 import UserModel from "../../../Models/UserModel";
-import AddressForm from "../../CheckoutArea/AddressForm/AddressForm";
 import Checkout from "../../CheckoutArea/Checkout/Checkout";
 import OrderConfirmed from "../../CheckoutArea/OrderConfirmed/OrderConfirmed";
 import ProductPage from "../../ProductsArea/ProductPage/ProductPage";
-import ProductModel from "../../../Models/ProductModel";
-import { useParams } from "react-router-dom";
 import MyAccount from "../../AccountArea/MyAccount/MyAccount";
 import UpdateUserInfo from "../../AccountArea/UpdateUserInfo/UpdateUserInfo";
 import CartPage from "../../CartArea/CartPage/CartPage";
 import AiChef from "../../AiChefArea/AiChef/AiChef";
 import CreateProduct from "../../ProductsArea/CreateProduct/CreateProduct";
 import UpdateProduct from "../../ProductsArea/UpdateProduct/UpdateProduct";
+import Reports from "../../ReportsArea/Reports/Reports";
 
 function Routing(): JSX.Element {
   const [user, setUser] = useState<UserModel>();
@@ -43,6 +41,7 @@ function Routing(): JSX.Element {
           <Route path="/ai-powered-personal-chef" element={<AiChef />} />
           <Route path="/product/create-product" element={<CreateProduct />} />
           <Route path="/product/update-product/:productCode" element={<UpdateProduct />} />
+          <Route path="/reports" element={<Reports />} />
           <Route path="/cart/" element={<CartPage />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmed" element={<OrderConfirmed />} />

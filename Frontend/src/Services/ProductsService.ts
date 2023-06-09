@@ -20,12 +20,12 @@ class ProductsService {
   public async getOneProduct(productCode: string): Promise<ProductModel> {
     let products = productsStore.getState().products;
     let product = products.find((p) => p.productCode === productCode);
-
+    console.log(product);
     if (!product) {
       const response = await axios.get<ProductModel>(
         appConfig.productsUrl + productCode
       );
-      let product = response.data;
+      product = response.data;
     }
     return product;
   }
@@ -74,8 +74,6 @@ class ProductsService {
       payload: updatedProduct,
     });
   }
-
-
 
   public async deleteProduct(productCode: string): Promise<void> {
     await axios.delete(appConfig.productsUrl + productCode);

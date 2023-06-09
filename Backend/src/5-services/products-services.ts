@@ -24,7 +24,7 @@ async function getOneProduct(productCode: string): Promise<ProductModel> {
   FROM products WHERE productCode = ?`;
   const product = await dal.execute(sql, [productCode]);
   if (product.length === 0) throw new ResourceNotFoundError(productCode)
-  return product;
+  return product[0];
 }
 
 async function addProduct(product: ProductModel): Promise<ProductModel> {

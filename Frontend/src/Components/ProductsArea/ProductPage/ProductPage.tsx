@@ -49,31 +49,16 @@ function ProductPage(): JSX.Element {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedProduct = localStorage.getItem(productCode);
-
-    if (storedProduct) {
-      try {
-        setProduct(JSON.parse(storedProduct));
-      } catch (err) {
-        console.error("Could not parse stored product:", err);
-      }
-    } else {
-      productsService
-        .getOneProduct(productCode)
-        .then((responseProduct) => {
-          if (responseProduct) {
-            setProduct(responseProduct);
-            localStorage.setItem(productCode, JSON.stringify(responseProduct));
-          } else {
-            console.error("Product not found:", productCode);
-          }
-        })
-        .catch((err) => {
-          notifyService.error(err);
-          navigate("/home");
-        });
-    }
-  }, [productCode, navigate]);
+    productsService
+      .getOneProduct(productCode)
+      .then((responseProduct) => {
+        setProduct(responseProduct);
+      })
+      .catch((err) => {
+        notifyService.error(err);
+        navigate("/home");
+      });
+  }, []);
 
   const [user, setUser] = useState<UserModel>();
 
@@ -168,13 +153,12 @@ function ProductPage(): JSX.Element {
     }
   }
 
-function editMe(){
-  navigate(`/product/update-product/${product.productCode}`);
-}
-
+  function editMe() {
+    navigate(`/product/update-product/${product.productCode}`);
+  }
 
   const adminActions = [
-    { icon: <EditIcon onClick={editMe}/>, name: "Edit" },
+    { icon: <EditIcon onClick={editMe} />, name: "Edit" },
     { icon: <DeleteIcon onClick={deleteMe} />, name: "Delete" },
   ];
 

@@ -21,8 +21,8 @@ import CategoryModel from "../../../Models/CategoryModel";
 import categoryService from "../../../Services/CategoryService";
 
 function UpdateProduct(): JSX.Element {
+
   const params = useParams();
-  const { productCode } = useParams();
 
   const [categories, setCategories] = useState<CategoryModel[]>([]);
 
@@ -49,6 +49,7 @@ function UpdateProduct(): JSX.Element {
   >(undefined);
 
   useEffect(() => {
+    const productCode = params.productCode
     productsService
       .getOneProduct(productCode)
       .then((responseProduct) => {
@@ -63,8 +64,11 @@ function UpdateProduct(): JSX.Element {
         setProduct(responseProduct);
         setSelectedCategoryId(responseProduct.categoryId);
       })
-      .catch((err) => notifyService.error(err));
-  }, [productCode]);
+      .catch((err) => {
+        notifyService.error(err);
+        navigate("/home");
+      });
+  }, []);
 
   async function send(product: ProductModel) {
     try {
@@ -122,6 +126,7 @@ function UpdateProduct(): JSX.Element {
           <Typography variant="h5">Update Product</Typography>
           <form onSubmit={handleSubmit(send)}>
             <FormControl>
+            <input type="hidden" {...register("id")} />
               <Box mt={2} mb={2}>
                 <FormLabel>Product Code</FormLabel>
                 <TextField

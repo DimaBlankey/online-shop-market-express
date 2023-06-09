@@ -15,6 +15,8 @@ import {
 } from "chart.js";
 import { Box, Container, Grid, TextField, Typography } from "@mui/material";
 import ReportDates from "../ReportDates/ReportDates";
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import { CSVLink } from "react-csv"; 
 
 ChartJS.register(
   CategoryScale,
@@ -85,7 +87,18 @@ function Reports(): JSX.Element {
         notifyService.error(err);
       });
     }
-  }, [beginDate, endDate]);
+  }, [beginDate, endDate, productsSold]);
+
+
+   // Prepare data for CSV export
+   const csvData = productsSold.flatMap(product => {
+    const productsAndQuantity = JSON.parse(product.productsAndQuantity);
+    return productsAndQuantity.map((item: { name: any; quantity: any; }) => ({
+      name: item.name,
+      quantity: item.quantity
+    }));
+  });
+  
 
   return (
     <div className="Reports">
@@ -93,9 +106,13 @@ function Reports(): JSX.Element {
         <Typography variant="h3">Sales Report</Typography>   
         <ReportDates setBeginDate={setBeginDate} setEndDate={setEndDate}/>   
         <Bar data={chartData} />
+        <CSVLink data={csvData} filename={"sales_report.csv"}>
+          <FileDownloadIcon/>
+        </CSVLink>
       </Container>
     </div>
   );
 }
 
 export default Reports;
+

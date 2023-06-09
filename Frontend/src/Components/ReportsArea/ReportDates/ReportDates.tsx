@@ -18,9 +18,7 @@ interface IProps {
     const currentDate = new Date();
     const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1, 12).toISOString().slice(0, 10);
     const today = new Date(currentDate.setHours(12)).toISOString().slice(0, 10);
-  
-    const [dateRange, setDateRange] = useState<[string, string]>([firstDayOfMonth, today]);
-  
+    
     useEffect(() => {
       setBeginDate(firstDayOfMonth);
       setEndDate(today);

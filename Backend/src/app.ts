@@ -13,6 +13,7 @@ import tokenRoute from "./6-routes/token-routes";
 import reviewRoute from "./6-routes/reviews-routes";
 import gptRoute from "./6-routes/gpt-routes";
 import reportsRoute from "./6-routes/reports-routes";
+import promotionsRoute from "./6-routes/promotion-routes"
 import expressFileUpload from "express-fileupload";
 import preventXss from "./3-middleware/prevent-xss";
 import expressRateLimit from "express-rate-limit";
@@ -44,6 +45,7 @@ server.use("/api", tokenRoute);
 server.use("/api", reviewRoute);
 server.use("/api", gptRoute);
 server.use("/api", reportsRoute);
+server.use("/api", promotionsRoute);
 server.use(routeNotFound);
 server.use(catchAll);
 

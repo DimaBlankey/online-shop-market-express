@@ -32,6 +32,7 @@ import dayjs from "dayjs";
 import Autocomplete from "@mui/material/Autocomplete";
 
 function CreatePromotion(): JSX.Element {
+
   const [categories, setCategories] = useState<string[]>([]);
 
   const [products, setProducts] = useState<ProductModel[]>([]);
@@ -61,6 +62,7 @@ function CreatePromotion(): JSX.Element {
         setProducts(responseProducts);
       })
       .catch((err) => notifyService.error(err));
+      
   }, []);
 
   const {
@@ -273,46 +275,103 @@ function CreatePromotion(): JSX.Element {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Box mt={2} mb={2}>
-                    <Controller
-                      name={discountType}
-                      control={control}
-                      rules={{
-                        required: true,
-                        validate: {
-                          validValue: (value) => {
-                            if (
-                              discountType === "percentageDiscount" &&
-                              (value < 1 || value > 99)
-                            ) {
-                              return "Percentage must be between 1 and 99";
-                            } else if (value < 0.1 || value > 10000) {
-                              return "Value must be between 0.1 and 10000";
-                            }
-                            return true;
-                          },
-                        },
-                      }}
-                      render={({ field }) => (
-                        <TextField
-                          {...field}
-                          error={!!errors[discountType]}
-                          label="Discount Value"
-                          type="number"
-                          InputProps={{
-                            inputProps: {
-                              min:
-                                discountType === "percentageDiscount" ? 1 : 0.1,
-                              max:
-                                discountType === "percentageDiscount"
-                                  ? 99
-                                  : 10000,
-                              step:
-                                discountType === "percentageDiscount" ? 1 : 0.1,
+                    {discountType === "percentageDiscount" && (
+                      <Controller
+                        name="percentageDiscount"
+                        control={control}
+                        rules={{
+                          required: true,
+                          validate: {
+                            validValue: (value) => {
+                              if (value < 1 || value > 99) {
+                                return "Percentage must be between 1 and 99";
+                              }
+                              return true;
                             },
-                          }}
-                        />
-                      )}
-                    />
+                          },
+                        }}
+                        render={({ field }) => (
+                          <TextField
+                            {...field}
+                            error={!!errors[discountType]}
+                            label="Discount"
+                            type="number"
+                            InputProps={{
+                              inputProps: {
+                                min: 1,
+                                max: 99,
+                                step: 1,
+                              },
+                            }}
+                          />
+                        )}
+                      />
+                    )}
+                    {discountType === "amountDiscount" && (
+                      <Controller
+                        name="amountDiscount"
+                        control={control}
+                        rules={{
+                          required: true,
+                          validate: {
+                            validValue: (value) => {
+                              if (value < 0.1 || value > 10000) {
+                                return "Value must be between 0.1 and 10000";
+                              }
+                              return true;
+                            },
+                          },
+                        }}
+                        render={({ field }) => (
+                          <TextField
+                            {...field}
+                            error={!!errors[discountType]}
+                            label="Discount"
+                            type="number"
+                            InputProps={{
+                              inputProps: {
+                                min: 0.1,
+                                max: 10000,
+                                step: 0.1,
+                              },
+                            }}
+                          />
+                        )}
+                      />
+                    )}
+                    {discountType === "finalPriceDiscount" && (
+                      <Controller
+                        name="finalPriceDiscount"
+                        control={control}
+                        rules={{
+                          required: true,
+                          validate: {
+                            validValue: (value) => {
+                              if (value < 0.1 || value > 10000) {
+                                return "Value must be between 0.1 and 10000";
+                              }
+                              return true;
+                            },
+                          },
+                        }}
+                        render={({ field }) => (
+                          <TextField
+                            {...field}
+                            error={!!errors[discountType]}
+                            label="Discount"
+                            type="number"
+                            InputProps={{
+                              inputProps: {
+                                min: 0.1,
+                                max: 10000,
+                                step: 0.1,
+                              },
+                            }}
+                          />
+                        )}
+                      />
+                    )}
+
                     {errors[discountType] && (
                       <FormHelperText error>
                         {errors[discountType].message}

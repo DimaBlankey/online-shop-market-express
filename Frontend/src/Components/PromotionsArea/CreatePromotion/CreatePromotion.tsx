@@ -75,6 +75,7 @@ function CreatePromotion(): JSX.Element {
     watch,
     setValue,
     setError,
+    reset,
   } = useForm<PromotionModel>();
   const startDateValue = watch("startDate");
 
@@ -90,17 +91,31 @@ function CreatePromotion(): JSX.Element {
       return;
     }
 
-    let productCodes: string[] = [];
+    let productCodes: string[];
 
     promotion.startDate = dayjs(promotion.startDate).format("YYYY-MM-DD");
 
     promotion.endDate = dayjs(promotion.endDate).format("YYYY-MM-DD");
 
     if (chooseByCategory) {
+      if (!promotion.categories || promotion.categories.length === 0) {
+        setError("products", {
+          type: "manual",
+          message: "You must activate your choice",
+        });
+        return;
+      }
       productCodes = products
         .filter((product) => selectedCategories.includes(product.categoryName))
         .map((product) => product.productCode);
     } else if (chooseByProduct) {
+      if (!promotion.products || promotion.products.length === 0) {
+        setError("products", {
+          type: "manual",
+          message: "You must activate your choice",
+        });
+        return;
+      }
       productCodes = selectedProducts.map((product) => product.productCode);
     }
 
@@ -109,6 +124,16 @@ function CreatePromotion(): JSX.Element {
     try {
       await promotionService.addPromotion(promotion);
       notifyService.success("Promotion has been added!");
+      reset({
+        name: "",
+        startDate: null,
+        endDate: null,
+        percentageDiscount: 0,
+        amountDiscount: 0,
+        finalPriceDiscount: 0,
+      });
+      setSelectedCategories([]);
+      setSelectedProducts([]);
     } catch (err: any) {
       notifyService.error(err);
     }
@@ -316,9 +341,12 @@ function CreatePromotion(): JSX.Element {
                         labelId="discount-type-label"
                         label="Discount Type"
                         defaultValue="percentageDiscount"
-                        onChange={(event) =>
-                          setDiscountType(event.target.value as DiscountType)
-                        }
+                        onChange={(event) => {
+                          setDiscountType(event.target.value as DiscountType);
+                          setValue("percentageDiscount", 0);
+                          setValue("amountDiscount", 0);
+                          setValue("finalPriceDiscount", 0);
+                        }}
                       >
                         <MenuItem value="percentageDiscount">
                           Percentage
@@ -335,6 +363,7 @@ function CreatePromotion(): JSX.Element {
                   <Box mt={2} mb={2}>
                     {discountType === "percentageDiscount" && (
                       <Controller
+                        defaultValue={0}
                         name="percentageDiscount"
                         control={control}
                         rules={{
@@ -351,6 +380,7 @@ function CreatePromotion(): JSX.Element {
                         render={({ field }) => (
                           <TextField
                             {...field}
+                            value={field.value || ""}
                             error={!!errors[discountType]}
                             label="Discount"
                             type="number"
@@ -367,6 +397,7 @@ function CreatePromotion(): JSX.Element {
                     )}
                     {discountType === "amountDiscount" && (
                       <Controller
+                        defaultValue={0}
                         name="amountDiscount"
                         control={control}
                         rules={{
@@ -383,6 +414,7 @@ function CreatePromotion(): JSX.Element {
                         render={({ field }) => (
                           <TextField
                             {...field}
+                            value={field.value || ""}
                             error={!!errors[discountType]}
                             label="Discount"
                             type="number"
@@ -399,6 +431,7 @@ function CreatePromotion(): JSX.Element {
                     )}
                     {discountType === "finalPriceDiscount" && (
                       <Controller
+                        defaultValue={0}
                         name="finalPriceDiscount"
                         control={control}
                         rules={{
@@ -415,6 +448,7 @@ function CreatePromotion(): JSX.Element {
                         render={({ field }) => (
                           <TextField
                             {...field}
+                            value={field.value || ""}
                             error={!!errors[discountType]}
                             label="Discount"
                             type="number"

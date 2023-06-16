@@ -74,10 +74,22 @@ function CreatePromotion(): JSX.Element {
     formState: { errors },
     watch,
     setValue,
+    setError,
   } = useForm<PromotionModel>();
   const startDateValue = watch("startDate");
 
   async function send(promotion: PromotionModel) {
+    if (
+      (!promotion.products || promotion.products.length === 0) &&
+      (!promotion.categories || promotion.categories.length === 0)
+    ) {
+      setError("products", {
+        type: "manual",
+        message: "You must select at least one category or one product",
+      });
+      return;
+    }
+
     let productCodes: string[] = [];
 
     promotion.startDate = dayjs(promotion.startDate).format("YYYY-MM-DD");
@@ -287,6 +299,11 @@ function CreatePromotion(): JSX.Element {
                   render={({ field }) => <div {...field}></div>}
                 />
               </Box>
+              {errors.products && (
+                <FormHelperText sx={{ fontSize: 12 }} error>
+                  {errors.products.message}
+                </FormHelperText>
+              )}
               <FormLabel>Discount</FormLabel>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>

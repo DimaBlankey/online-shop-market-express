@@ -32,7 +32,6 @@ import dayjs from "dayjs";
 import Autocomplete from "@mui/material/Autocomplete";
 
 function CreatePromotion(): JSX.Element {
-
   const [categories, setCategories] = useState<string[]>([]);
 
   const [products, setProducts] = useState<ProductModel[]>([]);
@@ -40,6 +39,10 @@ function CreatePromotion(): JSX.Element {
   const [chooseByCategory, setChooseByCategory] = useState(false);
 
   const [chooseByProduct, setChooseByProduct] = useState(false);
+
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const [selectedProducts, setSelectedProducts] = useState<ProductModel[]>([]);
 
   type DiscountType =
     | "percentageDiscount"
@@ -62,7 +65,6 @@ function CreatePromotion(): JSX.Element {
         setProducts(responseProducts);
       })
       .catch((err) => notifyService.error(err));
-      
   }, []);
 
   const {
@@ -71,10 +73,27 @@ function CreatePromotion(): JSX.Element {
     handleSubmit,
     formState: { errors },
     watch,
+    setValue,
   } = useForm<PromotionModel>();
   const startDateValue = watch("startDate");
 
   async function send(promotion: PromotionModel) {
+    let productCodes: string[] = [];
+
+    promotion.startDate = dayjs(promotion.startDate).format("YYYY-MM-DD");
+
+    promotion.endDate = dayjs(promotion.endDate).format("YYYY-MM-DD");
+
+    if (chooseByCategory) {
+      productCodes = products
+        .filter((product) => selectedCategories.includes(product.categoryName))
+        .map((product) => product.productCode);
+    } else if (chooseByProduct) {
+      productCodes = selectedProducts.map((product) => product.productCode);
+    }
+
+    promotion.products = JSON.stringify(productCodes);
+
     try {
       await promotionService.addPromotion(promotion);
       notifyService.success("Promotion has been added!");
@@ -209,6 +228,11 @@ function CreatePromotion(): JSX.Element {
                   disabled={!chooseByCategory}
                   multiple
                   options={categories}
+                  value={selectedCategories}
+                  onChange={(event, newValue) => {
+                    setSelectedCategories(newValue);
+                    setValue("categories", newValue);
+                  }}
                   renderInput={(params) => (
                     <TextField
                       {...params}
@@ -217,6 +241,12 @@ function CreatePromotion(): JSX.Element {
                       placeholder="Choose..."
                     />
                   )}
+                />
+
+                <Controller
+                  name="categories"
+                  control={control}
+                  render={({ field }) => <div {...field}></div>}
                 />
               </Box>
               <Box mt={2} mb={2}>
@@ -236,6 +266,11 @@ function CreatePromotion(): JSX.Element {
                   getOptionLabel={(option) =>
                     `${option.name} (${option.productCode})`
                   }
+                  value={selectedProducts}
+                  onChange={(event, newValue) => {
+                    setSelectedProducts(newValue);
+                    setValue("products", newValue as unknown as string);
+                  }}
                   renderInput={(params) => (
                     <TextField
                       {...params}
@@ -244,6 +279,12 @@ function CreatePromotion(): JSX.Element {
                       placeholder="Products"
                     />
                   )}
+                />
+
+                <Controller
+                  name="products"
+                  control={control}
+                  render={({ field }) => <div {...field}></div>}
                 />
               </Box>
               <FormLabel>Discount</FormLabel>
@@ -315,8 +356,8 @@ function CreatePromotion(): JSX.Element {
                           required: true,
                           validate: {
                             validValue: (value) => {
-                              if (value < 0.1 || value > 10000) {
-                                return "Value must be between 0.1 and 10000";
+                              if (value < 0.01 || value > 10000) {
+                                return "Value must be between 0.01 and 10000";
                               }
                               return true;
                             },
@@ -330,9 +371,9 @@ function CreatePromotion(): JSX.Element {
                             type="number"
                             InputProps={{
                               inputProps: {
-                                min: 0.1,
+                                min: 0.01,
                                 max: 10000,
-                                step: 0.1,
+                                step: 0.01,
                               },
                             }}
                           />
@@ -347,7 +388,7 @@ function CreatePromotion(): JSX.Element {
                           required: true,
                           validate: {
                             validValue: (value) => {
-                              if (value < 0.1 || value > 10000) {
+                              if (value < 0.01 || value > 10000) {
                                 return "Value must be between 0.1 and 10000";
                               }
                               return true;
@@ -362,9 +403,9 @@ function CreatePromotion(): JSX.Element {
                             type="number"
                             InputProps={{
                               inputProps: {
-                                min: 0.1,
+                                min: 0.01,
                                 max: 10000,
-                                step: 0.1,
+                                step: 0.01,
                               },
                             }}
                           />

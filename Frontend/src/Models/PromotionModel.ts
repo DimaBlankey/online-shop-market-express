@@ -6,8 +6,11 @@ class PromotionModel {
     percentageDiscount: number;
     amountDiscount: number;
     finalPriceDiscount: number;
-    products: JSON;
+    products: string;
     isActive: boolean;
+
+    categories: string[];
+
   }
   
   export default PromotionModel;

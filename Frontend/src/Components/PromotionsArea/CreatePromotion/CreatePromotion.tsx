@@ -1,70 +1,89 @@
 import { useEffect, useState } from "react";
 import "./CreatePromotion.css";
 import {
-    Button,
-    FormControl,
-    TextField,
-    Typography,
-    FormHelperText,
-    Box,
-    InputAdornment,
-    IconButton,
-    Grid,
-    FormLabel,
-  } from "@mui/material";
+  Button,
+  FormControl,
+  TextField,
+  Typography,
+  FormHelperText,
+  Box,
+  InputAdornment,
+  IconButton,
+  Grid,
+  FormLabel,
+  Switch,
+  Select,
+  MenuItem,
+  InputLabel,
+} from "@mui/material";
 import CategoryModel from "../../../Models/CategoryModel";
 import categoryService from "../../../Services/CategoryService";
 import notifyService from "../../../Services/NotifyService";
 import PromotionModel from "../../../Models/PromotionModel";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import ProductModel from "../../../Models/ProductModel";
 import productsService from "../../../Services/ProductsService";
 import promotionService from "../../../Services/PromotionService";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import dayjs from "dayjs";
+import Autocomplete from "@mui/material/Autocomplete";
 
 function CreatePromotion(): JSX.Element {
+  const [categories, setCategories] = useState<string[]>([]);
 
-    // const [categories, setCategories] = useState<CategoryModel[]>([]);
+  const [products, setProducts] = useState<ProductModel[]>([]);
 
-    // useEffect(() => {
-    //   categoryService
-    //     .getAllCategories()
-    //     .then((responseCategories) => setCategories(responseCategories))
-    //     .catch((err) => notifyService.error(err));
-    // }, []);
+  const [chooseByCategory, setChooseByCategory] = useState(false);
 
-    const [products, setProducts] = useState<ProductModel[]>([]);
+  const [chooseByProduct, setChooseByProduct] = useState(false);
 
-    useEffect(() => {
-        productsService
-          .getAllProducts()
-          .then((responseProducts) => {
-            setProducts(responseProducts);
-          })
-          .catch((err) => notifyService.error(err));
-      }, []);
+  type DiscountType =
+    | "percentageDiscount"
+    | "amountDiscount"
+    | "finalPriceDiscount";
 
-    const {
-        register,
-        control,
-        handleSubmit,
-        formState: { errors },
-      } = useForm<PromotionModel>();
-      const navigate = useNavigate();
+  const [discountType, setDiscountType] =
+    useState<DiscountType>("percentageDiscount");
 
-      async function send(promotion: PromotionModel) {
-        try {
-          await promotionService.addPromotion(promotion);
-          notifyService.success("Promotion has been added!");
-        } catch (err: any) {
-          notifyService.error(err);
-        }
-      }
-    
+  useEffect(() => {
+    const categorySet = new Set<string>();
+    products.forEach((product) => categorySet.add(product.categoryName));
+    setCategories(Array.from(categorySet));
+  }, [products]);
 
-    return (
-        <div className="CreatePromotion">
-			<Box
+  useEffect(() => {
+    productsService
+      .getAllProducts()
+      .then((responseProducts) => {
+        setProducts(responseProducts);
+      })
+      .catch((err) => notifyService.error(err));
+  }, []);
+
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm<PromotionModel>();
+  const startDateValue = watch("startDate");
+
+  async function send(promotion: PromotionModel) {
+    try {
+      await promotionService.addPromotion(promotion);
+      notifyService.success("Promotion has been added!");
+    } catch (err: any) {
+      notifyService.error(err);
+    }
+  }
+
+  return (
+    <div className="CreatePromotion">
+      <Box
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -85,7 +104,7 @@ function CreatePromotion(): JSX.Element {
         >
           <Typography variant="h5">Add Promotion</Typography>
           <form onSubmit={handleSubmit(send)}>
-            <FormControl>     
+            <FormControl>
               <Box mt={2} mb={2}>
                 <FormLabel>Promotion Name</FormLabel>
                 <TextField
@@ -110,6 +129,199 @@ function CreatePromotion(): JSX.Element {
                 )}
               </Box>
 
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <Box mt={2} mb={2}>
+                    <FormLabel>Start Date</FormLabel>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <Controller
+                        name="startDate"
+                        control={control}
+                        defaultValue={null}
+                        rules={{
+                          required: true,
+                        }}
+                        render={({ field }) => (
+                          <DatePicker
+                            value={field.value}
+                            onChange={(newValue) => field.onChange(newValue)}
+                            disablePast
+                          />
+                        )}
+                      />
+                    </LocalizationProvider>
+                    {errors.startDate &&
+                      errors.startDate.type === "required" && (
+                        <FormHelperText sx={{ fontSize: 12 }} error>
+                          Start date is required
+                        </FormHelperText>
+                      )}
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box mt={2} mb={2}>
+                    <FormLabel>End Date</FormLabel>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <Controller
+                        name="endDate"
+                        control={control}
+                        defaultValue={null}
+                        rules={{
+                          required: true,
+                          validate: (value) =>
+                            !dayjs(value).isBefore(dayjs(startDateValue)) ||
+                            "End date must be after start date",
+                        }}
+                        render={({ field }) => (
+                          <DatePicker
+                            value={field.value}
+                            onChange={(newValue) => field.onChange(newValue)}
+                            disablePast
+                          />
+                        )}
+                      />
+                    </LocalizationProvider>
+                    {errors.endDate && errors.endDate.type === "required" && (
+                      <FormHelperText sx={{ fontSize: 12 }} error>
+                        Start date is required
+                      </FormHelperText>
+                    )}
+                    {errors.endDate && errors.endDate.type === "validate" && (
+                      <FormHelperText sx={{ fontSize: 12 }} error>
+                        {errors.endDate.message}
+                      </FormHelperText>
+                    )}
+                  </Box>
+                </Grid>
+              </Grid>
+              <Box mt={2} mb={2}>
+                <FormLabel>Choose by Categories</FormLabel>
+                <Switch
+                  checked={chooseByCategory}
+                  onChange={(event) => {
+                    setChooseByCategory(event.target.checked);
+                    setChooseByProduct(!event.target.checked);
+                  }}
+                />
+                <Autocomplete
+                  disabled={!chooseByCategory}
+                  multiple
+                  options={categories}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      variant="standard"
+                      label="Categories"
+                      placeholder="Choose..."
+                    />
+                  )}
+                />
+              </Box>
+              <Box mt={2} mb={2}>
+                <FormLabel>Choose by Products</FormLabel>
+                <Switch
+                  checked={chooseByProduct}
+                  onChange={(event) => {
+                    setChooseByProduct(event.target.checked);
+                    setChooseByCategory(!event.target.checked);
+                  }}
+                />
+                <Autocomplete
+                  disabled={!chooseByProduct}
+                  id="CreatePromotion-product-autocomplete"
+                  multiple
+                  options={products}
+                  getOptionLabel={(option) =>
+                    `${option.name} (${option.productCode})`
+                  }
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      variant="standard"
+                      label="Select a product"
+                      placeholder="Products"
+                    />
+                  )}
+                />
+              </Box>
+              <FormLabel>Discount</FormLabel>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <Box mt={2} mb={2}>
+                    <FormControl fullWidth>
+                      <InputLabel id="discount-type-label">
+                        Discount Type
+                      </InputLabel>
+                      <Select
+                        labelId="discount-type-label"
+                        label="Discount Type"
+                        defaultValue="percentageDiscount"
+                        onChange={(event) =>
+                          setDiscountType(event.target.value as DiscountType)
+                        }
+                      >
+                        <MenuItem value="percentageDiscount">
+                          Percentage
+                        </MenuItem>
+                        <MenuItem value="amountDiscount">Amount</MenuItem>
+                        <MenuItem value="finalPriceDiscount">
+                          Final Price
+                        </MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Box mt={2} mb={2}>
+                    <Controller
+                      name={discountType}
+                      control={control}
+                      rules={{
+                        required: true,
+                        validate: {
+                          validValue: (value) => {
+                            if (
+                              discountType === "percentageDiscount" &&
+                              (value < 1 || value > 99)
+                            ) {
+                              return "Percentage must be between 1 and 99";
+                            } else if (value < 0.1 || value > 10000) {
+                              return "Value must be between 0.1 and 10000";
+                            }
+                            return true;
+                          },
+                        },
+                      }}
+                      render={({ field }) => (
+                        <TextField
+                          {...field}
+                          error={!!errors[discountType]}
+                          label="Discount Value"
+                          type="number"
+                          InputProps={{
+                            inputProps: {
+                              min:
+                                discountType === "percentageDiscount" ? 1 : 0.1,
+                              max:
+                                discountType === "percentageDiscount"
+                                  ? 99
+                                  : 10000,
+                              step:
+                                discountType === "percentageDiscount" ? 1 : 0.1,
+                            },
+                          }}
+                        />
+                      )}
+                    />
+                    {errors[discountType] && (
+                      <FormHelperText error>
+                        {errors[discountType].message}
+                      </FormHelperText>
+                    )}
+                  </Box>
+                </Grid>
+              </Grid>
+
               <Button
                 variant="contained"
                 type="submit"
@@ -122,8 +334,8 @@ function CreatePromotion(): JSX.Element {
           </form>
         </Box>
       </Box>
-        </div>
-    );
+    </div>
+  );
 }
 
 export default CreatePromotion;

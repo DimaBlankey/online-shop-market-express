@@ -6,8 +6,9 @@ import { ResourceNotFoundError } from "../2-models/client-errors";
 
 async function getAllPromotions(): Promise<PromotionModel[]> {
   const sql = `
-    SELECT *
-    FROM promotions
+  SELECT *
+  FROM promotions
+  ORDER BY isActive DESC, startDate ASC;
     `;
   const promotions = await dal.execute(sql);
   return promotions;

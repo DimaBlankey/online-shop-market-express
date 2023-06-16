@@ -9,6 +9,12 @@ class PromotionService {
       promotion
     );
   }
+
+  public async getAllPromotions(): Promise<PromotionModel[]> {
+    const response = await axios.get<PromotionModel[]>(appConfig.promotionsUrl);
+    const promotions = response.data;
+    return promotions;
+  }
 }
 
 const promotionService = new PromotionService();

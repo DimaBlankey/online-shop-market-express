@@ -154,13 +154,12 @@ function CreatePromotion(): JSX.Element {
             backgroundColor: "rgba(255, 255, 255, 0.5)",
             width: "100%",
             maxWidth: "450px",
-            mt: 2,
             borderColor: "gray.200",
             borderRadius: "30px",
             p: 4,
           }}
         >
-          <Typography variant="h5">Add Promotion</Typography>
+          <Typography variant="h4">Add Promotion</Typography>
           <form onSubmit={handleSubmit(send)}>
             <FormControl>
               <Box mt={2} mb={2}>

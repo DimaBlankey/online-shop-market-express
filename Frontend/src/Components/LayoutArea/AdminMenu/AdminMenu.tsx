@@ -25,9 +25,11 @@ function AdminMenu(): JSX.Element {
           </Link>
         </Tooltip>
         <Tooltip title="Promotions" placement="top">
+        <Link to={"/promotions"}>
           <Fab color="success">
           <SellIcon></SellIcon>
           </Fab>
+          </Link>
         </Tooltip>
         
       </Box>

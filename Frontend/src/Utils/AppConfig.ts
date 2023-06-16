@@ -13,6 +13,7 @@ class AppConfig {
   public reviewSummeryByProductUrl = "http://localhost:4000/api/review-summery-by-product/";
   public gptUrl = "http://localhost:4000/api/gpt/";
   public reportsUrl = "http://localhost:4000/api/reports/"
+  public promotionsUrl = "http://localhost:4000/api/promotions/"
 }
 
 const appConfig = new AppConfig();

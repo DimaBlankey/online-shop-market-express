@@ -20,7 +20,6 @@ class ProductsService {
   public async getOneProduct(productCode: string): Promise<ProductModel> {
     let products = productsStore.getState().products;
     let product = products.find((p) => p.productCode === productCode);
-    console.log(product);
     if (!product) {
       const response = await axios.get<ProductModel>(
         appConfig.productsUrl + productCode

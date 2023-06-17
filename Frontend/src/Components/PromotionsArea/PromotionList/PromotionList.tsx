@@ -16,10 +16,19 @@ import { Switch } from "@mui/material";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import { promotionsStore } from "../../../Redux/PromotionState";
 
 function PromotionList(): JSX.Element {
-  
   const [promotions, setPromotions] = useState<PromotionModel[]>([]);
+
+  useEffect(() => {
+    setPromotions(promotionsStore.getState().promotions);
+    const unsubscribe = promotionsStore.subscribe(() => {
+      const newPromotions = promotionsStore.getState().promotions;
+      setPromotions(newPromotions);
+    });
+    return () =>  unsubscribe();
+  }, []);
 
   useEffect(() => {
     promotionService
@@ -32,7 +41,6 @@ function PromotionList(): JSX.Element {
 
   async function promotionStatus(promotion: PromotionModel, index: number) {
     const newPromotion = { ...promotion, isActive: !promotion.isActive };
-
     try {
       await promotionService.promotionStatus(newPromotion);
       // update state
@@ -46,7 +54,7 @@ function PromotionList(): JSX.Element {
     }
   }
 
-  async function deletePromotion(promotionId: number){
+  async function deletePromotion(promotionId: number) {
     try {
       const ok = window.confirm("Are you sure?");
       if (!ok) return;
@@ -56,7 +64,6 @@ function PromotionList(): JSX.Element {
       notifyService.error(err);
     }
   }
-
 
   return (
     <div className="PromotionList scrollbar">
@@ -85,7 +92,11 @@ function PromotionList(): JSX.Element {
                     </FormGroup>
                   </Grid>
                   <Grid item>
-                    <Button variant="text" color="error" onClick={() => deletePromotion(promotion.id)}>
+                    <Button
+                      variant="text"
+                      color="error"
+                      onClick={() => deletePromotion(promotion.id)}
+                    >
                       DELETE
                     </Button>
                   </Grid>

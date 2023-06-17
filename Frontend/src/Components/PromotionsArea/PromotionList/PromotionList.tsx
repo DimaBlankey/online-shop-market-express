@@ -29,13 +29,30 @@ function PromotionList(): JSX.Element {
       .catch((err) => notifyService.error(err));
   }, []);
 
+  async function promotionStatus(promotion: PromotionModel, index: number) {
+    const newPromotion = { ...promotion, isActive: !promotion.isActive };
+
+    try {
+      await promotionService.promotionStatus(newPromotion);
+      notifyService.success("Promotion has been updated!");
+
+      // update state
+      setPromotions((prevPromotions) => {
+        const newPromotions = [...prevPromotions]; // create a copy
+        newPromotions[index] = newPromotion; // replace the promotion at this index
+        return newPromotions;
+      });
+    } catch (err: any) {
+      notifyService.error(err);
+    }
+  }
+
   return (
     <div className="PromotionList scrollbar">
       <Typography variant="h4">Promotions</Typography>
       {promotions.length > 0 ? (
         promotions.map((promotion, index) => {
           const products = JSON.parse(promotion.products);
-          console.log(products);
           return (
             <Card key={index} sx={{ margin: "10px" }}>
               <FormControl component="fieldset">
@@ -44,7 +61,13 @@ function PromotionList(): JSX.Element {
                     <FormGroup aria-label="position" row>
                       <FormControlLabel
                         value="active"
-                        control={<Switch color="primary" />}
+                        control={
+                          <Switch
+                            checked={promotion.isActive === true}
+                            onChange={() => promotionStatus(promotion, index)}
+                            color="primary"
+                          />
+                        }
                         label="Activate"
                         labelPlacement="start"
                       />
@@ -88,7 +111,7 @@ function PromotionList(): JSX.Element {
                 <Typography variant="h6" component="div">
                   Products
                 </Typography>
-                <List>
+                <List className="scrollbar">
                   {products.map((product: any, productIndex: number) => (
                     <ListItem key={productIndex}>
                       <Typography variant="subtitle1">{product}</Typography>

@@ -12,18 +12,22 @@ class PromotionService {
 
   public async getAllPromotions(): Promise<PromotionModel[]> {
     const response = await axios.get<PromotionModel[]>(appConfig.promotionsUrl);
-    const promotions = response.data.map(promotion => ({
+    const promotions = response.data.map((promotion) => ({
       ...promotion,
       isActive: Boolean(promotion.isActive),
     }));
     return promotions;
   }
-  
 
   public async promotionStatus(promotion: PromotionModel): Promise<void> {
     const response = await axios.put<PromotionModel>(
-      appConfig.promotionsUrl + promotion.id , promotion
+      appConfig.promotionsUrl + promotion.id,
+      promotion
     );
+  }
+
+  public async deletePromotion(promotionId: number): Promise<void> {
+    await axios.delete(appConfig.promotionsUrl + promotionId);
   }
 }
 

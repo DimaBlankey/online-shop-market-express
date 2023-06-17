@@ -18,6 +18,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 
 function PromotionList(): JSX.Element {
+  
   const [promotions, setPromotions] = useState<PromotionModel[]>([]);
 
   useEffect(() => {
@@ -34,8 +35,6 @@ function PromotionList(): JSX.Element {
 
     try {
       await promotionService.promotionStatus(newPromotion);
-      notifyService.success("Promotion has been updated!");
-
       // update state
       setPromotions((prevPromotions) => {
         const newPromotions = [...prevPromotions]; // create a copy
@@ -46,6 +45,18 @@ function PromotionList(): JSX.Element {
       notifyService.error(err);
     }
   }
+
+  async function deletePromotion(promotionId: number){
+    try {
+      const ok = window.confirm("Are you sure?");
+      if (!ok) return;
+      await promotionService.deletePromotion(promotionId);
+      notifyService.success("Promotion has been deleted");
+    } catch (err: any) {
+      notifyService.error(err);
+    }
+  }
+
 
   return (
     <div className="PromotionList scrollbar">
@@ -74,7 +85,7 @@ function PromotionList(): JSX.Element {
                     </FormGroup>
                   </Grid>
                   <Grid item>
-                    <Button variant="text" color="error">
+                    <Button variant="text" color="error" onClick={() => deletePromotion(promotion.id)}>
                       DELETE
                     </Button>
                   </Grid>

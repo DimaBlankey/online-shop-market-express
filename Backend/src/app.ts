@@ -18,6 +18,8 @@ import expressFileUpload from "express-fileupload";
 import preventXss from "./3-middleware/prevent-xss";
 import expressRateLimit from "express-rate-limit";
 import promotionAutoService from "./5-services/promotion-auto-service";
+import cron from 'node-cron';
+
 
 const server = express();
 
@@ -50,6 +52,10 @@ server.use("/api", promotionsRoute);
 server.use(routeNotFound);
 server.use(catchAll);
 promotionAutoService.dailyAutoPromotionService();
+cron.schedule('0 0 * * *', async () => {
+  await promotionAutoService.dailyAutoPromotionService();
+});
+
 
 server.listen(appConfig.port, () =>
   console.log("Listening on http://localhost:" + appConfig.port)

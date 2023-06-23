@@ -11,6 +11,10 @@
   overflow-x: hidden;
 }
 
+.ProductsList .AdminMenu{
+  margin-bottom: 6px;
+  margin-top: 4px;
+}
 
 
 @media (max-width: 920px) {

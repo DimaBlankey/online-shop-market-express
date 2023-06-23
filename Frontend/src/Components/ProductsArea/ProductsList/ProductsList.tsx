@@ -54,7 +54,7 @@ function ProductsList(): JSX.Element {
   return (
     <div className="ProductsList">
       {role === 1 && (
-      <AdminMenu />
+      <AdminMenu/>
       )}
       <ResponsiveAppBar onCategoryClick={handleCategoryClick} />
       <ProductsSearch onSearch={handleSearch} />

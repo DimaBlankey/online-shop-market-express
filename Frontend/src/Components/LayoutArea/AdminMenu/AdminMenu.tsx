@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 function AdminMenu(): JSX.Element {
   return (
     <div className="AdminMenu">
-      <Box sx={{ "& > :not(style)": { m: 1 } }}>
+      <Box sx={{ "& > :not(style)": { m: 1} }}>
         <Tooltip title="Add Products" placement="top">
         <Link to={"/product/create-product"}>
           <Fab color="success">

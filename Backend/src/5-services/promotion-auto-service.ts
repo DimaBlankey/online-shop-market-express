@@ -38,8 +38,7 @@ async function dailyAutoPromotionService(): Promise<void> {
           newPrice = Math.max(0, originalPrice - promo.amountDiscount);
         } else if (promo.finalPriceDiscount > 0) {
           newPrice = promo.finalPriceDiscount;
-        }
-  
+        }  
         if (newPrice !== null) {
           const updatePrice = `
           UPDATE products

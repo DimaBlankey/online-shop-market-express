@@ -13,10 +13,11 @@ import tokenRoute from "./6-routes/token-routes";
 import reviewRoute from "./6-routes/reviews-routes";
 import gptRoute from "./6-routes/gpt-routes";
 import reportsRoute from "./6-routes/reports-routes";
-import promotionsRoute from "./6-routes/promotion-routes"
+import promotionsRoute from "./6-routes/promotion-routes";
 import expressFileUpload from "express-fileupload";
 import preventXss from "./3-middleware/prevent-xss";
 import expressRateLimit from "express-rate-limit";
+import promotionAutoService from "./5-services/promotion-auto-service";
 
 const server = express();
 
@@ -48,6 +49,7 @@ server.use("/api", reportsRoute);
 server.use("/api", promotionsRoute);
 server.use(routeNotFound);
 server.use(catchAll);
+promotionAutoService.dailyAutoPromotionService();
 
 server.listen(appConfig.port, () =>
   console.log("Listening on http://localhost:" + appConfig.port)

@@ -5308,3 +5308,9 @@ Stack: Error: ER_BAD_FIELD_ERROR: Unknown column 'NaN' in 'where clause'
     at __awaiter (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\promotion-services.ts:4:12)
     at Object.promotionStatus (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\promotion-services.ts:49:12)
 ----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 06:30:12 GMT
+Invalid token
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 06:46:57 GMT
+Incorrect email or password
+----------------------------------------------------------------------------------------------------

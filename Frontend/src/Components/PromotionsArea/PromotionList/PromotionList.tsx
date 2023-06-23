@@ -27,7 +27,7 @@ function PromotionList(): JSX.Element {
       const newPromotions = promotionsStore.getState().promotions;
       setPromotions(newPromotions);
     });
-    return () =>  unsubscribe();
+    return () => unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -96,6 +96,7 @@ function PromotionList(): JSX.Element {
                       variant="text"
                       color="error"
                       onClick={() => deletePromotion(promotion.id)}
+                      disabled={promotion.isActive === true}
                     >
                       DELETE
                     </Button>

@@ -17,7 +17,13 @@ async function getOneUser(id: number): Promise<UserModel> {
 }
 
 async function updateUser(user: UserModel): Promise<UserModel> {
-  // Do validation
+  // Validation
+  user.validateUserPut();
+
+  if(user.idCardNumber.toString().length !== 9) {
+    throw new ValidationError("ID is not correct.")
+}
+
   const sql = `UPDATE users SET
     firstName = ?,
     lastName = ?,

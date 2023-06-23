@@ -51,6 +51,7 @@ async function dailyAutoPromotionService(): Promise<void> {
         }
       }
     }
+    
   }
   
   export default {

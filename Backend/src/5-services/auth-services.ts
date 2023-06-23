@@ -9,7 +9,13 @@ import cartServices from "./cart-services";
 
 // Register new user:
 async function register(user: UserModel): Promise<string> {
-  // Do Validation
+
+  //  Validation
+  user.validateUserPost();
+
+  if(user.idCardNumber.toString().length !== 9) {
+    throw new ValidationError("ID is not correct.")
+}
 
   // Is username taken:
   const isTaken = await isUserEmailTakenOrIdTaken(user.email, user.idCardNumber);

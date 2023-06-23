@@ -5314,3 +5314,148 @@ Invalid token
 Fri, 23 Jun 2023 06:46:57 GMT
 Incorrect email or password
 ----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:42:06 GMT
+"idCardNumber" must be a string
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:43:08 GMT
+"idCardNumber" must be greater than or equal to 100000000
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:45:56 GMT
+"city" is not allowed
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:51:46 GMT
+ID is not correct.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:51:51 GMT
+ID is not correct.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:51:56 GMT
+ID is not correct.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:52:07 GMT
+ID is not correct.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:52:28 GMT
+ID is not correct.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:52:33 GMT
+ID is not correct.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:52:45 GMT
+ID is not correct.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:52:58 GMT
+ID is not correct.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:53:41 GMT
+ID is not correct.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:55:59 GMT
+ID is not correct.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:56:06 GMT
+ID is not correct.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:57:11 GMT
+Unexpected number in JSON at position 113
+Stack: SyntaxError: Unexpected number in JSON at position 113
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\body-parser\lib\types\json.js:89:19)
+    at C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:203:9)
+    at invokeCallback (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\raw-body\index.js:231:16)
+    at done (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\raw-body\index.js:220:7)
+    at IncomingMessage.onEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\raw-body\index.js:280:7)
+    at IncomingMessage.emit (node:events:513:28)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 14:58:37 GMT
+Email sparrow@gmail.com Or ID 446676455 already taken
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:07:25 GMT
+"id" is not allowed
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:08:10 GMT
+"email" is required
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:10:17 GMT
+ID is not correct.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:10:22 GMT
+ID is not correct.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:10:42 GMT
+"email" must be a valid email
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:10:55 GMT
+"email" must be a valid email
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:33:50 GMT
+"id" is not allowed
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:34:16 GMT
+"date" must be greater than or equal to "now"
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:35:49 GMT
+"date" must be in ISO 8601 date format
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:35:54 GMT
+"date" must be in ISO 8601 date format
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:36:16 GMT
+"date" must be greater than or equal to "now"
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:36:24 GMT
+"date" must be greater than or equal to "now"
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:37:04 GMT
+"date" must be greater than or equal to "now"
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:38:04 GMT
+"date" must be greater than or equal to "now"
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:47:14 GMT
+You have already reviewed this item.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:47:28 GMT
+You have already reviewed this item.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 15:47:32 GMT
+You have already reviewed this item.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 16:05:52 GMT
+You have already reviewed this item.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 16:12:41 GMT
+Cannot access 'uniqueIds' before initialization
+Stack: ReferenceError: Cannot access 'uniqueIds' before initialization
+    at C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\reviews-services.ts:85:53
+    at Array.forEach (<anonymous>)
+    at Object.<anonymous> (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\reviews-services.ts:85:29)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\reviews-services.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 16:13:35 GMT
+Cannot read properties of undefined (reading 'push')
+Stack: TypeError: Cannot read properties of undefined (reading 'push')
+    at C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\reviews-services.ts:85:46
+    at Array.forEach (<anonymous>)
+    at Object.<anonymous> (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\reviews-services.ts:85:22)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\reviews-services.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 16:22:23 GMT
+Only costumers who bought this item can review it
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 16:22:33 GMT
+Only costumers who bought this item can review it
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 16:23:12 GMT
+You have already reviewed this item.
+----------------------------------------------------------------------------------------------------
+Fri, 23 Jun 2023 16:24:52 GMT
+Only costumers who bought this item can review it
+----------------------------------------------------------------------------------------------------

@@ -1,3 +1,6 @@
+import { ValidationError } from "./client-errors";
+import Joi from "joi";
+
 class PromotionModel {
   id: number;
   name: string;
@@ -20,9 +23,31 @@ class PromotionModel {
     this.products = promotion.products;
     this.isActive = promotion.isActive;
   }
+  private static postValidationSchema = Joi.object({
+    id: Joi.number().forbidden().positive().integer(),
+    name: Joi.string().required().min(2).max(50),
+    startDate: Joi.date().required(),
+    endDate: Joi.date().required(),
+    percentageDiscount: Joi.number().allow(null).optional(),
+    amountDiscount: Joi.number().allow(null).optional(),
+    finalPriceDiscount: Joi.number().allow(null).optional(),
+    products: Joi.string()
+      .custom((value, helpers) => {
+        try {
+          JSON.parse(value);
+        } catch (err) {
+          return helpers.error("any.invalid");
+        }
+        return value;
+      }, "JSON Validation")
+      .required(),
+    isActive: Joi.forbidden(),
+  });
 
-// Do Validations!  
-
+  public validatePromotionPost(): void {
+    const result = PromotionModel.postValidationSchema.validate(this);
+    if (result.error) throw new ValidationError(result.error.message);
+  }
 }
 
 export default PromotionModel;

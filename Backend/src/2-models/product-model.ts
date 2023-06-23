@@ -1,4 +1,6 @@
 import { UploadedFile } from "express-fileupload";
+import { ValidationError } from "./client-errors";
+import Joi from "joi";
 
 class ProductModel {
   id: number;
@@ -31,8 +33,47 @@ class ProductModel {
     this.productCode = product.productCode;
   }
 
-//   Do Validation!
+  private static postValidationSchema = Joi.object({
+    id: Joi.number().forbidden().positive().integer(),
+    categoryId: Joi.number().required().positive().integer(),
+    name: Joi.string().required().min(2).max(50),
+    description: Joi.string().required().min(2).max(250),
+    price: Joi.number().required().positive(),
+    image1: Joi.optional(),
+    image1Url: Joi.optional(),
+    image2: Joi.optional(),
+    image2Url: Joi.optional(),
+    salePrice: Joi.forbidden(),
+    saleStartDate: Joi.forbidden(),
+    saleEndDate: Joi.forbidden(),
+    productCode: Joi.string().required(),
+  });
 
+  private static putValidationSchema = Joi.object({
+    id: Joi.number().required().positive().integer(),
+    categoryId: Joi.number().required().positive().integer(),
+    name: Joi.string().required().min(2).max(50),
+    description: Joi.string().required().min(2).max(250),
+    price: Joi.number().required().positive(),
+    image1: Joi.optional(),
+    image1Url: Joi.optional(),
+    image2: Joi.optional(),
+    image2Url: Joi.optional(),
+    salePrice: Joi.forbidden(),
+    saleStartDate: Joi.forbidden(),
+    saleEndDate: Joi.forbidden(),
+    productCode: Joi.string().required(),
+  });
+
+  public validateProductPost(): void {
+    const result = ProductModel.postValidationSchema.validate(this);
+    if (result.error) throw new ValidationError(result.error.message);
+  }
+
+  public validateProductPut(): void {
+    const result = ProductModel.putValidationSchema.validate(this);
+    if (result.error) throw new ValidationError(result.error.message);
+  }
 }
 
 export default ProductModel;

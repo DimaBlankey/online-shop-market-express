@@ -17,7 +17,10 @@ async function getAllPromotions(): Promise<PromotionModel[]> {
 async function addPromotion(
   promotion: PromotionModel
 ): Promise<PromotionModel> {
-  // DO validations
+
+  // Validation
+  promotion.validatePromotionPost();
+
   const sql = `
   INSERT INTO promotions VALUES(DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?)`;
   const isActive = false;
@@ -40,7 +43,7 @@ async function addPromotion(
 async function promotionStatus(
   promotion: PromotionModel
 ): Promise<PromotionModel> {
-  // Do validation
+ 
   const sql = `
   UPDATE promotions SET
   isActive = ?

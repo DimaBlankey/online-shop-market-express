@@ -23,12 +23,13 @@ async function getOneProduct(productCode: string): Promise<ProductModel> {
   CONCAT('${appConfig.imagesUrl}', image2) AS image2Url
   FROM products WHERE productCode = ?`;
   const product = await dal.execute(sql, [productCode]);
-  if (product.length === 0) throw new ResourceNotFoundError(productCode)
+  if (product.length === 0) throw new ResourceNotFoundError(productCode);
   return product[0];
 }
 
 async function addProduct(product: ProductModel): Promise<ProductModel> {
-  // Do Validation
+  // Validation
+  product.validateProductPost();
 
   // Check if exists
   const sqlCheck = `SELECT * FROM products WHERE productCode = ?`;
@@ -73,7 +74,9 @@ async function addProduct(product: ProductModel): Promise<ProductModel> {
 }
 
 async function updateProduct(product: ProductModel): Promise<ProductModel> {
-  // Do Validation!
+  
+  // Validation
+  product.validateProductPut();
 
   let images = await getProductImageName(product.productCode);
   if (product.image1) {

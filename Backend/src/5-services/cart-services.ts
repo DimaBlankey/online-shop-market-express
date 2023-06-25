@@ -6,7 +6,7 @@ import logger from "../4-utils/logger";
 import CartDetailsModel from "../2-models/cart-details-model";
 
 async function createNewCart(userId: number): Promise<number> {
-  // Do Validation
+  
   const sqlCheck = `SELECT * FROM cart WHERE userId = ?`;
   const rows = await dal.execute(sqlCheck, [userId]);
   if (rows.length > 0) {

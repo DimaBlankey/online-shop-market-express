@@ -7,7 +7,9 @@ import OrderModel from "../2-models/order-model";
 import cartServices from "./cart-services";
 
 async function addOrder(order: OrderModel): Promise<[OrderModel, number]> {
-  // Do Validation
+ 
+  //  Validation
+  order.validateOrderPost();
 
   const sqlCheck = `SELECT * FROM orders WHERE cartId = ?`;
   const rows = await dal.execute(sqlCheck, [order.cartId]);

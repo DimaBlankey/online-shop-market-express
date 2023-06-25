@@ -4,15 +4,28 @@ import Layout from './Components/LayoutArea/Layout/Layout';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import interceptorService from './Services/InterceptorService';
+import { ThemeProvider, createMuiTheme } from "@mui/material/styles";
 
 interceptorService.create();
+
+const theme = createMuiTheme({
+    typography: {
+      fontFamily: [
+        'Montserrat',
+        'sans-serif',
+      ].join(','),
+    },
+  });
+  
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
     <BrowserRouter>
-        <Layout />
+          <ThemeProvider theme={theme}>
+            <Layout />
+        </ThemeProvider>
     </BrowserRouter>
 );
 

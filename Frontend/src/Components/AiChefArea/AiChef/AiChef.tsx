@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { Backdrop, Box, CircularProgress, Typography } from "@mui/material";
+import {
+  Backdrop,
+  Box,
+  CircularProgress,
+  Container,
+  Typography,
+} from "@mui/material";
 import PromptField from "../PromptField/PromptField";
 import "./AiChef.css";
 import { RecipeResponse } from "../../../Services/GptService";
@@ -7,6 +13,7 @@ import ProductModel from "../../../Models/ProductModel";
 import productsService from "../../../Services/ProductsService";
 import notifyService from "../../../Services/NotifyService";
 import ProductCard from "../../ProductsArea/ProductCard/ProductCard";
+import video10 from "../../../Assets/videos/video10.mp4";
 
 function AiChef(): JSX.Element {
   const [completion, setCompletion] = useState<RecipeResponse | null>(null);
@@ -84,6 +91,13 @@ function AiChef(): JSX.Element {
         {filteredProducts.map((p) => (
           <ProductCard key={p.id} product={p} />
         ))}
+      </div>
+      <div>
+        {!completion && (
+          <video autoPlay muted loop className="myVideo">
+            <source src={video10} type="video/mp4" />
+          </video>
+        )}
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ import notifyService from "../../../Services/NotifyService";
 import { Button } from "@mui/material";
 import orderService from "../../../Services/OrderService";
 import OrderModel from "../../../Models/OrderModel";
+import { useNavigate } from "react-router-dom";
 
 interface OrderReviewProps {
   handleBack: () => void;
@@ -25,6 +26,9 @@ function OrderReview({
   handleBack,
   handlePlaceOrder,
 }: OrderReviewProps): JSX.Element {
+
+  const navigate = useNavigate();
+
   // Get User For user Info
   const [user, setUser] = useState<UserModel>();
 
@@ -54,6 +58,9 @@ function OrderReview({
         .getCartByUser(user.cartId)
         .then((responseItems) => {
           setItems(responseItems);
+          // if(!responseItems || responseItems.length === 0){
+          //   navigate("/home")
+          // }
         })
         .catch((err) => notifyService.error(err));
     }
@@ -157,6 +164,10 @@ function OrderReview({
         <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
           Back
         </Button>
+        {items?.length === 0 &&(
+          <Typography variant="subtitle1" sx={{color:"red"}}>Your cart is empty</Typography>
+        )}
+        {items.length > 0 && (
         <Button
           variant="contained"
           onClick={handlePlaceOrderClick}
@@ -164,6 +175,7 @@ function OrderReview({
         >
           Place Order
         </Button>
+        )}
       </React.Fragment>
     </div>
   );

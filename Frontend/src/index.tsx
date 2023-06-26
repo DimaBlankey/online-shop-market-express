@@ -4,11 +4,11 @@ import Layout from './Components/LayoutArea/Layout/Layout';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import interceptorService from './Services/InterceptorService';
-import { ThemeProvider, createMuiTheme } from "@mui/material/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 interceptorService.create();
 
-const theme = createMuiTheme({
+const theme = createTheme({
     typography: {
       fontFamily: [
         'Montserrat',

@@ -17,6 +17,11 @@ import OrderReview from "../OrderReview/OrderReview";
 import PaymentForm from "../PaymentForm/PaymentForm";
 import AddressForm from "../AddressForm/AddressForm";
 import { useNavigate } from 'react-router-dom'; 
+import { useEffect, useState } from "react";
+import CartItemModel from "../../../Models/CartItemModel";
+import { cartStore } from "../../../Redux/CartState";
+import UserModel from "../../../Models/UserModel";
+import { authStore } from "../../../Redux/AuthState";
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
@@ -25,7 +30,6 @@ const theme = createTheme();
 function Checkout(): JSX.Element {
 
   const navigate = useNavigate();
-
 
   const [activeStep, setActiveStep] = React.useState(0);
 

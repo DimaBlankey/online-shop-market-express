@@ -20,7 +20,7 @@ import { useState } from "react";
 import authService from "../../../Services/AuthService";
 import { NavLink, useNavigate } from "react-router-dom";
 import notifyService from "../../../Services/NotifyService";
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from "@mui/icons-material/Home";
 
 function SignUp(): JSX.Element {
   const {
@@ -163,8 +163,7 @@ function SignUp(): JSX.Element {
                     />
                     {errors.city && (
                       <FormHelperText sx={{ fontSize: 12 }} error>
-                        {errors.city.type === "required" &&
-                          "City is required"}
+                        {errors.city.type === "required" && "City is required"}
                         {errors.city.type === "minLength" &&
                           "City must be at least 2 characters"}
                         {errors.city.type === "maxLength" &&
@@ -206,19 +205,23 @@ function SignUp(): JSX.Element {
                   </Box>
                 </Grid>
               </Grid>
-              
 
-              {/* Change it to number!!!! An add Validaion!!! */}
               <Box mt={2} mb={2}>
                 <TextField
+                  type="text"
+                  
                   label="ID"
                   placeholder="ID.."
                   variant="outlined"
                   className="form-inputs"
                   {...register("idCardNumber", {
                     required: true,
-                    minLength: 2,
-                    maxLength: 50,
+                    minLength: 9,
+                    maxLength: 9,
+                    pattern: {
+                      value: /^[0-9]+$/,
+                      message: "ID should contain only digits",
+                    },
                   })}
                   InputProps={{
                     startAdornment: (
@@ -227,10 +230,20 @@ function SignUp(): JSX.Element {
                       </InputAdornment>
                     ),
                   }}
+                  inputProps={{
+                    maxLength: 9,
+                  }}
                 />
-                {errors.idCardNumber  && (
+                {errors.idCardNumber && (
                   <FormHelperText sx={{ fontSize: 12 }} error>
-                    {errors.idCardNumber.type === "required" && "ID is required"}
+                    {errors.idCardNumber.type === "required" &&
+                      "ID is required"}
+                    {errors.idCardNumber.type === "minLength" &&
+                      "ID should be exactly 9 digits"}
+                    {errors.idCardNumber.type === "maxLength" &&
+                      "ID should be exactly 9 digits"}
+                    {errors.idCardNumber.type === "pattern" &&
+                      errors.idCardNumber.message}
                   </FormHelperText>
                 )}
               </Box>

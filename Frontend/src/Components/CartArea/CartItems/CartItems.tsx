@@ -180,19 +180,21 @@ function CartItems({ item }: CartItemsProps): JSX.Element {
             <Typography variant="body2" color="text.secondary">
               Code: {item.productCode}
             </Typography>
-            <div>
+            <div >
               {item.salePrice ? (
                 <>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Typography
                     variant="body2"
                     color="text.secondary"
-                    style={{ textDecoration: "line-through", marginLeft: 8 }}
+                    style={{ textDecoration: "line-through", marginInline: 10}}
                   >
                     ${item.price}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     ${item.salePrice}
                   </Typography>
+                  </div>
                 </>
               ) : (
                 <Typography variant="body2" color="text.secondary">

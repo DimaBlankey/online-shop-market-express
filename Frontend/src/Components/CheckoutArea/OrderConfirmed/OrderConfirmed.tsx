@@ -5,19 +5,20 @@ import Paper from "@mui/material/Paper";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import * as React from "react";
 import Typography from "@mui/material/Typography";
-import { Step, StepLabel, Stepper } from "@mui/material";
+import { Card, CardMedia, Step, StepLabel, Stepper } from "@mui/material";
 import orderService from "../../../Services/OrderService";
 import { useEffect, useState } from "react";
 import UserModel from "../../../Models/UserModel";
 import { authStore } from "../../../Redux/AuthState";
 import OrderModel from "../../../Models/OrderModel";
+import thankUImage from "../../../Assets/images/thank-you.jpg";
+import { Link } from "react-router-dom";
 
 const theme = createTheme();
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 
 function OrderConfirmed(): JSX.Element {
-
   const [user, setUser] = useState<UserModel>();
 
   useEffect(() => {
@@ -27,7 +28,6 @@ function OrderConfirmed(): JSX.Element {
     });
     return () => unsubscribe();
   }, []);
-
 
   const [orderId, setOrderId] = useState<number | null>(null);
 
@@ -51,37 +51,46 @@ function OrderConfirmed(): JSX.Element {
     setOrderId(orderId);
   }
 
-    return (
-      <div className="OrderConfirmation">
-        <ThemeProvider theme={theme}>
-          <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-            <Paper
-              variant="outlined"
-              sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-            >
-              <Typography component="h1" variant="h4" align="center">
-                Checkout
-              </Typography>
-              <Stepper activeStep={steps.length} sx={{ pt: 3, pb: 5 }}>
-                {steps.map((label) => (
-                  <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                  </Step>
-                ))}
-              </Stepper>
-              <Typography variant="h5" gutterBottom>
-                Thank you for your order.
-              </Typography>
-              <Typography variant="subtitle1">
-                Your order number is #{orderId}. We have emailed your order
-                confirmation, and will send you an update when your order has
-                shipped.
-              </Typography>
-            </Paper>
-          </Container>
-        </ThemeProvider>
-      </div>
-    );
-  }
-  
-  export default OrderConfirmed;
+  return (
+    <div className="OrderConfirmation">
+      <ThemeProvider theme={theme}>
+        <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+          <Paper
+            variant="outlined"
+            sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+          >
+            <Typography component="h1" variant="h4" align="center">
+              Checkout
+            </Typography>
+            <Stepper activeStep={steps.length} sx={{ pt: 3, pb: 5 }}>
+              {steps.map((label) => (
+                <Step key={label}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+            <Typography variant="h5" gutterBottom>
+              Thank you for your order.
+            </Typography>
+            <Typography variant="subtitle1">
+              Your order number is #{orderId}. We have emailed your order
+              confirmation, and will send you an update when your order has
+              shipped.
+            </Typography>
+            <Typography variant="subtitle1">You can also check your orders here:</Typography>
+            <Link to={"/my-account"}>My Account</Link>
+          </Paper>
+          <Card >
+            <CardMedia
+              component="img"
+              alt="Thank U"
+              src={thankUImage}
+            />
+          </Card>
+        </Container>
+      </ThemeProvider>
+    </div>
+  );
+}
+
+export default OrderConfirmed;

@@ -16,6 +16,7 @@ async function getProductsForGpt(): Promise<string>{
     return products
 }
 
+
 async function generatePromptIngredients(searchValue: string): Promise<string>{
     const products = JSON.stringify(await getProductsForGpt());
     const prompt = `

@@ -5610,3 +5610,50 @@ Incorrect email or password
 Fri, 30 Jun 2023 12:04:57 GMT
 Incorrect email or password
 ----------------------------------------------------------------------------------------------------
+Sun, 20 Aug 2023 15:50:21 GMT
+Invalid token
+----------------------------------------------------------------------------------------------------
+Sun, 20 Aug 2023 16:00:59 GMT
+Request failed with status code 404
+Stack: Error: Request failed with status code 404
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Sun, 20 Aug 2023 16:04:57 GMT
+Request failed with status code 404
+Stack: Error: Request failed with status code 404
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Sun, 20 Aug 2023 16:07:15 GMT
+Request failed with status code 500
+Stack: Error: Request failed with status code 500
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------
+Sun, 20 Aug 2023 16:11:01 GMT
+Request failed with status code 400
+Stack: Error: Request failed with status code 400
+    at createError (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\createError.js:16:15)
+    at settle (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\core\settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\node_modules\axios\lib\adapters\http.js:269:11)
+    at IncomingMessage.emit (node:events:525:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at processTicksAndRejections (node:internal/process/task_queues:82:21)
+----------------------------------------------------------------------------------------------------

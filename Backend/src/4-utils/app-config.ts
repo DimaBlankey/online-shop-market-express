@@ -22,7 +22,7 @@ class AppConfig {
     public mySqlDatabase = process.env.MYSQL_DATABASE || "online-shop-market-express";
 
     // chatGPT Api Url:
-    public gptUrl = "https://api.openai.com/v1/completions";
+    public gptUrl = "https://api.openai.com/v1/chat/completions";
 
 }
 

@@ -11,13 +11,7 @@ import gptService, { RecipeResponse } from "../../../Services/GptService";
 import CircularProgress from "@mui/material/CircularProgress";
 import Backdrop from "@mui/material/Backdrop";
 
-function PromptField({
-  onCompletion,
-  setLoading,
-}: {
-  onCompletion: (completion: RecipeResponse) => void;
-  setLoading: (loading: boolean) => void;
-}): JSX.Element {
+function PromptField({ onCompletion, setLoading,}:{ onCompletion: (completion: RecipeResponse) => void; setLoading: (loading: boolean) => void;}): JSX.Element {
   const [searchValue, setSearchValue] = useState("");
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
 
@@ -79,7 +73,6 @@ function PromptField({
       <Container maxWidth="md" sx={{ mt: 5 }}>
         <TextField
           type="search"
-          //   placeholder="Search products..."
           variant="standard"
           sx={{ width: 400 }}
           value={searchValue}

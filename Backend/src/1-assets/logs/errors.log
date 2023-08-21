@@ -5657,3 +5657,35 @@ Stack: Error: Request failed with status code 400
     at endReadableNT (node:internal/streams/readable:1359:12)
     at processTicksAndRejections (node:internal/process/task_queues:82:21)
 ----------------------------------------------------------------------------------------------------
+Sun, 20 Aug 2023 16:51:56 GMT
+Only costumers who bought this item can review it
+----------------------------------------------------------------------------------------------------
+Sun, 20 Aug 2023 16:52:01 GMT
+Only costumers who bought this item can review it
+----------------------------------------------------------------------------------------------------
+Sun, 20 Aug 2023 16:52:35 GMT
+You have already reviewed this item.
+----------------------------------------------------------------------------------------------------
+Sun, 20 Aug 2023 16:53:16 GMT
+Incorrect email or password
+----------------------------------------------------------------------------------------------------
+Sun, 20 Aug 2023 16:54:48 GMT
+Cannot read properties of undefined (reading 'id')
+Stack: TypeError: Cannot read properties of undefined (reading 'id')
+    at Object.<anonymous> (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\cart-services.ts:26:28)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\dima\Downloads\לימודי FULL STACK\online-shop-market-express\Backend\src\5-services\cart-services.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+----------------------------------------------------------------------------------------------------
+Sun, 20 Aug 2023 17:12:28 GMT
+Incorrect email or password
+----------------------------------------------------------------------------------------------------
+Mon, 21 Aug 2023 05:35:06 GMT
+Incorrect email or password
+----------------------------------------------------------------------------------------------------
+Mon, 21 Aug 2023 06:31:51 GMT
+Only costumers who bought this item can review it
+----------------------------------------------------------------------------------------------------
+Mon, 21 Aug 2023 06:32:29 GMT
+You have already reviewed this item.
+----------------------------------------------------------------------------------------------------

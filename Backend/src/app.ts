@@ -56,6 +56,7 @@ cron.schedule('0 0 * * *', async () => {
   await promotionAutoService.dailyAutoPromotionService();
 });
 
+console.log("TEST");
 
 server.listen(appConfig.port, () =>
   console.log("Listening on http://localhost:" + appConfig.port)

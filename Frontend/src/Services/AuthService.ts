@@ -11,6 +11,7 @@ class AuthService {
     const response = await axios.post<string>(appConfig.signupUrl, user);
     if (response) {
       cartService.insertCartDetailsFromStorage(user);
+      
     }
     const token = response.data;
     authStore.dispatch({ type: AuthActionType.Signup, payload: token });
